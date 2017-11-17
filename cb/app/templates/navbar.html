@@ -1,0 +1,54 @@
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/index">ДОСЬЕ ЭМИТЕНТА</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/search">Поиск эмитента</a></li>
+            <li><a href="/selections">Выборка</a></li>
+          <!--  {% if request.user.is_authenticated %}
+            <li><a href="/computer_entry">Add Computers</a></li>
+            <li><a href="/computer_list">View Computers</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Others<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/computer_audit">Computer Audit</a></li>
+              </ul>
+            </li>
+            {% endif %}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if request.user.is_authenticated %}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{request.user}}<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/accounts/login">Login as another user</a></li>
+                <li><a href="/accounts/logout"><span class='logout-btn'>Logout</span></a></li>
+              </ul>
+            </li>
+            {% else %}<li><a href="/accounts/login">Войти</a></li>
+            {% endif %} -->
+
+            <!-- <li><a href="http://192.168.100.28/nagios" target='_blank'>Open Nagios</a></li> -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <a href="#" class="scrollToTop">Наверх</a>
+    {% if request.user.is_authenticated %}
+      <a href="/settings">
+        <div id="settings">
+              Settings <img src="/static/img/settings.png">
+        </div>
+      </a>
+    {% endif %}

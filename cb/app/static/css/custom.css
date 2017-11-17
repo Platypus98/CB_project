@@ -1,0 +1,145 @@
+body{
+	background: url("../img/bgg.jpg");
+
+}
+
+.table tr:nth-child(odd){
+	background: #B8CAE4
+
+}
+
+.table tr:nth-child(even){
+	background: #dae5f4
+}
+
+.paging-nav {
+  	text-align: right;
+	padding-top: 2px;
+	font-size: 20px;
+	padding-bottom: 10px;
+}
+
+.paging-nav a {
+ 	margin: auto 1px;
+  	text-decoration: none;
+  	display: inline-block;
+  	padding: 1px 7px;
+  	background: #91b9e6;
+  	color: white;
+  	border-radius: 100px;
+}
+
+.paging-nav .selected-page {
+  	background: #187ed5;
+  	font-weight: bold;
+}
+
+.scrollToTop{
+	width:100px; 
+	height:130px;
+	padding:10px; 
+	text-align:center; 
+	background: whiteSmoke;
+	font-weight: bold;
+	color: #444;
+	position:fixed;
+	bottom:25px;
+	right:40px;
+	display: none;
+	background: url('../img/to-top-small.png') no-repeat 20px 55px;
+}
+
+.inv-search #div_id_computer_name, .inv-search #div_id_ip_address, .inv-search #div_id_location{
+	float: left;
+	width: 200px;
+	margin-right: 20px;
+}
+
+.search-btn{
+	margin-top: -10px;
+	float: left;
+}
+
+.success{
+	list-style: none;
+	background-color: #2e6da4;
+	border-radius: 10px;
+	color: white;
+	box-shadow: 10px 10px 10px;
+	box-shadow: 12px 12px 12px #e61c66;
+	padding: 5px;
+	text-align: center;
+}
+.error{
+	list-style: none;
+	background-color: #e61c66;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	color: white;
+	box-shadow: 10px 10px 10px;
+	box-shadow: 12px 12px 12px #2e6da4;
+	padding: 5px;
+	text-align: center;
+}
+
+.title{
+	font-family: helvetica;
+	font-weight: bold;
+	font-size: 25px;
+	color: #2e6da4;
+	text-align: left;
+}
+
+.logout-btn{
+	color: red;
+	font-weight: bolder;
+}
+
+#settings{
+	/*list-style: none;*/
+	background-color: #e61c66;
+	/*border: 1px solid red;*/
+	/*border-radius: 10px;*/
+	color: white;
+/*	box-shadow: 10px 10px 10px;
+	box-shadow: 12px 12px 12px #2e6da4;*/
+	text-align: center;
+	display: inline;
+	font-weight: bolder;
+	/*position: absolute;*/
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	padding-right: 5px;
+	/*width: 20px;*/
+	position: fixed;
+	/*position: relative;*/
+	bottom: 0px;
+	left: -80px;
+	z-index: 3000;
+	/*border-radius: 20px;*/
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+
+
+#settings:hover{
+	left: 0px;
+	-webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+
+.no-access{
+	color: red;
+	font-weight: bolder;
+	text-align: center;
+
+}
+
+.center-align{
+	text-align: center;
+}
