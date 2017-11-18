@@ -1,11 +1,11 @@
-{% load staticfiles %}
+﻿{% load staticfiles %}
 {% include 'navbar.html' %}
-
+{% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
@@ -28,12 +28,77 @@
 
 	<div class="container">
 		<div class="jumbotron">
-			<form action="/your-name/" method="post">
-    	<input id="naimen" type="text" name="your_name" maxlength="100">
-			<input id="inn" type="text" name="your_name" maxlength="100">
-			<input id="" type="text" name="your_name" maxlength="100">
-    <input type="submit" value="Submit" />
-</form>
+<!--     <form method="post" class="form-horizontal" role="form">
+	     {% csrf_token %}
+
+			 <div class="form-group" >
+    		<label class="col-sm-2 control-label">Наименование</label>
+					<div class="col-sm-5">
+						<input id="naimen" type="text" class="form-control" name="your_name" maxlength="100">
+			     </div>
+			   </div>
+
+				 <div class="form-group">
+				   <label class="col-sm-2 control-label">ИНН</label>
+					   <div class="col-sm-5">
+					 	   <input id="inn" class="form-control" name="your_name" maxlength="100">
+					   </div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">ОГРН</label>
+						<div class="col-sm-5">
+							<input id="ogrn" class="form-control" name="your_name" maxlength="100">
+						</div>
+			 </div>
+
+				<div class="form-group" >
+				   <label class="col-sm-2 control-label">Код эмитента</label>
+					 <div class="col-sm-5">
+					   <input id="code" type="text" class="form-control" name="your_name" maxlength="100"> <br>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+    			<input type="submit" value="Найти" class="btn btn-primary" />
+				</div>
+				</div>
+			</div>
+		</form> -->
+
+		<div class="inv-search">
+				<div class="title">Поиск эмитента</div><br>
+				<form method="post" action="">
+						{% csrf_token %}
+						{{form|crispy}}
+						<br> <br>
+						<input class='btn btn-primary search-btn'  type="submit" value="Поиск" />
+				</form>
+		</div>
+	</div>
+
+
+		 <table class='table'>
+				 <thead>
+						 <tr>
+								 <th class="center-align">#</th>
+								 <th class="center-align">НАИМЕНОВАНИЕ</th>
+								 <th class="center-align">ИНН</th>
+								 <th class="center-align">ОГРН</th>
+								 <th class="center-align">КОД ЭМИТЕНТА</th>
+						 </tr>
+				 </thead>
+				 {% for instance in queryset %}
+				 	<tr>
+					 	<th class="center-align">{{ instance.id}}</th>
+					 	<th class="center-align"><a href="/edit">{{ instance.наименование}}</a></th>
+					 	<th class="center-align">{{ instance.инн}}</th>
+					 	<th class="center-align">{{ instance.огрн}}</th>
+					 	<th class="center-align">{{ instance.код_эмитента}}</th>
+				 	</tr>
+				 	{% endfor %}
+		 </table>
 		</div>
 
 	</div> <!-- /container -->

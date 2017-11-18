@@ -84,12 +84,12 @@ class AuthUserUserPermissions(models.Model):
 
 class Data111(models.Model):
     id = models.IntegerField(unique=True, blank=True, primary_key=True)
-    наименование = models.TextField(db_column='НАИМЕНОВАНИЕ', blank=True, null=True)  # Field name made lowercase.
-    инн = models.TextField(db_column='ИНН', blank=True, null=True)  # Field name made lowercase.
-    огрн = models.TextField(db_column='ОГРН', blank=True, null=True)  # Field name made lowercase.
+    наименование = models.CharField(db_column='НАИМЕНОВАНИЕ', blank=True, null=True, max_length=50)  # Field name made lowercase.
+    инн = models.CharField(db_column='ИНН', blank=True, null=True, max_length=10)  # Field name made lowercase.
+    огрн = models.CharField(db_column='ОГРН', blank=True, null=True, max_length=30)  # Field name made lowercase.
     дата_регистрации = models.TextField(db_column='ДАТА РЕГИСТРАЦИИ', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     опф = models.TextField(db_column='ОПФ', blank=True, null=True)  # Field name made lowercase.
-    код_эмитента = models.TextField(db_column='Код эмитента', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    код_эмитента = models.CharField(db_column='Код эмитента', blank=True, null=True, max_length=7)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     уставной_капитал = models.TextField(db_column='УСТАВНОЙ КАПИТАЛ', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     количество_лицевых_счетов_в_реестре = models.TextField(db_column='Количество лицевых счетов в реестре', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     количество_номинальных_держателей_в_реестре = models.TextField(db_column='Количество номинальных держателей в реестре', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
