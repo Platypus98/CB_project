@@ -66,6 +66,13 @@
 				</div>
 			</div>
 		</form> -->
+		{% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
 		<div class="inv-search">
 				<div class="title">Поиск эмитента</div><br>
@@ -73,7 +80,7 @@
 						{% csrf_token %}
 						{{form|crispy}}
 						<br> <br>
-						<input class='btn btn-primary search-btn'  type="submit" value="Поиск" />
+						<input class='btn btn-primary'  type="submit" value="Поиск" />
 				</form>
 		</div>
 	</div>
@@ -89,15 +96,15 @@
 								 <th class="center-align">КОД ЭМИТЕНТА</th>
 						 </tr>
 				 </thead>
-				 {% for instance in queryset %}
+				 {% for i in queryset %}
 				 	<tr>
-					 	<th class="center-align">{{ instance.id}}</th>
-					 	<th class="center-align"><a href="/edit">{{ instance.наименование}}</a></th>
-					 	<th class="center-align">{{ instance.инн}}</th>
-					 	<th class="center-align">{{ instance.огрн}}</th>
-					 	<th class="center-align">{{ instance.код_эмитента}}</th>
+					 	<th class="center-align">{{ i.id}}</th>
+					 	<th class="center-align"><a href="{% url 'edit' i.id %}">{{ i.наименование}}</a></th>
+					 	<th class="center-align">{{ i.инн}}</th>
+					 	<th class="center-align">{{ i.огрн}}</th>
+					 	<th class="center-align">{{ i.код_эмитента}}</th>
 				 	</tr>
-				 	{% endfor %}
+				 {% endfor %}
 		 </table>
 		</div>
 
