@@ -1,6 +1,7 @@
 ﻿{% load staticfiles %}
 {% include 'navbar.html' %}
 {% load crispy_forms_tags %}
+{% load bootstrap %}
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,7 @@
 <body>
 
 	<div class="container">
-		<div class="jumbotron">
+		<div class="jumbotron" style="margin-bottom: 80px;padding-bottom: 190px;">
 <!--     <form method="post" class="form-horizontal" role="form">
 	     {% csrf_token %}
 
@@ -76,11 +77,20 @@
 
 		<div class="inv-search">
 				<div class="title">Поиск эмитента</div><br>
-				<form method="post" action="">
-						{% csrf_token %}
-						{{form|crispy}}
-						<br> <br>
-						<input class='btn btn-primary'  type="submit" value="Поиск" />
+				<div class="form-group">
+					<form method="post" action="" class="form-horizontal">
+							<div class="col-sm-9">
+							{% csrf_token %}
+							{{form.наименование|bootstrap_horizontal}}
+							{{form.инн|bootstrap_horizontal}}
+							{{form.огрн|bootstrap_horizontal}}
+							{{form.код_эмитента|bootstrap_horizontal}}
+						</div>
+							<br> <br>
+							<div class="col-sm-8 col-sm-offset-0">
+							<input class='btn btn-primary'  type="submit" value="Поиск" />
+						</div>
+						</div>
 				</form>
 		</div>
 	</div>
