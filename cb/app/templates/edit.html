@@ -1,6 +1,7 @@
 {% load staticfiles %}
 {% include 'navbar.html' %}
 {% load crispy_forms_tags %}
+{% load bootstrap %}
 
 <!DOCTYPE html>
 <html>
@@ -27,16 +28,68 @@
 <body>
 
 	<div class="container">
-		<div class="jumbotron" style="padding-bottom: 4000px;">
+		<div class="jumbotron" style="padding-bottom: 600px;">
       <div class="title">Карточка компании "{{ title }}"</div>
 
-      <div class="col-sm-4"><!--Col 1 starts here-->
       	<div class="row">
             <form method="post" action="">
         			{% csrf_token %}
-							{{form|crispy}}
+        			<div class="col-sm-6">
+							{{form.наименование|bootstrap}}
+							<div class="col-sm-5 col-sm-offset-0" style="margin-left: -15px;">
+							{{form.огрн|bootstrap}}
+						</div>
+						<div class="col-sm-5 col-sm-offset-0" style="margin-top: 96px; margin-left: -205px;">
+						{{form.опф|bootstrap}}
+						</div>
+						<div class="col-sm-5 col-sm-offset-0" style="margin-top: 190px; margin-left: -205px;">
+						{{form.уставной_капитал|bootstrap}}
+					</div>
+					<div style="margin-top: 290px;">
+						{{form.адрес|bootstrap}}
+					</div>
+					<div>
+						{{form.контактные_данные|bootstrap}}
+					</div>
+					<div>
+						{{form.движение_денежных_средств|bootstrap}}
+					</div>
+					<div style="">
+						{{form.задолженность_перед_фнс|bootstrap}}
+					</div>
+					</div>
+					<div class="col-sm-6">
+						{{form.инн|bootstrap}}
+						<div class="col-sm-5 col-sm-offset-0" style="margin-left: -275px;">
+						{{form.дата_регистрации|bootstrap}}
+					</div>
+						{{form.код_эмитента|bootstrap}}
+						
+						<div class="col-sm-5 col-sm-offset-0" style="margin-left: -275px;">
+						{{form.количество_лицевых_счетов_в_реестре|bootstrap}}
+					</div>
+					<div style="margin-top: 35px;">
+						{{form.количество_номинальных_держателей_в_реестре|bootstrap}}
+					</div>
+					<div class="col-sm-5 col-sm-offset-0" style="margin-left: -275px; margin-top: 21px;">
+						{{form.регион|bootstrap}}
+					</div>
+						<div>
+							{{form.сведения_об_открытии_счета_номинального_держателя_центрального_депозитария|bootstrap}}
+						</div>
+						<div style="margin-top: 28px;">
+							{{form.единоличный_исполнительный_орган|bootstrap}}
+						</div>
+						<div>
+							{{form.статус|bootstrap}}
+						</div>
+						<div>
+							{{form.отчетность|bootstrap}}
+						</div>
+					</div>
+
         			<br> <br>
-        			<input class='btn btn-danger'  type="submit" value="Сохранить" />
+        			<input style="margin-top: 20px; margin-right: 900px;" class='btn btn-danger'  type="submit" value="Сохранить" />
         	</form>
             </div>
         </div>
