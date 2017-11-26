@@ -52,7 +52,7 @@ def selections(request):
     if request.method == 'POST':
         for i in form._meta.fields:
             if form[i].value():
-                a.append(form[i].label)
+                a.append(i)
         context = {
     		"form": form,
             "a": a,
