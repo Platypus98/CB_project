@@ -89,22 +89,22 @@ class Data111(models.Model):
     naimenovanie = models.CharField(db_column='НАИМЕНОВАНИЕ', blank=True, null=True, max_length=1000, default=None)  # Field name made lowercase.
     inn = models.CharField(db_column='ИНН', blank=True, null=True, max_length=10, default=None)  # Field name made lowercase.
     ogrn = models.CharField(db_column='ОГРН', blank=True, null=True, max_length=30, default=None)  # Field name made lowercase.
-    data_registracii = models.TextField(db_column='ДАТА РЕГИСТРАЦИИ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    opf = models.TextField(db_column='ОПФ', blank=True, null=True, default=None)  # Field name made lowercase.
+    data_registracii = models.CharField(db_column='ДАТА РЕГИСТРАЦИИ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    opf = models.CharField(db_column='ОПФ', blank=True, null=True, default=None)  # Field name made lowercase.
     cod_emitenta = models.CharField(db_column='Код эмитента', blank=True, null=True, max_length=7, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ustavnoy_capital = models.TextField(db_column='УСТАВНОЙ КАПИТАЛ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    kolichestvo_licevyh_schetov_v_reestre = models.TextField(db_column='Количество лицевых счетов в реестре', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    kolichestvo_nominalnyh_derzhateley_v_reestre = models.TextField(db_column='Количество номинальных держателей в реестре', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria = models.TextField(db_column='Сведения об открытии счета номинального держателя центрального депозитария', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    region = models.TextField(db_column='РЕГИОН', blank=True, null=True, default=None)  # Field name made lowercase.
-    adres = models.TextField(db_column='АДРЕС', blank=True, null=True, default=None)  # Field name made lowercase.
-    edinolichny_ispolnitelny_organ = models.TextField(db_column='ЕДИНОЛИЧНЫЙ ИСПОЛНИТЕЛЬНЫЙ ОРГАН', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    contactny_dannye = models.TextField(db_column='КОНТАКТНЫЕ ДАННЫЕ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    status = models.TextField(db_column='СТАТУС', blank=True, null=True, default=None)  # Field name made lowercase.
-    dvizhenie_denezhnyh_sredstv = models.TextField(db_column='ДВИЖЕНИЕ ДЕНЕЖНЫХ СРЕДСТВ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    otchetnost = models.TextField(db_column='ОТЧЕТНОСТЬ', blank=True, null=True, default=None)  # Field name made lowercase.
-    zadolzhennost_pered_fns = models.TextField(db_column='ЗАДОЛЖЕННОСТЬ ПЕРЕД ФНС', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    kartochka_kompanii = models.TextField(db_column='КАРТОЧКА КОМПАНИИ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ustavnoy_capital = models.CharField(db_column='УСТАВНОЙ КАПИТАЛ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    kolichestvo_licevyh_schetov_v_reestre = models.CharField(db_column='Количество лицевых счетов в реестре', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    kolichestvo_nominalnyh_derzhateley_v_reestre = models.CharField(db_column='Количество номинальных держателей в реестре', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria = models.CharField(db_column='Сведения об открытии счета номинального держателя центрального депозитария', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    region = models.CharField(db_column='РЕГИОН', blank=True, null=True, default=None)  # Field name made lowercase.
+    adres = models.CharField(db_column='АДРЕС', blank=True, null=True, default=None)  # Field name made lowercase.
+    edinolichny_ispolnitelny_organ = models.CharField(db_column='ЕДИНОЛИЧНЫЙ ИСПОЛНИТЕЛЬНЫЙ ОРГАН', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    contactny_dannye = models.CharField(db_column='КОНТАКТНЫЕ ДАННЫЕ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    status = models.CharField(db_column='СТАТУС', blank=True, null=True, default=None)  # Field name made lowercase.
+    dvizhenie_denezhnyh_sredstv = models.CharField(db_column='ДВИЖЕНИЕ ДЕНЕЖНЫХ СРЕДСТВ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    otchetnost = models.CharField(db_column='ОТЧЕТНОСТЬ', blank=True, null=True, default=None)  # Field name made lowercase.
+    zadolzhennost_pered_fns = models.CharField(db_column='ЗАДОЛЖЕННОСТЬ ПЕРЕД ФНС', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    kartochka_kompanii = models.CharField(db_column='КАРТОЧКА КОМПАНИИ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     registrator = models.TextField(db_column='РЕГИСТРАТОР', blank=True, null=True)  # Field name made lowercase.
     data_pisma_po_reestru = models.TextField(db_column='ДАТА ПИСЬМА ПО РЕЕСТРУ', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     nomer_pisma_po_reestru = models.TextField(db_column='НОМЕР ПИСЬМА ПО РЕЕСТРУ', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.

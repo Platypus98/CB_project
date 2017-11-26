@@ -81,10 +81,10 @@
 					<form method="post" action="" class="form-horizontal">
 							<div class="col-sm-9">
 							{% csrf_token %}
-							{{form.наименование|bootstrap_horizontal}}
-							{{form.инн|bootstrap_horizontal}}
-							{{form.огрн|bootstrap_horizontal}}
-							{{form.код_эмитента|bootstrap_horizontal}}
+							{{form.naimenovanie|bootstrap_horizontal}}
+							{{form.inn|bootstrap_horizontal}}
+							{{form.ogrn|bootstrap_horizontal}}
+							{{form.cod_emitenta|bootstrap_horizontal}}
 						</div>
 							<br> <br>
 							<div class="col-sm-8 col-sm-offset-0">
@@ -109,10 +109,10 @@
 				 {% for i in queryset %}
 				 	<tr>
 					 	<th class="center-align">{{ i.id}}</th>
-					 	<th class="center-align"><a href="{% url 'edit' i.id %}">{{ i.наименование}}</a></th>
-					 	<th class="center-align">{{ i.инн}}</th>
-					 	<th class="center-align">{{ i.огрн}}</th>
-					 	<th class="center-align">{{ i.код_эмитента}}</th>
+					 	<th class="center-align"><a href="{% url 'edit' i.id %}">{{ i.naimenovanie}}</a></th>
+					 	<th class="center-align">{{ i.inn}}</th>
+					 	<th class="center-align">{{ i.ogrn}}</th>
+					 	<th class="center-align">{{ i.cod_emitenta}}</th>
 				 	</tr>
 				 {% endfor %}
 		 </table>

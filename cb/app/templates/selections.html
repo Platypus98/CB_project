@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% include 'navbar.html' %}
+{% load bootstrap %}
 
 
 <!DOCTYPE html>
@@ -28,8 +29,13 @@
 
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Здесь будет выборка</h1>
-
+			<h1>Выборка</h1>
+				<form method="post">
+					{% csrf_token %}
+					{{form|bootstrap}}
+					<input class='btn btn-primary'  type="submit" value="Поиск" />
+				</form>
+				{{a}}
 		</div>
 
 	</div> <!-- /container -->
