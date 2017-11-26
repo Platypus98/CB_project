@@ -12,7 +12,7 @@ class Data111Form(forms.ModelForm):
             "ogrn": "ОГРН:",
             "cod_emitenta": "Код эмитента:",
         }
-class Data111EditForm(forms.ModelForm):
+class Data111Edit_KartochkaForm(forms.ModelForm):
     class Meta:
         model = Data111
         fields = ['naimenovanie', 'inn', 'ogrn','data_registracii','opf','cod_emitenta','ustavnoy_capital', 'kolichestvo_licevyh_schetov_v_reestre', 'kolichestvo_nominalnyh_derzhateley_v_reestre', 'cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria', 'region', 'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 'otchetnost', 'zadolzhennost_pered_fns']
@@ -36,6 +36,28 @@ class Data111EditForm(forms.ModelForm):
             "otchetnost": "Отчетность:",
             "zadolzhennost_pered_fns": "Задолженность перед ФНС:",
         }
+
+class Data111Edit_Korp_KontrolForm(forms.ModelForm):
+    class Meta(object):
+        model = Data111
+        fields = ['registrator', "data_pisma_po_reestru", "nomer_pisma_po_reestru","data_zaprosa_po_reestru", "nomer_zaprosa_po_reestru", "data_predpisanya_po_reestru", "nomer_predpisaniya_po_reestru", "data_provedeniya_gosa", "data_zaprosa_po_gosa", "nomer_zaprosa_po_gosa", "data_predpisaniya_po_1_vypusku", "nomer_predpisaniya_po_1_vypusku", "nrd", "oao_na_22_06_2015"]
+        labels = {
+            "registrator": "Регистратор",
+            "data_pisma_po_reestru": "Дата письма по реестру",
+            "nomer_pisma_po_reestru": "Номер письма по реестру",
+            "data_zaprosa_po_reestru": "Дата запроса по реестру",
+            "nomer_zaprosa_po_reestru": "Номер запроса по реестру",
+            "data_predpisanya_po_reestru": "Дата предписания по реестру", 
+            "nomer_predpisaniya_po_reestru": "Номер предписания по реестру",
+            "data_provedeniya_gosa": "Дата проведения госа",
+            "data_zaprosa_po_gosa": "Дата запроса по госа",
+            "nomer_zaprosa_po_gosa": "Номер запроса по госа",
+            "data_predpisaniya_po_1_vypusku": "Дата предписания по 1 выпуску", 
+            "nomer_predpisaniya_po_1_vypusku": "Номер предписания по 1 выпуску", 
+            "nrd": "НРД", 
+            "oao_na_22_06_2015": "ОАО на 22.06.2015",
+        }
+            
 
 class Data111FormSelection(forms.ModelForm):
     naimenovanie = forms.BooleanField(label="Наименование", required=False)

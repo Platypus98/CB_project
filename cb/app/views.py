@@ -28,19 +28,32 @@ def search(request):
     return render(request, 'search.html', context)
 
 
-def edit(request, id):
+def edit_kartochka(request, id):
 	title = Data111.objects.get(id = id).naimenovanie
 	obj = get_object_or_404(Data111, id = id)
-	form = Data111EditForm(request.POST or None, instance=obj)
+	form = Data111Edit_KartochkaForm(request.POST or None, instance=obj)
 	if request.method == 'POST':
 		form.save()
-		return redirect('/search')
 
 	context = {
 		"title": title,
 		"form": form,
+		"id": id,
 	}
-	return render(request, 'edit.html', context)
+	return render(request, 'edit_kartochka.html', context)
+
+def edit_korp_kontrol(request, id):
+	title = Data111.objects.get(id = id).naimenovanie
+	obj = get_object_or_404(Data111, id = id)
+	form = Data111Edit_Korp_KontrolForm(request.POST or None, instance=obj)
+	if request.method == 'POST':
+		form.save()
+	context = {
+		"title": title,
+		"form": form,
+		"id": id,
+	}
+	return render(request, 'edit_korp_kontrol.html', context)
 
 
 def selections(request):
