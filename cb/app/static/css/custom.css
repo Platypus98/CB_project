@@ -35,10 +35,10 @@ body{
 }
 
 .scrollToTop{
-	width:100px; 
+	width:100px;
 	height:130px;
-	padding:10px; 
-	text-align:center; 
+	padding:10px;
+	text-align:center;
 	background: whiteSmoke;
 	font-weight: bold;
 	color: #444;
@@ -87,7 +87,7 @@ body{
 	font-weight: bold;
 	font-size: 25px;
 	color: #2e6da4;
-	text-align: right;
+	text-align: left;
 }
 
 .logout-btn{
