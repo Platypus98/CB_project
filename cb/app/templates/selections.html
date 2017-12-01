@@ -11,9 +11,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="../../favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/static/img/favicon.ico"/>
 
-	<title>Поиск</title>
+	<title>Выборка</title>
 	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 	<link href="{% static 'css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
 	<link href="{% static 'css/navbar-fixed-top.css' %}" rel="stylesheet">
@@ -29,16 +29,293 @@
 
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Выборка</h1>
-				<form method="post">
+			<div class="title">Выборка</div><br>
+				<form method="post" action="" class="form-horizontal">
 					{% csrf_token %}
-					{{form|bootstrap}}
-					<input class='btn btn-primary'  type="submit" value="Поиск" />
+				    
+
+
+				<div class="1  " >
+
+				    <div class="col-sm-3 panel panel-default col-sm-offset-0" style="height: 35px">
+					{{form.naimenovanie|bootstrap}}
+				    </div>
+
+					<div class="col-sm-3 panel panel-default col-sm-offset-0" style="height: 35px">
+					{{form.inn|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 panel panel-default col-sm-offset-0" style="height: 35px">
+					{{form.ogrn|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 panel panel-default col-sm-offset-0" style="height: 35px">
+					{{form.data_registracii|bootstrap}}
+				    </div>
+
+				</div>
+
+				<hr>
+
+				<div class="2 " title="Карточка" ">
+
+				    <h4>Карточка:</h4>	
+
+
+				    <div class="col-sm-3 well  col-sm-offset-0 " style="height: 295px">
+				    {{form.opf|bootstrap}}
+				    <br>
+				    {{form.cod_emitenta|bootstrap}}
+				    <br><br><br>
+				    {{form.ustavnoy_capital|bootstrap}}
+
+				    {{form.kolichestvo_licevyh_schetov_v_reestre|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 well col-sm-offset-0" style="height: 295px" >
+				    {{form.kolichestvo_nominalnyh_derzhateley_v_reestre|bootstrap}}
+				    {{form.cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria|bootstrap}}
+				    {{form.region|bootstrap}}
+				    {{form.adres|bootstrap}}
+				    <br>
+				    </div>
+
+				    <div class="col-sm-3  well col-sm-offset-0" style="height: 295px"  >
+				    {{form.edinolichny_ispolnitelny_organ|bootstrap}}
+				    {{form.contactny_dannye|bootstrap}}
+				    <br><br><br>
+				    {{form.status|bootstrap}}
+				    {{form.dvizhenie_denezhnyh_sredstv|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 well col-sm-offset-0" style="height: 295px" >
+				    {{form.otchetnost|bootstrap}}
+				    <br>
+				    {{form.zadolzhennost_pered_fns|bootstrap}}
+				    <br><br><br><br>
+				    <br><br><br><br>
+				    </div>
+
+				</div>
+
+			<hr>
+
+                <div class="3" title="Корп. контроль">
+
+                   <h4>Корп. контроль:</h4>	
+
+
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 245px">
+				    {{form.registrator|bootstrap}}
+				    {{form.data_pisma_po_reestru|bootstrap}}
+				    <br>
+				    {{form.nomer_pisma_po_reestru|bootstrap}}
+				    <br>
+				    {{form.data_zaprosa_po_reestru|bootstrap}}
+				    </div>
+
+
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 245px">
+				    {{form.nomer_zaprosa_po_reestru|bootstrap}}
+				    {{form.data_predpisanya_po_reestru|bootstrap}}
+				    {{form.nomer_predpisaniya_po_reestru|bootstrap}}
+				    {{form.data_provedeniya_gosa|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 245px">
+				    {{form.data_zaprosa_po_gosa|bootstrap}}
+				    {{form.nomer_zaprosa_po_gosa|bootstrap}}
+				    <br>
+				    {{form.data_predpisaniya_po_1_vypusku|bootstrap}}
+				    {{form.nomer_predpisaniya_po_1_vypusku|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 245px">
+				    {{form.nrd|bootstrap}}
+				    {{form.oao_na_22_06_2015|bootstrap}}
+				    <br><br><br><br>
+				    <br><br><br><br>
+
+				    </div>
+				    
+				   
+				</div>  
+
+				<hr>
+
+				<div class="4" title="Раскрытие">
+
+
+				    <h4>Раскрытие:</h4>	
+
+				    <div class="col-sm-3 well col-sm-offset-0" style="height: 575px">
+				    {{form.pao_v_silu_priznakov|bootstrap}}
+				    <br><br>
+				    {{form.pao_v_silu_nazvaniya|bootstrap}}
+				    <br><br>
+				    {{form.nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb|bootstrap}}
+				    {{form.nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag|bootstrap}}
+				    {{form.nao|bootstrap}}
+				    <br><br>
+				    {{form.osvobozhdeny_ot_raskrytiya|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 575px">
+				    {{form.data_resheniya_ob_osvobozhdenii|bootstrap}}
+				    <br>
+				    {{form.nomer_resheniya_ob_osvobozhdenii|bootstrap}}
+				    <br>
+				    {{form.otkaz_v_osvobozhdenii_ot_raskritiya|bootstrap}}
+				    <br><br>
+				    {{form.data_otkaza_v_osvobozhdenii_ot_raskritiya|bootstrap}}
+				    <br><br>
+				    {{form.nomer_otkaza_v_osvobozhdenii_ot_raskritiya|bootstrap}}
+				    {{form.proverka_raskritiya|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 575px">
+				    {{form.data_proverki|bootstrap}}
+				    <br><br>
+				    {{form.data_zaprosa_po_neraskritiyu_informacii|bootstrap}}
+				    <br>
+				    {{form.nomer_zaprosa_po_neraskritiyu_informacii|bootstrap}}
+				    <br><br>
+				    {{form.data_predpisaniya_po_neraskritiyu_informacii|bootstrap}}
+				    <br><br><br>
+				    {{form.nomer_predpisaniya_po_neraskritiyu_informacii|bootstrap}}
+				    <br>
+				    {{form.data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 575px">
+				    {{form.nomer_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
+				    {{form.data_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
+				    {{form.nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
+				    <br>
+				    {{form.vivod|bootstrap}}
+				    <br><br><br><br>
+				    {{form.raskritie|bootstrap}}
+				    <br><br>
+
+				    <br><br><br><br>
+				    <br>
+				    </div>
+
+
+				</div>
+
+		<hr>
+
+
+				<div class="4" title="Административка">
+
+					<h4>Административка:</h4>	
+
+
+				  <div class="col-sm-3 well col-sm-offset-0" style="height: 110px">
+				    {{form.data_protokola|bootstrap}}
+				    {{form.nomer_protokola|bootstrap}}
+				  </div>
+         
+
+				  <div class="col-sm-3 well col-sm-offset-0" style="height: 110px">
+				    {{form.statya_koap|bootstrap}}
+				    {{form.data_postanovleniya|bootstrap}}
+				  </div>
+
+				  <div class="col-sm-3  well col-sm-offset-0" style="height: 110px">
+				    {{form.nomer_postanovleniya|bootstrap}}
+				    {{form.resultat|bootstrap}}
+				  </div>
+
+				  <div class="col-sm-3 well col-sm-offset-0" style="height: 110px">
+				    {{form.razmer_shtrafa|bootstrap}}
+				    <br><br><br>
+				  </div>
+
+				</div>
+
+		<hr>
+
+
+				<div class="4" title="Взаимодействие с гос. органами">
+
+
+					 <h4>Взаимодействие с гос. органами:</h4>
+
+
+					<div class="col-sm-3 well col-sm-offset-0" style="height: 125px" >
+       				    {{form.fns|bootstrap}}
+       				    {{form.data_pisma_v_fns|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3  well col-sm-offset-0" style="height: 125px">
+				      {{form.nomer_pisma_v_fns|bootstrap}}
+				      {{form.informaciya_o_poluchenii_otveta_ot_fns|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 well col-sm-offset-0" style="height: 125px">
+				      {{form.vh_nomer_otveta|bootstrap}}
+				      {{form.svedeniya_ob_adrese_ne_dostoverny|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 well col-sm-offset-0" style="height: 125px">
+				      {{form.data_vneseniya_zapisi|bootstrap}}
+				      <br><br><br>
+				    </div>
+
+
+				</div>
+
+
+
+<br><br><br><br><br><br><br><br>
+					<input class='btn btn-primary'  type="submit" style="width: -webkit-fill-available;" value="Поиск/Экспорт" />
 				</form>
-				{{a}}
-		</div>
+
+		 </div>
+
+      </div>
 
 	</div> <!-- /container -->
+
+
+			<div class="table-block" style="position: relative;
+                                            overflow-x: auto;">
+
+				<table class='table'>
+				 	
+				<div class = "headerka">
+				 	<thead>
+							 <tr>
+								{% for h in a %}
+								  <th class="center-align">{{h}}</th>
+								{% endfor %}
+							 </tr>
+				 	</thead>
+				</div>
+
+				<div>
+		<!--<tr>
+		{% for h in table_headers %}
+		<th>{{ h }}</th>
+		{% endfor %}
+		</tr>
+	-->
+		{% for row in table_rows %}
+		<tr>
+		{% for k,v in row.items %}
+		<td>{{ v }}</td>
+		{% endfor %}
+		</tr>
+		{% endfor %}
+				     
+		
+
+            	</table>
+
+
+            </div>
 
 
 	<!-- Bootstrap core JavaScript
@@ -46,7 +323,6 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="{% static 'js/jquery.min.js' %}"></script>
 	<script src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
-	<script src="{% static 'js/pager/paging.js' %}"></script>
 	<script src="{% static 'js/nprogress/nprogress.js' %}"></script>
 	<script src="{% static 'js/custom.js' %}"></script>
 	<script>window.jQuery || document.write('<script src="{% static 'js/jquery.min.js' %}"><\/script>')</script>
