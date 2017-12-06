@@ -55,6 +55,18 @@ def edit_korp_kontrol(request, id):
 	}
 	return render(request, 'edit_korp_kontrol.html', context)
 
+def edit_raskrytie(request, id):
+  title = Data111.objects.get(id = id).naimenovanie
+  obj = get_object_or_404(Data111, id = id)
+  form = Data111Edit_Raskrytie(request.POST or None, instance=obj)
+  if request.method == 'POST':
+    form.save()
+  context = {
+    "title": title,
+    "form": form,
+    "id": id,
+  }
+  return render(request, 'edit_raskrytie.html', context)
 
 def selections(request):
     a = []
