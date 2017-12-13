@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'crispy_forms',
     'bootstrapform',
 ]
 
@@ -78,7 +79,7 @@ WSGI_APPLICATION = 'cb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'cbr.sqlite'),
+        'NAME': os.path.join(BASE_DIR, 'CBDB.sqlite'),
     }
 }
 

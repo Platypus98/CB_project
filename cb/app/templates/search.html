@@ -1,5 +1,6 @@
 ﻿{% load staticfiles %}
 {% include 'navbar.html' %}
+{% load crispy_forms_tags %}
 {% load bootstrap %}
 
 <!DOCTYPE html>
@@ -107,11 +108,11 @@
 				 </thead>
 				 {% for i in queryset %}
 				 	<tr>
-					 	<th class="center-align">{{ i.id}}</th>
-					 	<th class="center-align"><a href="{% url 'edit/kartochka_kompanii' i.id %}">{{ i.naimenovanie}}</a></th>
-					 	<th class="center-align">{{ i.inn}}</th>
-					 	<th class="center-align">{{ i.ogrn}}</th>
-					 	<th class="center-align">{{ i.cod_emitenta}}</th>
+					 	<th class="center-align">{{ i.id }}</th>
+					 	<th class="center-align"><a href="{% url 'edit/kartochka_kompanii' i.id %}">{{ i.naimenovanie }}</a></th>
+					 	<th class="center-align">{{ i.inn }}</th>
+					 	<th class="center-align">{{ i.ogrn }}</th>
+					 	<th class="center-align">{{ i.cod_emitenta }}</th>
 				 	</tr>
 				 {% endfor %}
 		 </table>

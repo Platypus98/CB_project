@@ -12,6 +12,7 @@ class Data111Form(forms.ModelForm):
             "ogrn": "ОГРН:",
             "cod_emitenta": "Код эмитента:",
         }
+        
 class Data111Edit_KartochkaForm(forms.ModelForm):
     class Meta:
         model = Data111
