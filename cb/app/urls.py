@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^index/', views.home),
     url(r'^edit/kartochka_kompanii/(?P<id>\w+)/$', views.edit_kartochka, name='edit/kartochka_kompanii'),
     url(r'^edit/korp_kontrol/(?P<id>\w+)/$', views.edit_korp_kontrol, name='edit/korp_kontrol'),
-    url(r'^edit/raskrytie/(?P<id>\w+)/$', views.edit_raskrytie, name='edit/raskrytie')
+    url(r'^edit/raskrytie/(?P<id>\w+)/$', views.edit_raskrytie, name='edit/raskrytie'),
+    url(r'^edit/administrativka/(?P<id>\w+)/$', views.edit_administrativka, name='edit/administrativka'),
 ]

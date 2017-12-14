@@ -92,7 +92,7 @@ class Data111(models.Model):
     kpp = models.CharField(db_column='КПП', blank=True, null=True, max_length=1000)  # Field name made lowercase.
     data_registracii = models.CharField(db_column='ДАТА РЕГИСТРАЦИИ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     opf = models.CharField(db_column='ОПФ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase.
-    cod_emitenta = models.CharField(db_column='КОД ЭМИТЕНТА', blank=True, null=True, max_length=7, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    cod_emitenta = models.CharField(db_column='КОД ЭМИТЕНТА', blank=True, null=False, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     ustavnoy_capital = models.CharField(db_column='УСТАВНЫЙ КАПИТАЛ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     kolichestvo_licevyh_schetov_v_reestre = models.CharField(db_column='Количество лицевых счетов в реестре', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     kolichestvo_nominalnyh_derzhateley_v_reestre = models.CharField(db_column='Количество номинальных держателей в реестре', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -255,7 +255,7 @@ class Data222(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'data222'
+        db_table = 'Data222'
 
 
 class DjangoAdminLog(models.Model):

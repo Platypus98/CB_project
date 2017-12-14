@@ -92,6 +92,22 @@ class Data111Edit_Raskrytie(forms.ModelForm):
             'vivod': 'ВЫВОД',
         }
             
+
+class Data111Edit_Administrativka(forms.ModelForm):
+    class Meta(object):
+        model = Data111
+        fields = ['data_protokola','nomer_protokola','statya_koap','data_postanovleniya','nomer_postanovleniya','resultat','razmer_shtrafa']
+        labels = {
+        'data_protokola': 'Дата протокола',
+        'nomer_protokola': 'Номер протокола',
+        'statya_koap': 'Статья КОАП',
+        'data_postanovleniya': 'Дата постановления',
+        'nomer_postanovleniya': 'Номер постановления',
+        'resultat': 'Результат',
+        'razmer_shtrafa': 'Размер штрафа',
+        }
+            
+        
             
 
 class Data111FormSelection(forms.ModelForm):

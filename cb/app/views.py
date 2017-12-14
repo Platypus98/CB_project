@@ -21,7 +21,7 @@ def search(request):
             queryset = None
         else:
          #  queryset = Data111.objects.all().filter(naimenovanie__icontains = form['naimenovanie'].value(), inn__icontains = form['inn'].value(), ogrn__icontains = form['ogrn'].value(), cod_emitenta__icontains = form['cod_emitenta'].value() )
-            queryset = Data111.objects.all().filter(naimenovanie__icontains = form['naimenovanie'].value(), inn__icontains = form['inn'].value(), ogrn__icontains = form['ogrn'].value())
+            queryset = Data111.objects.filter(naimenovanie__icontains = form['naimenovanie'].value(), inn__icontains = form['inn'].value(), ogrn__icontains = form['ogrn'].value())
         context = {
       "queryset": queryset,
       "form": form,
@@ -35,7 +35,6 @@ def edit_kartochka(request, id):
   form = Data111Edit_KartochkaForm(request.POST or None, instance=obj)
   if request.method == 'POST':
     form.save()
-
   context = {
     "title": title,
     "form": form,
@@ -68,6 +67,19 @@ def edit_raskrytie(request, id):
     "id": id,
   }
   return render(request, 'edit_raskrytie.html', context)
+
+def edit_administrativka(request, id):
+  title = Data111.objects.get(id = id).naimenovanie
+  obj = get_object_or_404(Data111, id = id)
+  form = Data111Edit_Administrativka(request.POST or None, instance=obj)
+  if request.method == 'POST':
+    form.save()
+  context = {
+    "title": title,
+    "form": form,
+    "id": id,
+  }
+  return render(request, 'edit_administrativka.html', context)
 
 def selections(request):
     a = []
