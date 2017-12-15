@@ -12,7 +12,7 @@
 	<meta name="author" content="">
 	<link rel="icon" href="../../favicon.ico">
 
-	<title>Корп контроль</title>
+	<title>Взаимодействие с гос. органами</title>
 	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 	<link href="{% static 'css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
 	<link href="{% static 'css/navbar-fixed-top.css' %}" rel="stylesheet">
@@ -33,72 +33,59 @@
 			 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			 <ul class="nav navbar-nav">
 			 <li><a href="{% url 'edit/kartochka_kompanii' id %}">Карточка компании</a></li>
-			 <li class="active"><a href="{% url 'edit/korp_kontrol' id %}">Корп контроль</a></li>
+			 <li><a href="{% url 'edit/korp_kontrol' id %}">Корп контроль</a></li>
 			 <li><a href="{% url 'edit/raskrytie' id %}">Раскрытие</a></li>
 			 <li><a href="{% url 'edit/administrativka' id %}">Административка</a></li>
-			 <li><a href="{% url 'edit/vzaimodeystvie' id %}">Взаимодествие с гос. органами</a></li> 
-			 </ul>
+			 <li class="active"><a href="{% url 'edit/vzaimodeystvie' id %}">Взаимодествие с гос. органами</a></li> 
+			 </ul> 
 			 </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>
-      <div class="title" style="text-align: center; padding-bottom: 20px;">Корп контроль "{{ title }}"</div>
+      <div class="title" style="text-align: center; padding-bottom: 20px;">Взаимодействие с гос. органами "{{ title }}"</div>
 
       	<div class="row">
-      	<form method="post" action="">
-      		{% csrf_token %}
-      		<div class="col-sm-6">
-      					<div class="col-sm-6 col-sm-offset-0">
-							{{form.registrator|bootstrap}}
-						</div>
-						<div class="col-sm-6 col-sm-offset-0" >
-							{{form.data_pisma_po_reestru|bootstrap}}
-						</div>
-						<div class="col-sm-6 col-sm-offset-0" >
-							{{form.data_zaprosa_po_reestru|bootstrap}}
-						</div>
+            <form method="post" action="">
+        			{% csrf_token %}
+        			<div class="col-sm-6">
 						<div class="col-sm-6 col-sm-offset-0">
-						{{form.data_predpisanya_po_reestru|bootstrap}}
+							{{form.fns|bootstrap}}
 					</div>
 					<div class="col-sm-6 col-sm-offset-0">
-						{{form.data_provedeniya_gosa|bootstrap}}
+							{{form.data_pisma_v_fns|bootstrap}}
 					</div>
 					<div class="col-sm-6 col-sm-offset-0">
-						{{form.nomer_zaprosa_po_gosa|bootstrap}}
+							{{form.vh_nomer_otveta|bootstrap}}
 					</div>
-					<div class="col-sm-7 col-sm-offset-0">
-						{{form.nomer_predpisaniya_po_1_vypusku|bootstrap}}
+					<div class="col-sm-6 col-sm-offset-0">
+							{{form.soderzhanie_otveta|bootstrap}}
 					</div>
-					<div class="col-sm-5 col-sm-offset-0">
-						{{form.oao_na_22_06_2015|bootstrap}}
+					<div class="col-sm-6 col-sm-offset-0">
+							{{form.data_vneseniya_zapisi|bootstrap}}
+					</div>
+					<div class="col-sm-6 col-sm-offset-0">
+							{{form.otvet_fns_ob_adrese|bootstrap}}
 					</div>
 					</div>
 					<div class="col-sm-6">
-						<div class="col-sm-6 col-sm-offset-0" style="margin-left: 0px;">
-							{{form.nomer_pisma_po_reestru|bootstrap}}
-						</div>
+						<div class="col-sm-12 col-sm-offset-0">
+							{{form.nomer_pisma_v_fns|bootstrap}}
+					</div>
+					<div class="col-sm-12 col-sm-offset-0">
+							{{form.informaciya_o_poluchenii_otveta_ot_fns|bootstrap}}
+					</div>
+					<div class="col-sm-12 col-sm-offset-0">
+							{{form.svedeniya_ob_adrese_ne_dostoverny|bootstrap}}
+					</div>
+					</div>
 
-						<div class="col-sm-6 col-sm-offset-0" >
-						{{form.nomer_zaprosa_po_reestru|bootstrap}}
-					</div>
-					<div class="col-sm-7 col-sm-offset-0">
-						{{form.nomer_predpisaniya_po_reestru|bootstrap}}
-					</div>
+        			<br> <br>
+        			<input style="margin-top: 20px; margin-right: 900px;" class='btn btn-danger'  type="submit" value="Сохранить" />
+        	</form>
+            </div>
+        </div>
+    </div>
 
-						<div class="col-sm-5 col-sm-offset-0">
-						{{form.data_zaprosa_po_gosa|bootstrap}}
-					</div>
-					<div class="col-sm-7 col-sm-offset-0">
-						{{form.data_predpisaniya_po_1_vypusku|bootstrap}}
-					</div>
-					<div class="col-sm-5 col-sm-offset-0">
-						{{form.nrd|bootstrap}}
-					</div>
-					</div>
-      		<input class='btn btn-danger' style="margin-top: 20px; margin-right: 900px;" type="submit" value="Сохранить" />
-      	</form>
-      	</div>
-      </div>
-  </div>
+  </div> <!-- /container -->
 
 
   <!-- Bootstrap core JavaScript

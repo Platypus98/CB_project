@@ -108,6 +108,23 @@ class Data111Edit_Administrativka(forms.ModelForm):
         }
             
         
+class Data111Edit_Vzaimodeystvie(forms.ModelForm):
+    class Meta(object):
+        model = Data111
+        fields = ['fns','data_pisma_v_fns','nomer_pisma_v_fns','informaciya_o_poluchenii_otveta_ot_fns','vh_nomer_otveta','soderzhanie_otveta','otvet_fns_ob_adrese','svedeniya_ob_adrese_ne_dostoverny','data_vneseniya_zapisi']
+        labels = {
+        'fns': 'ФНС',
+        'data_pisma_v_fns': 'Дата письма в ФНС',
+        'nomer_pisma_v_fns': 'Номер письма в ФНС',
+        'informaciya_o_poluchenii_otveta_ot_fns': 'Информация о получении ответа от ФНС',
+        'vh_nomer_otveta': 'Вх. номер ответа',
+        'soderzhanie_otveta': 'Содержание ответа',
+        'otvet_fns_ob_adrese': 'Ответ ФНС об адресе',
+        'svedeniya_ob_adrese_ne_dostoverny': 'Сведения об адресе не достоверны',
+        'data_vneseniya_zapisi': 'Дата внесения записи',
+        }
+            
+        
             
 
 class Data111FormSelection(forms.ModelForm):

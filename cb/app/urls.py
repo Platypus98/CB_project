@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^edit/korp_kontrol/(?P<id>\w+)/$', views.edit_korp_kontrol, name='edit/korp_kontrol'),
     url(r'^edit/raskrytie/(?P<id>\w+)/$', views.edit_raskrytie, name='edit/raskrytie'),
     url(r'^edit/administrativka/(?P<id>\w+)/$', views.edit_administrativka, name='edit/administrativka'),
+    url(r'^edit/vzaimodeystvie/(?P<id>\w+)/$', views.edit_vzaimodeystvie, name='edit/vzaimodeystvie')
 ]

@@ -81,6 +81,21 @@ def edit_administrativka(request, id):
   }
   return render(request, 'edit_administrativka.html', context)
 
+
+def edit_vzaimodeystvie(request, id):
+  title = Data111.objects.get(id = id).naimenovanie
+  obj = get_object_or_404(Data111, id = id)
+  form = Data111Edit_Vzaimodeystvie(request.POST or None, instance=obj)
+  if request.method == 'POST':
+    form.save()
+  context = {
+  'title': title,
+  'form': form,
+  'id': id,
+  }
+  return render(request, 'edit_vzaimodeystvie.html', context)
+
+
 def selections(request):
     a = []
     b = []
