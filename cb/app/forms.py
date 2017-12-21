@@ -40,24 +40,30 @@ class Data111Edit_KartochkaForm(forms.ModelForm):
 
 class Data111Edit_Korp_KontrolForm(forms.ModelForm):
     class Meta(object):
-        model = Data111
-        fields = ['registrator', "data_pisma_po_reestru", "nomer_pisma_po_reestru","data_zaprosa_po_reestru", "nomer_zaprosa_po_reestru", "data_predpisanya_po_reestru", "nomer_predpisaniya_po_reestru", "data_provedeniya_gosa", "data_zaprosa_po_gosa", "nomer_zaprosa_po_gosa", "data_predpisaniya_po_1_vypusku", "nomer_predpisaniya_po_1_vypusku", "nrd", "oao_na_22_06_2015"]
-        labels = {
-            "registrator": "Регистратор",
-            "data_pisma_po_reestru": "Дата письма по реестру",
-            "nomer_pisma_po_reestru": "Номер письма по реестру",
-            "data_zaprosa_po_reestru": "Дата запроса по реестру",
-            "nomer_zaprosa_po_reestru": "Номер запроса по реестру",
-            "data_predpisanya_po_reestru": "Дата предписания по реестру", 
-            "nomer_predpisaniya_po_reestru": "Номер предписания по реестру",
-            "data_provedeniya_gosa": "Дата проведения госа",
-            "data_zaprosa_po_gosa": "Дата запроса по госа",
-            "nomer_zaprosa_po_gosa": "Номер запроса по госа",
-            "data_predpisaniya_po_1_vypusku": "Дата предписания по 1 выпуску", 
-            "nomer_predpisaniya_po_1_vypusku": "Номер предписания по 1 выпуску", 
-            "nrd": "НРД", 
-            "oao_na_22_06_2015": "ОАО на 22.06.2015",
-        }
+          model = Data111
+          fields = ['registrator', "data_pisma_po_reestru", "nomer_pisma_po_reestru","data_zaprosa_po_reestru",
+                     "nomer_zaprosa_po_reestru", "data_predpisanya_po_reestru", "nomer_predpisaniya_po_reestru", 
+                     "data_provedeniya_gosa", "data_zaprosa_po_gosa", "nomer_zaprosa_po_gosa", "data_predpisaniya_po_1_vypusku", 
+                     "nomer_predpisaniya_po_1_vypusku", "nrd", "oao_na_22_06_2015"]
+          labels = {    "registrator": "Реестр передан:",
+                        "data_pisma_po_reestru": "Дата письма по реестру",
+                        "nomer_pisma_po_reestru": "Номер письма по реестру",
+                        "data_zaprosa_po_reestru": "Дата запроса по реестру",
+                        "nomer_zaprosa_po_reestru": "Номер запроса по реестру",
+                        "data_predpisanya_po_reestru": "Дата предписания по реестру", 
+                        "nomer_predpisaniya_po_reestru": "Номер предписания по реестру",
+                        "data_provedeniya_gosa": "Дата проведения госа",
+                        "data_zaprosa_po_gosa": "Дата запроса по госа",
+                        "nomer_zaprosa_po_gosa": "Номер запроса по госа",
+                        "data_predpisaniya_po_1_vypusku": "Дата предписания по 1 выпуску", 
+                        "nomer_predpisaniya_po_1_vypusku": "Номер предписания по 1 выпуску", 
+                        "nrd": "НРД", 
+                        "oao_na_22_06_2015": "ОАО на 22.06.2015",
+                   }
+
+          widgets = {
+                        'registrator': forms.RadioSelect()
+                      }
 
 class Data111Edit_Raskrytie(forms.ModelForm):
     class Meta(object):
@@ -199,7 +205,7 @@ class Data111FormSelection(forms.ModelForm):
     svedeniya_ob_adrese_ne_dostoverny = forms.BooleanField(label="СВЕДЕНИЯ ОБ АДРЕСЕ НЕ ДОСТОВЕРНЫ", required=False)
     data_vneseniya_zapisi = forms.BooleanField(label="ДАТА ВНЕСЕНИЯ ЗАПИСИ", required=False)
     vzaimodeystvie_s_gos_organami = forms.BooleanField(label="ВЗАИМОДЕЙСТВИЕ С ГОС. ОРГАНАМИ", required=False)
-
+    export = forms.BooleanField(label='Export to CSV', required=False)
 
     class Meta:
         model = Data111
