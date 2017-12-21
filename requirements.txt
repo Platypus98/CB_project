@@ -1,0 +1,2 @@
+django==1.11.6
+django-bootstrap-form==3.3
