@@ -47,56 +47,61 @@
             <form method="post" action="">
         			{% csrf_token %}
         			<div class="col-sm-6">
-							{{form.naimenovanie|bootstrap}}
-							<div class="col-sm-5 col-sm-offset-0" style="margin-left: -15px;">
+						{{form.naimenovanie|bootstrap}}
+						<div class="col-sm-6 col-sm-offset-0">
 							{{form.ogrn|bootstrap}}
 						</div>
-						<div class="col-sm-5 col-sm-offset-0" style="margin-top: 96px; margin-left: -205px;">
+						<div class="col-sm-6 col-sm-offset-0" >
 						{{form.opf|bootstrap}}
 						</div>
-						<div class="col-sm-5 col-sm-offset-0" style="margin-top: 190px; margin-left: -205px;">
+						<div class="col-sm-6 col-sm-offset-0">
 						{{form.ustavnoy_capital|bootstrap}}
 					</div>
-					<div style="margin-top: 290px;">
-						{{form.adres|bootstrap}}
+					<div class="col-sm-6 col-sm-offset-0">
+						{{form.kpp|bootstrap}}
 					</div>
+					{{form.adres|bootstrap}}
 					<div>
 						{{form.contactny_dannye|bootstrap}}
 					</div>
 					<div>
 						{{form.dvizhenie_denezhnyh_sredstv|bootstrap}}
 					</div>
-					<div style="">
+					<div>
 						{{form.zadolzhennost_pered_fns |bootstrap}}
 					</div>
+					<div>
+							{{form.cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria|bootstrap}}
+						</div>
+						<div>
+							{{form.otchetnost|bootstrap}}
+						</div>
 					</div>
 					<div class="col-sm-6">
-						{{form.inn|bootstrap}}
-						<div class="col-sm-5 col-sm-offset-0" style="margin-left: -275px;">
+						<div class="col-sm-6 col-sm-offset-0">
+							{{form.inn|bootstrap}}
+						</div>
+					<div class="col-sm-6 col-sm-offset-0">
 						{{form.data_registracii|bootstrap}}
-					</div>
+					</div class="col-sm-6 col-sm-offset-0">
 						{{form.cod_emitenta|bootstrap}}
-
-						<div class="col-sm-5 col-sm-offset-0" style="margin-left: -275px;">
+						<div>
 						{{form.kolichestvo_licevyh_schetov_v_reestre|bootstrap}}
 					</div>
-					<div style="margin-top: 35px;">
+					<div >
 						{{form.kolichestvo_nominalnyh_derzhateley_v_reestre|bootstrap}}
 					</div>
-					<div class="col-sm-5 col-sm-offset-0" style="margin-left: -275px; margin-top: 21px;">
+					<div class="col-sm-6 col-sm-offset-0">
 						{{form.region|bootstrap}}
 					</div>
 						<div>
 							{{form.cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria|bootstrap}}
 						</div>
-						<div style="margin-top: 28px;">
+						<div>
 							{{form.edinolichny_ispolnitelny_organ|bootstrap}}
 						</div>
 						<div>
 							{{form.status|bootstrap}}
-						</div>
-						<div>
-							{{form.otchetnost|bootstrap}}
 						</div>
 					</div>
 

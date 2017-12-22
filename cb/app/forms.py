@@ -16,7 +16,7 @@ class Data111Form(forms.ModelForm):
 class Data111Edit_KartochkaForm(forms.ModelForm):
     class Meta:
         model = Data111
-        fields = ['naimenovanie', 'inn', 'ogrn','data_registracii','opf','cod_emitenta','ustavnoy_capital', 'kolichestvo_licevyh_schetov_v_reestre', 'kolichestvo_nominalnyh_derzhateley_v_reestre', 'cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria', 'region', 'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 'otchetnost', 'zadolzhennost_pered_fns']
+        fields = ['naimenovanie', 'inn', 'ogrn','data_registracii','opf','cod_emitenta','ustavnoy_capital', 'kolichestvo_licevyh_schetov_v_reestre', 'kolichestvo_nominalnyh_derzhateley_v_reestre', 'cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria', 'region', 'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 'otchetnost', 'zadolzhennost_pered_fns', 'kpp']
         labels = {
             "naimenovanie": "Наименование:",
             "inn": "ИНН:",
@@ -36,6 +36,7 @@ class Data111Edit_KartochkaForm(forms.ModelForm):
             "dvizhenie_denezhnyh_sredstv": "Движение денежных средств:",
             "otchetnost": "Отчетность:",
             "zadolzhennost_pered_fns": "Задолженность перед ФНС:",
+            "kpp": "КПП"
         }
 
 class Data111Edit_Korp_KontrolForm(forms.ModelForm):
