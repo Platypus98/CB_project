@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'cb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'CBDB.sqlite'),
+        'NAME': os.path.join(BASE_DIR, 'cbdb.sqlite'),
     }
 }
 

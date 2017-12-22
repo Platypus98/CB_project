@@ -69,7 +69,7 @@ class Data111Edit_Raskrytie(forms.ModelForm):
     class Meta(object):
         model = Data111
         fields = ['pao_v_silu_priznakov', 'pao_v_silu_nazvaniya', 'nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb', 'nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag',
-                'nao','osvobozhdeny_ot_raskrytiya', 'data_resheniya_ob_osvobozhdenii', 'nomer_resheniya_ob_osvobozhdenii','otkaz_v_osvobozhdenii_ot_raskritiya', 'data_otkaza_v_osvobozhdenii_ot_raskritiya',
+                'nao','otkaz_v_registracii_vipuska', 'osvobozhdeny_ot_raskrytiya', 'data_resheniya_ob_osvobozhdenii', 'nomer_resheniya_ob_osvobozhdenii','otkaz_v_osvobozhdenii_ot_raskritiya', 'data_otkaza_v_osvobozhdenii_ot_raskritiya',
                 'nomer_otkaza_v_osvobozhdenii_ot_raskritiya', 'proverka_raskritiya', 'data_proverki', 'data_zaprosa_po_neraskritiyu_informacii', 'nomer_zaprosa_po_neraskritiyu_informacii',
                 'data_predpisaniya_po_neraskritiyu_informacii','nomer_predpisaniya_po_neraskritiyu_informacii', 'data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve', 'nomer_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve',
                 'data_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve','nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve','vivod']
@@ -79,6 +79,7 @@ class Data111Edit_Raskrytie(forms.ModelForm):
             'nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb': 'НАО ОБЯЗАННОЕ РАСКРЫВАТЬ ИНФОРМАЦИЮ В СООТВЕТСТВИИ СО СТ.30 ФЗ О РЦБ',
             'nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag': 'НАО ОСУЩЕСТВИВШЕЕ (ОСУЩЕСТВЛЯЮЩЕЕ) ПУБЛИЧНОЕ РАЗМЕЩЕНИЕ ОБЛИГАЦИЙ ИЛИ ИНЫХ ЦЕННЫХ БУМАГ',
             'nao':'НАО',
+            'otkaz_v_registracii_vipuska': 'ОТКАЗ В РЕГИСТРАЦИИ ВЫПУСКА',
             'osvobozhdeny_ot_raskrytiya': 'ОСВОБОЖДЕНЫ ОТ РАСКРЫТИЯ',
             'data_resheniya_ob_osvobozhdenii':'ДАТА РЕШЕНИЯ ОБ ОСВОБОЖДЕНИИ',
             'nomer_resheniya_ob_osvobozhdenii': 'НОМЕР РЕШЕНИЯ ОБ ОСВОБОЖДЕНИИ',

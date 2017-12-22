@@ -101,7 +101,7 @@ class Data111(models.Model):
 	kpp = models.CharField(db_column='КПП', blank=True, null=True, max_length=1000)  # Field name made lowercase.
 	data_registracii = models.CharField(db_column='ДАТА РЕГИСТРАЦИИ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	opf = models.CharField(db_column='ОПФ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase.
-	cod_emitenta = models.CharField(db_column='КОД ЭМИТЕНТА', blank=True, null=False, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	cod_emitenta = models.CharField(db_column='Код эмитента', blank=True, null=False, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	ustavnoy_capital = models.CharField(db_column='УСТАВНЫЙ КАПИТАЛ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	kolichestvo_licevyh_schetov_v_reestre = models.CharField(db_column='Количество лицевых счетов в реестре', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	kolichestvo_nominalnyh_derzhateley_v_reestre = models.CharField(db_column='Количество номинальных держателей в реестре', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -117,6 +117,7 @@ class Data111(models.Model):
 	kartochka_kompanii = models.CharField(db_column='КАРТОЧКА КОМПАНИИ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	
 	registrator = models.CharField(db_column='РЕГИСТРАТОР', blank=False, null=False, max_length=20, choices=registrator_choices, default='ДА')  # Field name made lowercase.
+	naimenovanie_registratora = models.CharField(db_column='НАИМЕНОВАНИЕ РЕГИСТРАТОРА', blank=True, max_length=1000, null=True)
 	data_pisma_po_reestru = models.CharField(db_column='ДАТА ПИСЬМА ПО РЕЕСТРУ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	nomer_pisma_po_reestru = models.CharField(db_column='НОМЕР ПИСЬМА ПО РЕЕСТРУ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	data_zaprosa_po_reestru = models.CharField(db_column='ДАТА ЗАПРОСА ПО РЕЕСТРУ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -141,7 +142,7 @@ class Data111(models.Model):
 	nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb = models.CharField(db_column='НАО ОБЯЗАННОЕ РАСКРЫВАТЬ ИНФОРМАЦИЮ В СООТВЕТСТВИИ СО СТ. 30 ФЗ О РЦБ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag = models.CharField(db_column='НАО ОСУЩЕСТВИВШЕЕ (ОСУЩЕСТВЛЯЮЩЕЕ) ПУБЛИЧНОЕ РАЗМЕЩЕНИЕ ОБЛИГАЦИЙ ИЛИ ИНЫХ ЦЕННЫХ БУМАГ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
 	nao = models.CharField(db_column='НАО', blank=True, null=True, max_length=1000)  # Field name made lowercase.    
-	otkaz_v_registracii = models.CharField(db_column='ОТКАЗ В РЕГИСТРАЦИИ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	otkaz_v_registracii_vipuska = models.CharField(db_column='ОТКАЗ В РЕГИСТРАЦИИ ВЫПУСКА', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	osvobozhdeny_ot_raskrytiya = models.CharField(db_column='ОСВОБОЖДЕНЫ ОТ РАСКРЫТИЯ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	data_resheniya_ob_osvobozhdenii = models.CharField(db_column='ДАТА РЕШЕНИЯ ОБ ОСВОБОЖДЕНИИ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	nomer_resheniya_ob_osvobozhdenii = models.CharField(db_column='НОМЕР РЕШЕНИЯ ОБ ОСВОБОЖДЕНИИ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -177,6 +178,9 @@ class Data111(models.Model):
 	vh_nomer_otveta = models.CharField(db_column='ВХ. НОМЕР ОТВЕТА', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	soderzhanie_otveta = models.CharField(db_column='СОДЕРЖАНИЕ ОТВЕТА', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	otvet_fns_ob_adrese = models.CharField(db_column='ОТВЕТ ФНС ОБ АДРЕСЕ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove = models.CharField(db_column='ВЗАИМОДЕЙСТВИЕ С ФНС НА ЕЖЕКВАРТАЛЬНОЙ ОСНОВЕ', blank=True, null=True, max_length=1000)
+	vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma = models.CharField(db_column='ВЗАИМОДЕЙСТВИЕ С ФНС НА ЕЖЕКВАРТАЛЬНОЙ ОСНОВЕ (НОМЕР ПИСЬМА)', blank=True, null=True, max_length=1000)
+	vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma = models.CharField(db_column='ВЗАИМОДЕЙСТВИЕ С ФНС НА ЕЖЕКВАРТАЛЬНОЙ ОСНОВЕ (ДАТА ПИСЬМА)', blank=True, null=True, max_length=1000)
 	svedeniya_ob_adrese_ne_dostoverny = models.CharField(db_column='СВЕДЕНИЯ ОБ АДРЕСЕ НЕ ДОСТОВЕРНЫ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	data_vneseniya_zapisi = models.CharField(db_column='ДАТА ВНЕСЕНИЯ ЗАПИСИ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	vzaimodeystvie_s_gos_organami = models.CharField(db_column='ВЗАИМОДЕЙСТВИЕ С ГОС. ОРГАНАМИ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
