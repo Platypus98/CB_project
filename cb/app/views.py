@@ -13,6 +13,8 @@ import csv
 from django.http import HttpResponse
 from django.utils.encoding import smart_str
 
+import xlwt
+
 
 
 # Create your views here.
@@ -82,9 +84,9 @@ def edit_raskrytie(request, id):
   if request.method == 'POST':
     form.save()
   context = {
-    "title": title,
-    "form": form,
-    "id": id,
+	"title": title,
+	"form": form,
+	"id": id,
   }
   return render(request, 'edit_raskrytie.html', context)
 
@@ -95,9 +97,9 @@ def edit_administrativka(request, id):
   if request.method == 'POST':
     form.save()
   context = {
-    "title": title,
-    "form": form,
-    "id": id,
+	"title": title,
+	"form": form,
+	"id": id,
   }
   return render(request, 'edit_administrativka.html', context)
 
@@ -107,7 +109,7 @@ def edit_vzaimodeystvie(request, id):
   obj = get_object_or_404(Data111, id = id)
   form = Data111Edit_Vzaimodeystvie(request.POST or None, instance=obj)
   if request.method == 'POST':
-    form.save()
+  	form.save()
   context = {
   'title': title,
   'form': form,
@@ -170,7 +172,7 @@ def selections(request):
 
 				table_rows = Data111.objects.all().values(*b)
 
-				a.remove('Export to CSV')  
+				#a.remove('Export to CSV')  
 
 				context = {
 				"form": form,
@@ -185,15 +187,36 @@ def selections(request):
 
 
 		if form['export'].value() == True:
-			response = HttpResponse(content_type='text/csv')
-			response['Content-Disposition'] = 'attachment; filename="selection.csv"'
-			writer = csv.writer(response)
-			response.write(u'\ufeff'.encode('utf8'))
-			writer.writerow(a)
-			b.remove('export')  
-			users = Data111.objects.all().values_list('naimenovanie', 'inn', 'ogrn', 'region')
-			for user in users:
-				writer.writerow(user)
+
+			response = HttpResponse(content_type='application/ms-excel')
+			
+			response['Content-Disposition'] = 'attachment; filename=selection.xls'
+
+			wb = xlwt.Workbook(encoding='utf-8')
+			ws = wb.add_sheet("Data111")
+
+			row_num = 0
+
+			columns = a
+
+			for col_num in range(len(columns)):
+				ws.write(row_num, col_num, columns[col_num])
+			
+				
+
+			font_style = xlwt.XFStyle()
+			font_style.alignment.wrap = 1
+			
+			for obj in queryset:
+				row_num += 1
+				row = []
+				for i in b:
+					row.append(getattr(obj, i))
+
+				for col_num in range(len(row)):
+					ws.write(row_num, col_num, row[col_num], font_style)
+					
+			wb.save(response)
 			return response
 
 		return render(request, 'selections.html', context)
