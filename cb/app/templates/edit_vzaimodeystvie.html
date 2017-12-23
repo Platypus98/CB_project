@@ -42,7 +42,7 @@
 			  </div><!-- /.container-fluid -->
 			</nav>
       <div class="title" style="text-align: center; padding-bottom: 20px;">Взаимодействие с гос. органами "{{ title }}"</div>
-
+<br>
       	<div class="row">
             <form method="post" action="">
         			{% csrf_token %}
@@ -65,6 +65,12 @@
 					<div class="col-sm-6 col-sm-offset-0">
 							{{form.otvet_fns_ob_adrese|bootstrap}}
 					</div>
+					<div>
+						{{ form.vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove|bootstrap }}
+					</div>
+					<div>
+						{{ form.vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma|bootstrap }}
+					</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="col-sm-12 col-sm-offset-0">
@@ -75,6 +81,9 @@
 					</div>
 					<div class="col-sm-12 col-sm-offset-0">
 							{{form.svedeniya_ob_adrese_ne_dostoverny|bootstrap}}
+					</div>
+					<div>
+						{{ form.vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma|bootstrap }}
 					</div>
 					</div>
 

@@ -43,6 +43,9 @@
 			</nav>
       <div class="title" style="text-align: center; padding-bottom: 20px;">Раскрытие"{{ title }}"</div>
 
+<br> <br>
+      <div style="font-family: helvetica; font-weight: bold; text-align: left; font-size: 22px; color: #2e6da4;">Статус Акционерного Общества</div>
+      <br>
       <div class="row">
       	<form method="post" action="">
       		{% csrf_token %}
@@ -50,32 +53,75 @@
       			{{ form.pao_v_silu_priznakov|bootstrap }}
       			{{ form.nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb|bootstrap }}
       			{{ form.nao|bootstrap }}
-      			{{ form.data_resheniya_ob_osvobozhdenii|bootstrap }}
-      			{{ form.otkaz_v_osvobozhdenii_ot_raskritiya|bootstrap }}
-      			{{ form.nomer_otkaza_v_osvobozhdenii_ot_raskritiya|bootstrap }}
-      			{{ form.data_proverki|bootstrap }}
-      			{{ form.nomer_zaprosa_po_neraskritiyu_informacii|bootstrap }}
-      			{{ form.nomer_predpisaniya_po_neraskritiyu_informacii|bootstrap }}
       			{{ form.nomer_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap }}
       			{{ form.nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap }}
-            {{ form.otkaz_v_registracii_vipuska|bootstrap}}
       		</div>
       		<div class="col-sm-6">
       			{{ form.pao_v_silu_nazvaniya|bootstrap }}
       			{{ form.nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag|bootstrap }}
-      			{{ form.osvobozhdeny_ot_raskrytiya|bootstrap }}
-      			{{ form.nomer_resheniya_ob_osvobozhdenii|bootstrap }}
-      			{{ form.data_otkaza_v_osvobozhdenii_ot_raskritiya|bootstrap }}
-      			{{ form.proverka_raskritiya|bootstrap }}
-      			{{ form.data_zaprosa_po_neraskritiyu_informacii|bootstrap }}
-      			{{ form.data_predpisaniya_po_neraskritiyu_informacii|bootstrap }}
       			{{ form.data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap }}
       			{{ form.data_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap }}
       			{{ form.vivod|bootstrap }}
 
       		</div>
-      		<input style="margin-top: 20px; margin-right: 900px;" class='btn btn-danger'  type="submit" value="Сохранить" />
+      		<input style="margin-top: 20px; margin-right: 900px;" class='btn btn-primary'  type="submit" value="Сохранить" />
       	</form>
+
+<br> <br> 
+
+<div style="font-family: helvetica; font-weight: bold; text-align: left; font-size: 22px; color: #2e6da4;">Информация об освобождении</div>
+<br>
+<form method="post" action="">
+          {% csrf_token %}
+          <div class="col-sm-6">
+            {{ form.data_resheniya_ob_osvobozhdenii|bootstrap }}
+            {{ form.otkaz_v_osvobozhdenii_ot_raskritiya|bootstrap }}
+            {{ form.nomer_otkaza_v_osvobozhdenii_ot_raskritiya|bootstrap }}
+          </div>
+          <div class="col-sm-6">
+            {{ form.osvobozhdeny_ot_raskrytiya|bootstrap }}
+            {{ form.nomer_resheniya_ob_osvobozhdenii|bootstrap }}
+            {{ form.data_otkaza_v_osvobozhdenii_ot_raskritiya|bootstrap }}
+
+          </div>
+          <input style="margin-top: 20px; margin-right: 900px;" class='btn btn-primary'  type="submit" value="Сохранить" />
+        </form>
+
+<br> <br> <br>
+
+<div style="font-family: helvetica; font-weight: bold; text-align: left; font-size: 22px; color: #2e6da4;">Раскрытие информации</div>
+<br> <br>
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="col-sm-6">
+            <br> <br> <br>
+          <div style="margin-top: 9px;">{{form.proverka_raskritiya|bootstrap }}</div>
+          </div>
+          <div class="col-sm-6">
+           <div style="font-family: helvetica; font-weight: bold; text-align: left; font-size: 20px;">Сведения о ранее проведенных проверках</div>
+           <br> <br>
+            {{ form.data_proverki|bootstrap }}
+            <br>
+            {{ form.data_predpisaniya_po_neraskritiyu_informacii|bootstrap }}
+            {{ form.nomer_predpisaniya_po_neraskritiyu_informacii|bootstrap }}
+            <br>
+            {{ form.data_zaprosa_po_neraskritiyu_informacii|bootstrap }}
+            {{ form.nomer_zaprosa_po_neraskritiyu_informacii|bootstrap }}
+
+          </div>
+          <input style="margin-top: 20px; margin-right: 900px;" class='btn btn-primary'  type="submit" value="Сохранить" />
+        </form>
+
+<br> <br> <br>
+        
+            
+            
+     <!--       {{ form.nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap }}
+            {{ form.otkaz_v_registracii_vipuska|bootstrap}} -->
+            
+            
+
+
        </div>
         </div>
     </div>

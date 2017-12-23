@@ -75,29 +75,29 @@ class Data111Edit_Raskrytie(forms.ModelForm):
                 'data_predpisaniya_po_neraskritiyu_informacii','nomer_predpisaniya_po_neraskritiyu_informacii', 'data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve', 'nomer_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve',
                 'data_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve','nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve','vivod']
         labels = {
-            'pao_v_silu_priznakov': 'ПАО В СИЛУ ПРИЗНАКОВ',
-            'pao_v_silu_nazvaniya': 'ПАО В СИЛУ НАЗВАНИЯ',
-            'nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb': 'НАО ОБЯЗАННОЕ РАСКРЫВАТЬ ИНФОРМАЦИЮ В СООТВЕТСТВИИ СО СТ.30 ФЗ О РЦБ',
-            'nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag': 'НАО ОСУЩЕСТВИВШЕЕ (ОСУЩЕСТВЛЯЮЩЕЕ) ПУБЛИЧНОЕ РАЗМЕЩЕНИЕ ОБЛИГАЦИЙ ИЛИ ИНЫХ ЦЕННЫХ БУМАГ',
+            'pao_v_silu_priznakov': 'ПАО в силу признаков',
+            'pao_v_silu_nazvaniya': 'ПАО в силу названия',
+            'nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb': 'НАО обязанное раскрывать информацию в соответствии со ст.30 ФЗ о РЦБ',
+            'nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag': 'НАО осуществившее (осуществляющее) публичное размещение облигаций или иных ценных бумаг',
             'nao':'НАО',
-            'otkaz_v_registracii_vipuska': 'ОТКАЗ В РЕГИСТРАЦИИ ВЫПУСКА',
-            'osvobozhdeny_ot_raskrytiya': 'ОСВОБОЖДЕНЫ ОТ РАСКРЫТИЯ',
-            'data_resheniya_ob_osvobozhdenii':'ДАТА РЕШЕНИЯ ОБ ОСВОБОЖДЕНИИ',
-            'nomer_resheniya_ob_osvobozhdenii': 'НОМЕР РЕШЕНИЯ ОБ ОСВОБОЖДЕНИИ',
-            'otkaz_v_osvobozhdenii_ot_raskritiya': 'ОТКАЗ В ОСВОБОЖДЕНИИ ОТ РАСКРЫТИЯ',
-            'data_otkaza_v_osvobozhdenii_ot_raskritiya': 'ДАТА ОТКАЗА В ОСВОБОЖДЕНИИ ОТ РАСКРЫТИЯ',
-            'nomer_otkaza_v_osvobozhdenii_ot_raskritiya': 'НОМЕР ОТКАЗА В ОСВОБОЖДЕНИИ ОТ РАСКРЫТИЯ',
-            'proverka_raskritiya': 'ПРОВЕРКА РАСКРЫТИЯ',
-            'data_proverki': 'ДАТА ПРОВЕРКИ',
-            'data_zaprosa_po_neraskritiyu_informacii':'ДАТА ЗАПРОСА ПО НЕРАСКРЫТИЮ ИНФОРМАЦИИ',
-            'nomer_zaprosa_po_neraskritiyu_informacii': 'НОМЕР ЗАПРОСА ПО НЕРАСКРЫТИЮ ИНФОРМАЦИИ',
-            'data_predpisaniya_po_neraskritiyu_informacii': 'ДАТА ПРЕДПИСАНИЯ ПО НЕРАСКРЫТИЮ ИНФОРМАЦИИ',
-            'nomer_predpisaniya_po_neraskritiyu_informacii': 'НОМЕР ПРЕДПИСАНИЯ ПО НЕРАСКРЫТИЮ ИНФОРМАЦИИ',
-            'data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve': 'ДАТА ЗАПРОСА ОРЕЗУЛЬТАТАХ ПРОВЕДЕНИЯ ТОРГОВ В ОБЩЕСТВЕ',
-            'nomer_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve': 'НОМЕР ЗАПРОСА О РЕЗУЛЬТАТАХ ПРОВЕДЕНИЯ ТОРГОВ В ОБЩЕСТВЕ',
-            'data_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve': 'ДАТА ОТВЕТА НА ЗАПРОСА О РЕЗУЛЬТАТАХ ПРОВЕДЕНИЯ ТОРГОВ В ОБЩЕСТВЕ',
-            'nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve': 'НОМЕР ОТВЕТА НА ЗАПРОСА О РЕЗУЛЬТАТАХ ПРОВЕДЕНИЯ ТОРГОВ В ОБЩЕСТВЕ',
-            'vivod': 'ВЫВОД',
+            'otkaz_v_registracii_vipuska': 'Отказ в регистрации выпуска',
+            'osvobozhdeny_ot_raskrytiya': 'Освобождены от раскрытия',
+            'data_resheniya_ob_osvobozhdenii':'Дата решения об освобождении',
+            'nomer_resheniya_ob_osvobozhdenii': 'Номер решения об освобождении',
+            'otkaz_v_osvobozhdenii_ot_raskritiya': 'Отказ в освобождении от раскрытия',
+            'data_otkaza_v_osvobozhdenii_ot_raskritiya': 'Дата отказа в освобождении от раскрытия',
+            'nomer_otkaza_v_osvobozhdenii_ot_raskritiya': 'Номер отказа в освобождении от раскрытия',
+            'proverka_raskritiya': 'Проверка раскрытия',
+            'data_proverki': 'Дата проверки',
+            'data_zaprosa_po_neraskritiyu_informacii':'Дата запроса по нераскрытию информации',
+            'nomer_zaprosa_po_neraskritiyu_informacii': 'Номер запроса по нераскрытию информации',
+            'data_predpisaniya_po_neraskritiyu_informacii': 'Дата предписания по нераскрытию информации',
+            'nomer_predpisaniya_po_neraskritiyu_informacii': 'Номер предписания по нераскрытию информации',
+            'data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve': 'Дата запроса о результатах проведения торгов в обществе',
+            'nomer_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve': 'Номер запроса о результатах проведения торгов в обществе',
+            'data_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve': 'Дата ответа на запрос о результатах проведения торгов в обществе',
+            'nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve': 'Номер ответа на запрос о результатах проведения торгов в обществе',
+            'vivod': 'Вывод',
         }
             
 
@@ -119,7 +119,7 @@ class Data111Edit_Administrativka(forms.ModelForm):
 class Data111Edit_Vzaimodeystvie(forms.ModelForm):
     class Meta(object):
         model = Data111
-        fields = ['fns','data_pisma_v_fns','nomer_pisma_v_fns','informaciya_o_poluchenii_otveta_ot_fns','vh_nomer_otveta','soderzhanie_otveta','otvet_fns_ob_adrese','svedeniya_ob_adrese_ne_dostoverny','data_vneseniya_zapisi']
+        fields = ['fns','data_pisma_v_fns','nomer_pisma_v_fns','informaciya_o_poluchenii_otveta_ot_fns','vh_nomer_otveta','soderzhanie_otveta','otvet_fns_ob_adrese','vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove','vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma','vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma','svedeniya_ob_adrese_ne_dostoverny','data_vneseniya_zapisi']
         labels = {
         'fns': 'ФНС',
         'data_pisma_v_fns': 'Дата письма в ФНС',
@@ -128,6 +128,9 @@ class Data111Edit_Vzaimodeystvie(forms.ModelForm):
         'vh_nomer_otveta': 'Вх. номер ответа',
         'soderzhanie_otveta': 'Содержание ответа',
         'otvet_fns_ob_adrese': 'Ответ ФНС об адресе',
+        'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove':'Взаимодействие с ФНС на ежеквартальной основе',
+        'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma':'Взаимодействие с ФНС на ежеквартальной основе (номер письма)',
+        'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma':'Взаимодействие с ФНС на ежеквартальной основе (дата письма)',
         'svedeniya_ob_adrese_ne_dostoverny': 'Сведения об адресе не достоверны',
         'data_vneseniya_zapisi': 'Дата внесения записи',
         }
