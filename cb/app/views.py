@@ -123,18 +123,18 @@ def selections(request):
 		c = []
 		queryset = Data111.objects.all()
 
-		columns_to_display = ['naimenovanie', 'inn', 'ogrn','data_registracii','opf','cod_emitenta','ustavnoy_capital', 
+		columns_to_display = ['naimenovanie', 'inn', 'ogrn', 'kpp', 'data_registracii','opf','cod_emitenta','ustavnoy_capital', 
 									'kolichestvo_licevyh_schetov_v_reestre', 'kolichestvo_nominalnyh_derzhateley_v_reestre', 
 									'cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria', 'region', 
 									'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 
-									'otchetnost', 'zadolzhennost_pered_fns', 'registrator', 'data_pisma_po_reestru', 'nomer_pisma_po_reestru', 
+									'otchetnost', 'zadolzhennost_pered_fns', 'registrator', 'naimenovanie_registratora','data_pisma_po_reestru', 'nomer_pisma_po_reestru', 
 									'data_zaprosa_po_reestru', 'nomer_zaprosa_po_reestru', 'data_predpisanya_po_reestru', 
 									'nomer_predpisaniya_po_reestru', 'data_provedeniya_gosa', 'data_zaprosa_po_gosa', 
-									'nomer_zaprosa_po_gosa','data_predpisaniya_po_1_vypusku','nomer_predpisaniya_po_1_vypusku', 
-									'nrd', 'oao_na_22_06_2015', 'pao_v_silu_priznakov', 'pao_v_silu_nazvaniya', 
+									'nomer_zaprosa_po_gosa','proverka_1_vipusk','data_predpisaniya_po_1_vypusku','nomer_predpisaniya_po_1_vypusku', 
+									'nrd','proverki_nrd', 'oao_na_22_06_2015', 'pao_v_silu_priznakov', 'pao_v_silu_nazvaniya', 
 									'nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb', 
 									'nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag', 
-									'nao', 'osvobozhdeny_ot_raskrytiya', 'data_resheniya_ob_osvobozhdenii','nomer_resheniya_ob_osvobozhdenii',
+									'nao','otkaz_v_registracii_vipuska', 'osvobozhdeny_ot_raskrytiya', 'data_resheniya_ob_osvobozhdenii','nomer_resheniya_ob_osvobozhdenii',
 									'otkaz_v_osvobozhdenii_ot_raskritiya','data_otkaza_v_osvobozhdenii_ot_raskritiya', 'nomer_otkaza_v_osvobozhdenii_ot_raskritiya', 
 									'proverka_raskritiya', 'data_proverki', 'data_zaprosa_po_neraskritiyu_informacii', 
 									'nomer_zaprosa_po_neraskritiyu_informacii', 'data_predpisaniya_po_neraskritiyu_informacii', 
@@ -143,7 +143,7 @@ def selections(request):
 									'nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve','vivod', 'raskritie', 'data_protokola', 'nomer_protokola', 
 									'statya_koap','data_postanovleniya','nomer_postanovleniya', 'resultat', 'razmer_shtrafa','administrativka','fns', 
 									'data_pisma_v_fns', 'nomer_pisma_v_fns', 'informaciya_o_poluchenii_otveta_ot_fns', 'vh_nomer_otveta', 
-									'svedeniya_ob_adrese_ne_dostoverny', 'data_vneseniya_zapisi', 'vzaimodeystvie_s_gos_organami']
+									'soderzhanie_otveta','otvet_fns_ob_adrese','vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma', 'svedeniya_ob_adrese_ne_dostoverny', 'data_vneseniya_zapisi', 'vzaimodeystvie_s_gos_organami']
 
 		form = Data111FormSelection(request.POST or None)
 		context = {

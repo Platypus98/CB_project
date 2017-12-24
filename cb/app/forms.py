@@ -142,6 +142,7 @@ class Data111FormSelection(forms.ModelForm):
     naimenovanie = forms.BooleanField(label="НАИМЕНОВАНИЕ", required= True, initial=False)
     inn = forms.BooleanField(label="ИНН", required=False, initial=False )
     ogrn = forms.BooleanField(label="ОГРН", required=False, initial=False)
+    kpp = forms.BooleanField(label="КПП", required=False, initial=False)
     data_registracii = forms.BooleanField(label="ДАТА РЕГИСТРАЦИИ", required=False, initial=False)
     opf = forms.BooleanField(label="ОПФ", required=False)
     cod_emitenta = forms.BooleanField(label="КОД ЭМИТЕНТА",required=False)
@@ -157,7 +158,9 @@ class Data111FormSelection(forms.ModelForm):
     dvizhenie_denezhnyh_sredstv = forms.BooleanField(label='ДВИЖЕНИЕ ДЕНЕЖНЫХ СРЕДСТВ', required=False)
     otchetnost = forms.BooleanField(label='ОТЧЕТНОСТЬ', required=False)
     zadolzhennost_pered_fns = forms.BooleanField(label='ЗАДОЛЖЕННОСТЬ ПЕРЕД ФНС', required=False)
+    
     registrator = forms.BooleanField(label="РЕГИСТРАТОР", required=False)  
+    naimenovanie_registratora = forms.BooleanField(label="НАИМЕНОВАНИЕ РЕГИСТРАТОРА", required=False)
     data_pisma_po_reestru = forms.BooleanField(label="ДАТА ПИСЬМА ПО РЕЕСТРУ", required=False)  
     nomer_pisma_po_reestru = forms.BooleanField(label="НОМЕР ПИСЬМА ПО РЕЕСТРУ", required=False)  
     data_zaprosa_po_reestru = forms.BooleanField(label="ДАТА ЗАПРОСА ПО РЕЕСТРУ", required=False)
@@ -167,14 +170,18 @@ class Data111FormSelection(forms.ModelForm):
     data_provedeniya_gosa = forms.BooleanField(label="ДАТА ПРОВЕДЕНИЯ ГОСА", required=False)
     data_zaprosa_po_gosa = forms.BooleanField(label="ДАТА ЗАПРОСА ПО ГОСА", required=False)
     nomer_zaprosa_po_gosa = forms.BooleanField(label="НОМЕР ЗАПРОСА ПО ГОСА", required=False)
+    proverka_1_vipusk = forms.BooleanField(label="ПРОВЕРКА 1 ВЫПУСК", required=False)
     data_predpisaniya_po_1_vypusku = forms.BooleanField(label="ДАТА ПРЕДПИСАНИЯ ПО 1 ВЫПУСКУ", required=False)
     nomer_predpisaniya_po_1_vypusku = forms.BooleanField(label="НОМЕР ПРЕДПИСАНИЯ ПО 1 ВЫПУСКУ", required=False)
     nrd = forms.BooleanField(label="НРД", required=False)
+    proverki_nrd = forms.BooleanField(label="ПРОВЕРКИ НРД", required=False)
     oao_na_22_06_2015 = forms.BooleanField(label="ОАО НА 22.06.2015", required=False)
+    
     pao_v_silu_priznakov = forms.BooleanField(label="ПАО В СИЛУ ПРИЗНАКОВ", required=False)
     pao_v_silu_nazvaniya = forms.BooleanField(label="ПАО В СИЛУ НАЗВАНИЯ", required=False)
     nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb = forms.BooleanField(label="НАО ОБЯЗАННОЕ РАСКРЫВАТЬ ИНФОРМАЦИЮ В СООТВЕТСТВИИ СО СТ. 30 ФЗ О РЦБ", required=False)
     nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag = forms.BooleanField(label="НАО ОСУЩЕСТВИВШЕЕ (ОСУЩЕСТВЛЯЮЩЕЕ) ПУБЛИЧНОЕ РАЗМЕЩЕНИЕ ОБЛИГАЦИЙ ИЛИ ИНЫХ ЦЕННЫХ БУМАГ", required=False)
+    otkaz_v_registracii_vipuska = forms.BooleanField(label="ОТКАЗ В РЕГИСТРАЦИИ ВЫПУСКА", required=False)
     nao = forms.BooleanField(label="НАО", required=False)
     osvobozhdeny_ot_raskrytiya = forms.BooleanField(label="ОСВОБОЖДЕНЫ ОТ РАСКРЫТИЯ", required=False)
     data_resheniya_ob_osvobozhdenii = forms.BooleanField(label="ДАТА РЕШЕНИЯ ОБ ОСВОБОЖДЕНИИ", required=False)
@@ -194,6 +201,7 @@ class Data111FormSelection(forms.ModelForm):
     nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve = forms.BooleanField(label="НОМЕР ОТВЕТА НА ЗАПРОСА О РЕЗУЛЬТАТАХ ПРОВЕДЕНИЯ ТОРГОВ В ОБЩЕСТВЕ", required=False)  
     vivod = forms.BooleanField(label="ВЫВОД", required=False)
     raskritie = forms.BooleanField(label="РАСКРЫТИЕ", required=False)
+    
     data_protokola = forms.BooleanField(label="ДАТА ПРОТОКОЛА", required=False)
     nomer_protokola = forms.BooleanField(label="НОМЕР ПРОТОКОЛА", required=False)
     statya_koap = forms.BooleanField(label="СТАТЬЯ КОАП", required=False)
@@ -202,30 +210,38 @@ class Data111FormSelection(forms.ModelForm):
     resultat = forms.BooleanField(label="РЕЗУЛЬТАТ", required=False)
     razmer_shtrafa = forms.BooleanField(label="РАЗМЕР ШТРАФА", required=False)
     administrativka = forms.BooleanField(label="АДМИНИСТРАТИВКА", required=False)
+    
     fns = forms.BooleanField(label="ФНС", required=False) 
     data_pisma_v_fns = forms.BooleanField(label="ДАТА ПИСЬМА В ФНС", required=False)
     nomer_pisma_v_fns = forms.BooleanField(label="НОМЕР ПИСЬМА В ФНС", required=False)
     informaciya_o_poluchenii_otveta_ot_fns = forms.BooleanField(label="ИНФОРМАЦИЯ О ПОЛУЧЕНИИ ОТВЕТА ОТ ФНС", required=False)  
     vh_nomer_otveta = forms.BooleanField(label="ВХ. НОМЕР ОТВЕТА", required=False)  
+    
+    soderzhanie_otveta = forms.BooleanField(label="СОДЕРЖАНИЕ ОТВЕТА", required=False)
+    otvet_fns_ob_adrese = forms.BooleanField(label="ОТВЕТ ФНС ОБ АДРЕСЕ", required=False)
+    vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove = forms.BooleanField(label="ВЗАИМОДЕЙСТВИЕ С ФНС НА ЕЖЕКВАРТАЛЬНОЙ ОСНОВЕ", required=False)
+    vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma = forms.BooleanField(label="ВЗАИМОДЕЙСТВИЕ С ФНС НА ЕЖЕКВАРТАЛЬНОЙ ОСНОВЕ (НОМЕР ПИСЬМА)", required=False)
+    vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma = forms.BooleanField(label="ВЗАИМОДЕЙСТВИЕ С ФНС НА ЕЖЕКВАРТАЛЬНОЙ ОСНОВЕ (ДАТА ПИСЬМА)", required=False)
+
     svedeniya_ob_adrese_ne_dostoverny = forms.BooleanField(label="СВЕДЕНИЯ ОБ АДРЕСЕ НЕ ДОСТОВЕРНЫ", required=False)
     data_vneseniya_zapisi = forms.BooleanField(label="ДАТА ВНЕСЕНИЯ ЗАПИСИ", required=False)
     vzaimodeystvie_s_gos_organami = forms.BooleanField(label="ВЗАИМОДЕЙСТВИЕ С ГОС. ОРГАНАМИ", required=False)
-    export = forms.BooleanField(label='Export to CSV', required=False)
+    export = forms.BooleanField(label='Выгрузка в XML', required=False)
 
     class Meta:
         model = Data111
-        fields = ['naimenovanie', 'inn', 'ogrn','data_registracii','opf','cod_emitenta','ustavnoy_capital', 
+        fields = ['naimenovanie', 'inn', 'ogrn','kpp','data_registracii','opf','cod_emitenta','ustavnoy_capital', 
                   'kolichestvo_licevyh_schetov_v_reestre', 'kolichestvo_nominalnyh_derzhateley_v_reestre', 
                   'cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria', 'region', 
                   'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 
-                  'otchetnost', 'zadolzhennost_pered_fns', 'registrator', 'data_pisma_po_reestru', 'nomer_pisma_po_reestru', 
+                  'otchetnost', 'zadolzhennost_pered_fns', 'registrator', 'naimenovanie_registratora', 'data_pisma_po_reestru', 'nomer_pisma_po_reestru', 
                   'data_zaprosa_po_reestru', 'nomer_zaprosa_po_reestru', 'data_predpisanya_po_reestru', 
                   'nomer_predpisaniya_po_reestru', 'data_provedeniya_gosa', 'data_zaprosa_po_gosa', 
-                  'nomer_zaprosa_po_gosa','data_predpisaniya_po_1_vypusku','nomer_predpisaniya_po_1_vypusku', 
-                  'nrd', 'oao_na_22_06_2015', 'pao_v_silu_priznakov', 'pao_v_silu_nazvaniya', 
+                  'nomer_zaprosa_po_gosa','proverka_1_vipusk', 'data_predpisaniya_po_1_vypusku','nomer_predpisaniya_po_1_vypusku', 
+                  'nrd', 'proverki_nrd', 'oao_na_22_06_2015', 'pao_v_silu_priznakov', 'pao_v_silu_nazvaniya', 
                   'nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb', 
                   'nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag', 
-                  'nao', 'osvobozhdeny_ot_raskrytiya', 'data_resheniya_ob_osvobozhdenii','nomer_resheniya_ob_osvobozhdenii',
+                  'nao', 'otkaz_v_registracii_vipuska','osvobozhdeny_ot_raskrytiya', 'data_resheniya_ob_osvobozhdenii','nomer_resheniya_ob_osvobozhdenii',
                   'otkaz_v_osvobozhdenii_ot_raskritiya','data_otkaza_v_osvobozhdenii_ot_raskritiya', 'nomer_otkaza_v_osvobozhdenii_ot_raskritiya', 
                   'proverka_raskritiya', 'data_proverki', 'data_zaprosa_po_neraskritiyu_informacii', 
                   'nomer_zaprosa_po_neraskritiyu_informacii', 'data_predpisaniya_po_neraskritiyu_informacii', 
@@ -234,7 +250,7 @@ class Data111FormSelection(forms.ModelForm):
                   'nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve','vivod', 'raskritie', 'data_protokola', 'nomer_protokola', 
                   'statya_koap','data_postanovleniya','nomer_postanovleniya', 'resultat', 'razmer_shtrafa','administrativka','fns', 
                   'data_pisma_v_fns', 'nomer_pisma_v_fns', 'informaciya_o_poluchenii_otveta_ot_fns', 'vh_nomer_otveta', 
-                  'svedeniya_ob_adrese_ne_dostoverny', 'data_vneseniya_zapisi', 'vzaimodeystvie_s_gos_organami']
+                  'soderzhanie_otveta', 'otvet_fns_ob_adrese', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma','svedeniya_ob_adrese_ne_dostoverny', 'data_vneseniya_zapisi', 'vzaimodeystvie_s_gos_organami']
         labels = {
             "naimenovanie": "Наименование:",
             "inn": "ИНН:",

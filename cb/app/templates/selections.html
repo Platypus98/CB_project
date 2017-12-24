@@ -96,6 +96,8 @@
 				    {{form.otchetnost|bootstrap}}
 				    <br>
 				    {{form.zadolzhennost_pered_fns|bootstrap}}
+				    <br>
+				    {{form.kpp|bootstrap}}
 				    <br><br><br><br>
 				    <br><br><br><br>
 				    </div>
@@ -109,33 +111,42 @@
                    <h4>Корп. контроль:</h4>	
 
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 245px">
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 320px">
 				    {{form.registrator|bootstrap}}
+				    {{form.naimenovanie_registratora|bootstrap}}
 				    {{form.data_pisma_po_reestru|bootstrap}}
 				    <br>
 				    {{form.nomer_pisma_po_reestru|bootstrap}}
 				    <br>
 				    {{form.data_zaprosa_po_reestru|bootstrap}}
+				    
 				    </div>
 
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 245px">
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 320px">
 				    {{form.nomer_zaprosa_po_reestru|bootstrap}}
 				    {{form.data_predpisanya_po_reestru|bootstrap}}
 				    {{form.nomer_predpisaniya_po_reestru|bootstrap}}
 				    {{form.data_provedeniya_gosa|bootstrap}}
+				    <br>
+				    {{form.data_zaprosa_po_gosa|bootstrap}}
 				    </div>
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 245px">
-				    {{form.data_zaprosa_po_gosa|bootstrap}}
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 320px">
 				    {{form.nomer_zaprosa_po_gosa|bootstrap}}
+				    
+				    {{form.proverka_1_vipusk|bootstrap}}
 				    <br>
 				    {{form.data_predpisaniya_po_1_vypusku|bootstrap}}
 				    {{form.nomer_predpisaniya_po_1_vypusku|bootstrap}}
+				    {{form.nrd|bootstrap}}
+				    
 				    </div>
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 245px">
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 320px">
+				    {{form.nomer_predpisaniya_po_1_vypusku|bootstrap}}
 				    {{form.nrd|bootstrap}}
+				    {{form.proverki_nrd|bootstrap}}
 				    {{form.oao_na_22_06_2015|bootstrap}}
 				    <br><br><br><br>
 				    <br><br><br><br>
@@ -161,10 +172,12 @@
 				    {{form.nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag|bootstrap}}
 				    {{form.nao|bootstrap}}
 				    <br><br>
-				    {{form.osvobozhdeny_ot_raskrytiya|bootstrap}}
+				    {{form.otkaz_v_registracii_vipuska|bootstrap}}
+				   
 				    </div>
 
 				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 575px">
+				    {{form.osvobozhdeny_ot_raskrytiya|bootstrap}} <br>
 				    {{form.data_resheniya_ob_osvobozhdenii|bootstrap}}
 				    <br>
 				    {{form.nomer_resheniya_ob_osvobozhdenii|bootstrap}}
@@ -174,12 +187,13 @@
 				    {{form.data_otkaza_v_osvobozhdenii_ot_raskritiya|bootstrap}}
 				    <br><br>
 				    {{form.nomer_otkaza_v_osvobozhdenii_ot_raskritiya|bootstrap}}
-				    {{form.proverka_raskritiya|bootstrap}}
 				    </div>
 
 				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 575px">
+				    {{form.proverka_raskritiya|bootstrap}}
+				    <br> <br>
 				    {{form.data_proverki|bootstrap}}
-				    <br><br>
+				    <br> <br>
 				    {{form.data_zaprosa_po_neraskritiyu_informacii|bootstrap}}
 				    <br>
 				    {{form.nomer_zaprosa_po_neraskritiyu_informacii|bootstrap}}
@@ -188,10 +202,10 @@
 				    <br><br><br>
 				    {{form.nomer_predpisaniya_po_neraskritiyu_informacii|bootstrap}}
 				    <br>
-				    {{form.data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
 				    </div>
 
 				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 575px">
+				    {{form.data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
 				    {{form.nomer_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
 				    {{form.data_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
 				    {{form.nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
@@ -248,22 +262,28 @@
 					 <h4>Взаимодействие с гос. органами:</h4>
 
 
-					<div class="col-sm-3 well col-sm-offset-0" style="height: 125px" >
+					<div class="col-sm-3 well col-sm-offset-0" style="height: 200px" >
        				    {{form.fns|bootstrap}}
+       				    <br>
        				    {{form.data_pisma_v_fns|bootstrap}}
+       				    {{form.nomer_pisma_v_fns|bootstrap}}
 				    </div>
 
-				    <div class="col-sm-3  well col-sm-offset-0" style="height: 125px">
-				      {{form.nomer_pisma_v_fns|bootstrap}}
+				    <div class="col-sm-3  well col-sm-offset-0" style="height: 200px">
 				      {{form.informaciya_o_poluchenii_otveta_ot_fns|bootstrap}}
-				    </div>
-
-				    <div class="col-sm-3 well col-sm-offset-0" style="height: 125px">
 				      {{form.vh_nomer_otveta|bootstrap}}
-				      {{form.svedeniya_ob_adrese_ne_dostoverny|bootstrap}}
+				      {{form.soderzhanie_otveta|bootstrap}}
 				    </div>
 
-				    <div class="col-sm-3 well col-sm-offset-0" style="height: 125px">
+				    <div class="col-sm-3 well col-sm-offset-0" style="height: 200px">
+				      {{form.otvet_fns_ob_adrese|bootstrap}}
+				      {{form.vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove|bootstrap}}
+				      {{form.vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma|bootstrap}}
+				    </div>
+
+				    <div class="col-sm-3 well col-sm-offset-0" style="height: 200px">
+				    	{{form.vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma|bootstrap}}
+				    	{{form.svedeniya_ob_adrese_ne_dostoverny|bootstrap}}
 				      {{form.data_vneseniya_zapisi|bootstrap}}
 
 
@@ -276,7 +296,7 @@
 
 
 <br><br><br><br><br><br><br><br>
-{{form.export|bootstrap}}
+<b>{{form.export|bootstrap}}</b>
 <br> <br>
 					<input class='btn btn-primary'  type="submit" style="width: -webkit-fill-available;" value="Поиск/Экспорт" />
 				</form>
