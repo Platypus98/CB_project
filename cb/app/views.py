@@ -53,29 +53,64 @@ def edit_kartochka(request, id):
 	return render(request, 'edit_kartochka.html', context)
 
 def edit_korp_kontrol(request, id):
-	noblock = False
-	title = Data111.objects.get(id = id).naimenovanie
-	obj = get_object_or_404(Data111, id = id)
-	form = Data111Edit_Korp_KontrolForm(request.POST or None, instance=obj)
-	if request.method == 'GET':
-		if form['registrator'].value() == 'НЕТ':
-			 noblock = True
+    noblock = False
+    sami = False
+    net = False
+    naimenovanie_reg = True
+    otslezhivanie = False
+    otslezhivanie1 = False
+    index = False
+    title = Data111.objects.get(id = id).naimenovanie
+    obj = get_object_or_404(Data111, id = id)
+    form = Data111Edit_Korp_KontrolForm(request.POST or None, instance=obj)
+    if request.method == 'GET':
+            if form['registrator1'].value() == 'НЕТ':
+                 noblock = True
+            if form['netsami'].value() == 'САМИ В ЕГРЮЛ':
+                 sami = True
+            if form['netsami'].value()  is None:
+                 index = True     
+            if form['netsami'].value() == 'НЕТ В ЕГРЮЛ':
+                 net = True
+            if form['registrator1'].value() == 'НЕТ':
+                 naimenovanie_reg = False
+            if form['nomer_zaprosa_po_reestru'].value() is not None:
+                 otslezhivanie = True
+            if form['nomer_predpisaniya_po_reestru'].value() is not None:
+                 otslezhivanie1 = True      
 
-	if request.method == 'POST':
-		if form['registrator'].value() == 'НЕТ':
-			 noblock = True
-		form.save()
+    if request.method == 'POST': 
+            if form['registrator1'].value() == 'НЕТ':
+                 noblock = True
+            if form['netsami'].value() == 'САМИ В ЕГРЮЛ':
+                 sami = True 
+            if form['netsami'].value()  is None:
+                 index = True       
+            if form['netsami'].value() == 'НЕТ В ЕГРЮЛ':
+                 net = True 
+            if form['registrator1'].value() == 'НЕТ':
+                 naimenovanie_reg = False 
+            if form['nomer_zaprosa_po_reestru'].value() is not None:
+                 otslezhivanie = True
+            if form['nomer_predpisaniya_po_reestru'].value() is not None:
+                 otslezhivanie1 = True                  
+            if form.is_valid(): 
+                 form.save()
+    
+    context = {
+        "title": title,
+        "form": form,
+        "id": id,
+        "noblock": noblock,
+        "sami":sami,
+        "net":net,
+        "naimenovanie_reg":naimenovanie_reg,
+        "otslezhivanie":otslezhivanie,
+        "index":index,
+        "otslezhivanie1":otslezhivanie1,
+    }
 
-
-
-	context = {
-		"title": title,
-		"form": form,
-		"id": id,
-		"noblock": noblock,
-	}
-
-	return render(request, 'edit_korp_kontrol.html', context)
+    return render(request, 'edit_korp_kontrol.html', context)
 
 def edit_raskrytie(request, id):
   title = Data111.objects.get(id = id).naimenovanie

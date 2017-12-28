@@ -40,13 +40,45 @@ class Data111Edit_KartochkaForm(forms.ModelForm):
         }
 
 class Data111Edit_Korp_KontrolForm(forms.ModelForm):
+
+    registrator_choices = (
+        ('ДА', 'Да'),
+        ('НЕТ', 'Нет'),
+        ('ЕГРЮЛ', 'ЕГРЮЛ'),
+        ('Хранение реестра', 'Хранение'),
+        
+      )
+
+
+
+    netsami_choices = (
+        ('---', '---'),
+        ('НЕТ В ЕГРЮЛ', 'НЕТ В ЕГРЮЛ'),
+        ('САМИ В ЕГРЮЛ', 'САМИ В ЕГРЮЛ'),
+
+
+        )
+
+
+
+    registrator1 = forms.ChoiceField(required = False, label = 'Реестр передан:', choices = registrator_choices, widget=forms.RadioSelect)
+
+    netsami = forms.ChoiceField(required = False, label = '', choices = netsami_choices,)
+    
+    vozvrat = forms.BooleanField(label='Возврат', required=False)
+
+
+
+
+
+
     class Meta(object):
           model = Data111
-          fields = ['registrator', "data_pisma_po_reestru", "nomer_pisma_po_reestru","data_zaprosa_po_reestru",
+          fields = ['registrator1', "data_pisma_po_reestru", "nomer_pisma_po_reestru","data_zaprosa_po_reestru",
                      "nomer_zaprosa_po_reestru", "data_predpisanya_po_reestru", "nomer_predpisaniya_po_reestru", 
                      "data_provedeniya_gosa", "data_zaprosa_po_gosa", "nomer_zaprosa_po_gosa", "data_predpisaniya_po_1_vypusku", 
-                     "nomer_predpisaniya_po_1_vypusku", "nrd", "oao_na_22_06_2015"]
-          labels = {    "registrator": "Реестр передан:",
+                     "nomer_predpisaniya_po_1_vypusku", "nrd", "oao_na_22_06_2015","netsami","naimenovanie_registratora","vozvrat"]
+          labels = {    "registrator1": "Реестр передан:",
                         "data_pisma_po_reestru": "Дата письма по реестру",
                         "nomer_pisma_po_reestru": "Номер письма по реестру",
                         "data_zaprosa_po_reestru": "Дата запроса по реестру",
@@ -60,10 +92,12 @@ class Data111Edit_Korp_KontrolForm(forms.ModelForm):
                         "nomer_predpisaniya_po_1_vypusku": "Номер предписания по 1 выпуску", 
                         "nrd": "НРД", 
                         "oao_na_22_06_2015": "ОАО на 22.06.2015",
+                        "netsami": "",
+                        "naimenovanie_registratora":"Наименование регистратора:",
+                        "vozvrat":"Возврат"
                    }
 
           widgets = {
-                        'registrator': forms.RadioSelect()
                       }
 
 class Data111Edit_Raskrytie(forms.ModelForm):
