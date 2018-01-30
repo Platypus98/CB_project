@@ -50,14 +50,17 @@
       	<form method="post" action="">
       		{% csrf_token %}
       		<div class="col-sm-6">
-      			{{ form.pao_v_silu_priznakov|bootstrap }}
-      			{{ form.nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb|bootstrap }}
-      			{{ form.nao|bootstrap }}
+      			{{ form.pao_v_silu_priznakov_st30|bootstrap }}
+            {{ form.pao_v_silu_priznakov_bez_st30|bootstrap }}
+      			{{ form.nao_so_st30|bootstrap }}
+      			{{ form.nao_bez_st30|bootstrap }}
+            {{ form.data_opredelenia_statusa|bootstrap }}
       			{{ form.nomer_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap }}
       			{{ form.nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap }}
       		</div>
       		<div class="col-sm-6">
-      			{{ form.pao_v_silu_nazvaniya|bootstrap }}
+      			{{ form.pao_v_silu_nazvaniya_st30|bootstrap }}
+            {{ form.pao_v_silu_nazvaniya_bez_st30|bootstrap }}
       			{{ form.nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag|bootstrap }}
       			{{ form.data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap }}
       			{{ form.data_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap }}

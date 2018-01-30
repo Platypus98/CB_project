@@ -16,7 +16,7 @@ class Data111Form(forms.ModelForm):
 class Data111Edit_KartochkaForm(forms.ModelForm):
     class Meta:
         model = Data111
-        fields = ['naimenovanie', 'inn', 'ogrn','data_registracii','opf','cod_emitenta','ustavnoy_capital', 'kolichestvo_licevyh_schetov_v_reestre', 'kolichestvo_nominalnyh_derzhateley_v_reestre', 'cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria', 'region', 'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 'otchetnost', 'zadolzhennost_pered_fns', 'kpp']
+        fields = ['naimenovanie', 'inn', 'ogrn','data_registracii','opf','cod_emitenta','ustavnoy_capital', 'kolichestvo_licevyh_schetov_v_reestre', 'kolichestvo_nominalnyh_derzhateley_v_reestre', 'cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria', 'region', 'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 'otchetnost', 'zadolzhennost_pered_fns', 'kpp', 'data_posledney_operacii']
         labels = {
             "naimenovanie": "Наименование:",
             "inn": "ИНН:",
@@ -36,7 +36,8 @@ class Data111Edit_KartochkaForm(forms.ModelForm):
             "dvizhenie_denezhnyh_sredstv": "Движение денежных средств:",
             "otchetnost": "Отчетность:",
             "zadolzhennost_pered_fns": "Задолженность перед ФНС:",
-            "kpp": "КПП"
+            "kpp": "КПП",
+            "data_posledney_operacii": "Дата последней операции"
         }
 
 class Data111Edit_Korp_KontrolForm(forms.ModelForm):
@@ -103,17 +104,20 @@ class Data111Edit_Korp_KontrolForm(forms.ModelForm):
 class Data111Edit_Raskrytie(forms.ModelForm):
     class Meta(object):
         model = Data111
-        fields = ['pao_v_silu_priznakov', 'pao_v_silu_nazvaniya', 'nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb', 'nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag',
-                'nao','otkaz_v_registracii_vipuska', 'osvobozhdeny_ot_raskrytiya', 'data_resheniya_ob_osvobozhdenii', 'nomer_resheniya_ob_osvobozhdenii','otkaz_v_osvobozhdenii_ot_raskritiya', 'data_otkaza_v_osvobozhdenii_ot_raskritiya',
+        fields = ['pao_v_silu_priznakov_st30', 'pao_v_silu_priznakov_bez_st30','pao_v_silu_nazvaniya_st30', 'pao_v_silu_nazvaniya_bez_st30', 'nao_so_st30', 'nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag',
+                'nao_bez_st30','data_opredelenia_statusa','otkaz_v_registracii_vipuska', 'osvobozhdeny_ot_raskrytiya', 'data_resheniya_ob_osvobozhdenii', 'nomer_resheniya_ob_osvobozhdenii','otkaz_v_osvobozhdenii_ot_raskritiya', 'data_otkaza_v_osvobozhdenii_ot_raskritiya',
                 'nomer_otkaza_v_osvobozhdenii_ot_raskritiya', 'proverka_raskritiya', 'data_proverki', 'data_zaprosa_po_neraskritiyu_informacii', 'nomer_zaprosa_po_neraskritiyu_informacii',
                 'data_predpisaniya_po_neraskritiyu_informacii','nomer_predpisaniya_po_neraskritiyu_informacii', 'data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve', 'nomer_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve',
                 'data_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve','nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve','vivod']
         labels = {
-            'pao_v_silu_priznakov': 'ПАО в силу признаков',
-            'pao_v_silu_nazvaniya': 'ПАО в силу названия',
-            'nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb': 'НАО обязанное раскрывать информацию в соответствии со ст.30 ФЗ о РЦБ',
+            'pao_v_silu_priznakov_st30': 'ПАО в силу признаков СТ.30',
+            'pao_v_silu_priznakov_bez_st30': 'ПАО в силу признаков без СТ.30 ',
+            'pao_v_silu_nazvaniya_st30': 'ПАО в силу названия СТ.30',
+            'pao_v_silu_nazvaniya_bez_st30': 'ПАО в силу названия без СТ.30',
+            'nao_so_st30': 'НАО со ст.30',
             'nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag': 'НАО осуществившее (осуществляющее) публичное размещение облигаций или иных ценных бумаг',
-            'nao':'НАО',
+            'nao_bez_st30':'НАО без ст.30',
+            'data_opredelenia_statusa': 'Дата определения статуса',
             'otkaz_v_registracii_vipuska': 'Отказ в регистрации выпуска',
             'osvobozhdeny_ot_raskrytiya': 'Освобождены от раскрытия',
             'data_resheniya_ob_osvobozhdenii':'Дата решения об освобождении',
@@ -190,6 +194,7 @@ class Data111FormSelection(forms.ModelForm):
     contactny_dannye = forms.BooleanField(label='КОНТАКТНЫЕ ДАННЫЕ', required=False)
     status = forms.BooleanField(label='СТАТУС', required=False)
     dvizhenie_denezhnyh_sredstv = forms.BooleanField(label='ДВИЖЕНИЕ ДЕНЕЖНЫХ СРЕДСТВ', required=False)
+    data_posledney_operacii = forms.BooleanField(label='ДАТА ПОСЛЕДНЕЙ ОПЕРАЦИИ', required=False)
     otchetnost = forms.BooleanField(label='ОТЧЕТНОСТЬ', required=False)
     zadolzhennost_pered_fns = forms.BooleanField(label='ЗАДОЛЖЕННОСТЬ ПЕРЕД ФНС', required=False)
     
@@ -211,12 +216,15 @@ class Data111FormSelection(forms.ModelForm):
     proverki_nrd = forms.BooleanField(label="ПРОВЕРКИ НРД", required=False)
     oao_na_22_06_2015 = forms.BooleanField(label="ОАО НА 22.06.2015", required=False)
     
-    pao_v_silu_priznakov = forms.BooleanField(label="ПАО В СИЛУ ПРИЗНАКОВ", required=False)
-    pao_v_silu_nazvaniya = forms.BooleanField(label="ПАО В СИЛУ НАЗВАНИЯ", required=False)
-    nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb = forms.BooleanField(label="НАО ОБЯЗАННОЕ РАСКРЫВАТЬ ИНФОРМАЦИЮ В СООТВЕТСТВИИ СО СТ. 30 ФЗ О РЦБ", required=False)
+    pao_v_silu_priznakov_st30 = forms.BooleanField(label="ПАО В СИЛУ ПРИЗНАКОВ СТ.30", required=False)
+    pao_v_silu_priznakov_bez_st30 = forms.BooleanField(label="ПАО В СИЛУ ПРИЗНАКОВ БЕЗ СТ.30", required=False)
+    pao_v_silu_nazvaniya_st30 = forms.BooleanField(label="ПАО В СИЛУ НАЗВАНИЯ СТ.30", required=False)
+    pao_v_silu_nazvaniya_bez_st30 = forms.BooleanField(label="ПАО В СИЛУ НАЗВАНИЯ БЕЗ СТ.30", required=False)
+    nao_so_st30 = forms.BooleanField(label="НАО СО СТ. 30", required=False)
     nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag = forms.BooleanField(label="НАО ОСУЩЕСТВИВШЕЕ (ОСУЩЕСТВЛЯЮЩЕЕ) ПУБЛИЧНОЕ РАЗМЕЩЕНИЕ ОБЛИГАЦИЙ ИЛИ ИНЫХ ЦЕННЫХ БУМАГ", required=False)
+    nao_bez_st30 = forms.BooleanField(label="НАО БЕЗ СТ. 30", required=False)
+    data_opredelenia_statusa = forms.BooleanField(label="ДАТА ОПРЕДЕЛЕНИЯ СТАТУСА", required=False)
     otkaz_v_registracii_vipuska = forms.BooleanField(label="ОТКАЗ В РЕГИСТРАЦИИ ВЫПУСКА", required=False)
-    nao = forms.BooleanField(label="НАО", required=False)
     osvobozhdeny_ot_raskrytiya = forms.BooleanField(label="ОСВОБОЖДЕНЫ ОТ РАСКРЫТИЯ", required=False)
     data_resheniya_ob_osvobozhdenii = forms.BooleanField(label="ДАТА РЕШЕНИЯ ОБ ОСВОБОЖДЕНИИ", required=False)
     nomer_resheniya_ob_osvobozhdenii = forms.BooleanField(label="НОМЕР РЕШЕНИЯ ОБ ОСВОБОЖДЕНИИ", required=False)
@@ -268,14 +276,14 @@ class Data111FormSelection(forms.ModelForm):
                   'kolichestvo_licevyh_schetov_v_reestre', 'kolichestvo_nominalnyh_derzhateley_v_reestre', 
                   'cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria', 'region', 
                   'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 
-                  'otchetnost', 'zadolzhennost_pered_fns', 'registrator', 'naimenovanie_registratora', 'data_pisma_po_reestru', 'nomer_pisma_po_reestru', 
+                  'data_posledney_operacii', 'otchetnost', 'zadolzhennost_pered_fns', 'registrator', 'naimenovanie_registratora', 'data_pisma_po_reestru', 'nomer_pisma_po_reestru', 
                   'data_zaprosa_po_reestru', 'nomer_zaprosa_po_reestru', 'data_predpisanya_po_reestru', 
                   'nomer_predpisaniya_po_reestru', 'data_provedeniya_gosa', 'data_zaprosa_po_gosa', 
                   'nomer_zaprosa_po_gosa','proverka_1_vipusk', 'data_predpisaniya_po_1_vypusku','nomer_predpisaniya_po_1_vypusku', 
-                  'nrd', 'proverki_nrd', 'oao_na_22_06_2015', 'pao_v_silu_priznakov', 'pao_v_silu_nazvaniya', 
-                  'nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb', 
+                  'nrd', 'proverki_nrd', 'oao_na_22_06_2015', 'pao_v_silu_priznakov_st30', 'pao_v_silu_priznakov_bez_st30','pao_v_silu_nazvaniya_st30', 
+                  'pao_v_silu_nazvaniya_bez_st30','nao_so_st30', 
                   'nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag', 
-                  'nao', 'otkaz_v_registracii_vipuska','osvobozhdeny_ot_raskrytiya', 'data_resheniya_ob_osvobozhdenii','nomer_resheniya_ob_osvobozhdenii',
+                  'nao_bez_st30', 'data_opredelenia_statusa', 'otkaz_v_registracii_vipuska','osvobozhdeny_ot_raskrytiya', 'data_resheniya_ob_osvobozhdenii','nomer_resheniya_ob_osvobozhdenii',
                   'otkaz_v_osvobozhdenii_ot_raskritiya','data_otkaza_v_osvobozhdenii_ot_raskritiya', 'nomer_otkaza_v_osvobozhdenii_ot_raskritiya', 
                   'proverka_raskritiya', 'data_proverki', 'data_zaprosa_po_neraskritiyu_informacii', 
                   'nomer_zaprosa_po_neraskritiyu_informacii', 'data_predpisaniya_po_neraskritiyu_informacii', 
@@ -302,6 +310,7 @@ class Data111FormSelection(forms.ModelForm):
             "contactny_dannye": "Контактные данные:",
             "status": "Статус:",
             "dvizhenie_denezhnyh_sredstv": "Движение денежных средств:",
+            "data_posledney_operacii": "Дата последней операции", 
             "otchetnost": "Отчетность:",
             "zadolzhennost_pered_fns": "Задолженность перед ФНС:",
             "registrator": "Регистратор",
@@ -318,11 +327,14 @@ class Data111FormSelection(forms.ModelForm):
             "nomer_predpisaniya_po_1_vypusku": "Номер предписания по 1 выпуску",
             "nrd": "НРД",
             "oao_na_22_06_2015": "ОАО на 22.06.2015",
-            "pao_v_silu_priznakov": "ПАО в силу признаков",
-            "pao_v_silu_nazvaniya": "ПАО в силу названия",
-            "nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb": "НАО обязанное раскрывать информацию в соответствии со ст. 30 ФЗ о РЦБ",
+            "pao_v_silu_priznakov_st30 ": "ПАО в силу признаков ст. 30",
+            "pao_v_silu_priznakov_bez_st30": "ПАО в силу признаков без ст.30", 
+            "pao_v_silu_nazvaniya_st30": "ПАО в силу названия ст.30",
+            "pao_v_silu_nazvaniya_bez_st30":"ПАО в силу названия без ст.30",
+            "nao_so_st30": "НАО со ст. 30",
             "nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag": "НАО осуществившее (осуществляющее) публичное размещение облигаций или иных ценных бумаг",
-            "nao": "НАО",
+            "nao_bez_st30": "НАО без ст. 30",
+            "data_opredelenia_statusa": "Дата определения статуса",
             "osvobozhdeny_ot_raskrytiya": "Освобождены от раскрытия",
             "data_resheniya_ob_osvobozhdenii": "Дата решения об освобождении",
             "nomer_resheniya_ob_osvobozhdenii": "Номер решения об освобождении",
@@ -359,3 +371,13 @@ class Data111FormSelection(forms.ModelForm):
             "vzaimodeystvie_s_gos_organami": "Взаимодействие с гос. органами",
 
         }
+
+
+class Filter_opf(forms.Form):
+    ao = forms.BooleanField(label="АО", required=False)
+    aozt = forms.BooleanField(label="АОЗТ", required=False)
+    aoot = forms.BooleanField(label="АООТ", required=False)
+    zao = forms.BooleanField(label="ЗАО", required=False)
+    nao = forms.BooleanField(label="НАО", required=False)
+    oao = forms.BooleanField(label="ОАО", required=False)
+    pao = forms.BooleanField(label="ПАО", required=False)

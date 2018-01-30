@@ -68,7 +68,25 @@
 
 				    <div class="col-sm-3 well  col-sm-offset-0 " style="height: 295px">
 				    {{form.opf|bootstrap}}
-				    <br>
+				        <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_opf.ao|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_opf.aozt|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_opf.aoot|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_opf.zao|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_opf.nao|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_opf.oao|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_opf.pao|bootstrap }}</li>
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
+
+
+								    <br>
 				    {{form.cod_emitenta|bootstrap}}
 				    <br><br><br>
 				    {{form.ustavnoy_capital|bootstrap}}
@@ -95,6 +113,7 @@
 				    <div class="col-sm-3 well col-sm-offset-0" style="height: 295px" >
 				    {{form.otchetnost|bootstrap}}
 				    <br>
+				    {{ form.data_posledney_operacii|bootstrap }}
 				    {{form.zadolzhennost_pered_fns|bootstrap}}
 				    <br>
 				    {{form.kpp|bootstrap}}
@@ -145,7 +164,6 @@
 
 				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 320px">
 				    {{form.nomer_predpisaniya_po_1_vypusku|bootstrap}}
-				    {{form.nrd|bootstrap}}
 				    {{form.proverki_nrd|bootstrap}}
 				    {{form.oao_na_22_06_2015|bootstrap}}
 				    <br><br><br><br>
@@ -163,20 +181,24 @@
 
 				    <h4>Раскрытие:</h4>	
 
-				    <div class="col-sm-3 well col-sm-offset-0" style="height: 575px">
-				    {{form.pao_v_silu_priznakov|bootstrap}}
-				    <br><br>
-				    {{form.pao_v_silu_nazvaniya|bootstrap}}
-				    <br><br>
-				    {{form.nao_obyazannoe_raskryvat_informaciyu_v_sootvetstvii_so_st_30_fz_o_pcb|bootstrap}}
+				    <div class="col-sm-3 well col-sm-offset-0" style="height: 640px">
+				    {{form.pao_v_silu_priznakov_st30|bootstrap}}
+				    <br>
+				    {{form.pao_v_silu_priznakov_bez_st30|bootstrap}}
+				    <br>
+				    {{form.pao_v_silu_nazvaniya_st30|bootstrap}}
+				    <br>
+				    {{form.pao_v_silu_nazvaniya_bez_st30|bootstrap}}
+				    {{form.nao_so_st30|bootstrap}}
+				    <br>
 				    {{form.nao_osuchestvivshee_osuchestvlyayuschee_publichnoe_razmechenie_obligaciy_ili_inyh_cennyh_bumag|bootstrap}}
-				    {{form.nao|bootstrap}}
+				    {{form.nao_bez_st30|bootstrap}}
 				    <br><br>
 				    {{form.otkaz_v_registracii_vipuska|bootstrap}}
 				   
 				    </div>
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 575px">
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 640px">
 				    {{form.osvobozhdeny_ot_raskrytiya|bootstrap}} <br>
 				    {{form.data_resheniya_ob_osvobozhdenii|bootstrap}}
 				    <br>
@@ -189,7 +211,7 @@
 				    {{form.nomer_otkaza_v_osvobozhdenii_ot_raskritiya|bootstrap}}
 				    </div>
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 575px">
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 640px">
 				    {{form.proverka_raskritiya|bootstrap}}
 				    <br> <br>
 				    {{form.data_proverki|bootstrap}}
@@ -204,7 +226,7 @@
 				    <br>
 				    </div>
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 575px">
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 640px">
 				    {{form.data_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
 				    {{form.nomer_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
 				    {{form.data_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve|bootstrap}}
@@ -214,7 +236,7 @@
 				    <br><br><br><br>
 				    {{form.raskritie|bootstrap}}
 				    <br><br>
-
+				    {{form.data_opredelenia_statusa|bootstrap}}
 				    <br><br><br><br>
 				    <br>
 				    </div>
@@ -301,8 +323,8 @@
 					<input class='btn btn-primary'  type="submit" style="width: -webkit-fill-available;" value="Поиск/Экспорт" />
 				</form>
 
-{{a}}
-{{b}}
+<!--{{a}}
+{{b}} -->
 
 		 </div>
 
