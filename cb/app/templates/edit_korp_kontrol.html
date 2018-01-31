@@ -97,13 +97,31 @@
               <br>
               
               {{form.nomer_zaprosa_po_reestru|bootstrap}}
+
+        <script>
+
+      			document.getElementById("id_nomer_zaprosa_po_reestru").onkeyup = function() {myFunction()};
+      			
+            window.onload;
+            document.addEventListener("DOMContentLoaded", myFunction);
+				
+            function myFunction()   {
+                   var hasValue = document.getElementById('id_nomer_zaprosa_po_reestru').value;
+                   if (!!hasValue) {
+                   document.getElementById('otslezhivanie1').style.display = 'inline';
+                   } else {
+                   document.getElementById('otslezhivanie1').style.display = 'none';
+                   };
+
+       			                        }
+		    </script>
+
               <br>
              </div>
              
 
 
-               {% if otslezhivanie %}
-                          <div class="col-sm-6" >
+                          <div class="col-sm-6" id="otslezhivanie1" style="display:none;" >
                            <div id="accordion" style = "margin-top: 5px">
                         <h2>Отслеживание</h2>
                           <div class="row">
@@ -136,8 +154,6 @@
                      </div>         
                    </div> 
 
-    {% endif %}  
-               </form>
                     </div>
                 </div>
     
@@ -159,15 +175,40 @@
               <div class="col-sm-3">
              <br><br><br>
               {{form.nomer_predpisaniya_po_reestru|bootstrap}}
+               <script>
+
+            
+
+			document.getElementById("id_nomer_predpisaniya_po_reestru").oninput = function() {myFunction1()};
+
+			window.onload;
+
+            document.addEventListener("DOMContentLoaded", myFunction1);
+
+				function myFunction1()   {
+             var hasValue = document.getElementById('id_nomer_predpisaniya_po_reestru').value;
+             if (!!hasValue) {
+             document.getElementById('otslezhivanie2').style.display = 'inline';
+             } else {
+             document.getElementById('otslezhivanie2').style.display = 'none';
+             };
+
+ 			                        }
+
+ 			
+
+		      </script>
+
+
               <br>
              </div>
 
+   
 
-               {% if otslezhivanie1 %}
-                          <div class="col-sm-6" >
+                          <div class="col-sm-6" id="otslezhivanie2" style="display:none;">
                            <div id="accordion" style = "margin-top: 5px">
                         <h2>Отслеживание</h2>
-                          <div class="row">
+                          <div class="row" >
 
                           <label for="usr">Дата получения:</label>
                           <input type="text" class="form-control" id="usr">
@@ -197,9 +238,7 @@
                      </div>         
                    </div> 
 
-                  {% endif %}  
 
-               </form>
                     </div>
                 </div>
               </div>
@@ -212,9 +251,10 @@
 
       </div>
 
-
               </div>
-
+            </form>
+          </div>
+        
 
       </div>
 

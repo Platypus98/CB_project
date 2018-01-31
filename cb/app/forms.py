@@ -381,3 +381,8 @@ class Filter_opf(forms.Form):
     nao = forms.BooleanField(label="НАО", required=False)
     oao = forms.BooleanField(label="ОАО", required=False)
     pao = forms.BooleanField(label="ПАО", required=False)
+
+
+class DocumentForm(forms.Form):
+    docfile = forms.FileField(label = '', widget=forms.FileInput(attrs ={'accept' : '.xls,.xlsm,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel, application/vnd.ms-excel.sheet.macroEnabled.12'}))
+    

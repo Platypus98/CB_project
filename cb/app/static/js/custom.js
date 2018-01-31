@@ -35,6 +35,8 @@ $(document).ready(function(){
     // END Pagination Script
 
 
+
+
    $('#accordion').accordion({
         collapsible:true,
         beforeActivate: function(event, ui) {
@@ -63,6 +65,18 @@ $(document).ready(function(){
             return false; // Cancels the default action
         }
     });
+
+   $('#nomer_predpisaniya_po_reestru').keyup(function() {
+  
+  // If value is not empty
+  if ($(this).val().length == 0) {
+    // Hide the element
+    $('.show_hide').hide();
+  } else {
+    // Otherwise show it
+    $('.show_hide').show();
+  }
+  }).keyup(); // Trigger the keyup event, thus running the handler on page load
 
 });
 

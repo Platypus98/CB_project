@@ -1,3 +1,11 @@
+from django.shortcuts import render
+from django.template import RequestContext
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+
+
+
+
 from django.shortcuts import render, redirect
 
 import json
@@ -69,15 +77,17 @@ def edit_korp_kontrol(request, id):
             if form['netsami'].value() == 'САМИ В ЕГРЮЛ':
                  sami = True
             if form['netsami'].value()  is None:
+                 index = True
+            if form['netsami'].value() == '---':
                  index = True     
             if form['netsami'].value() == 'НЕТ В ЕГРЮЛ':
                  net = True
             if form['registrator1'].value() == 'НЕТ':
                  naimenovanie_reg = False
-            if form['nomer_zaprosa_po_reestru'].value() is not None:
-                 otslezhivanie = True
-            if form['nomer_predpisaniya_po_reestru'].value() is not None:
-                 otslezhivanie1 = True      
+            #if form['nomer_zaprosa_po_reestru'].value() is not None:
+            #     otslezhivanie = True
+            #if form['nomer_predpisaniya_po_reestru'].value() is not None:
+            #     otslezhivanie1 = True      
 
     if request.method == 'POST': 
             if form['registrator1'].value() == 'НЕТ':
@@ -85,15 +95,17 @@ def edit_korp_kontrol(request, id):
             if form['netsami'].value() == 'САМИ В ЕГРЮЛ':
                  sami = True 
             if form['netsami'].value()  is None:
-                 index = True       
+                 index = True
+            if form['netsami'].value() == '---':
+                 index = True             
             if form['netsami'].value() == 'НЕТ В ЕГРЮЛ':
                  net = True 
             if form['registrator1'].value() == 'НЕТ':
                  naimenovanie_reg = False 
-            if form['nomer_zaprosa_po_reestru'].value() is not None:
-                 otslezhivanie = True
-            if form['nomer_predpisaniya_po_reestru'].value() is not None:
-                 otslezhivanie1 = True                  
+            #if form['nomer_zaprosa_po_reestru'].value() is not None:
+            #     otslezhivanie = True
+            #if form['nomer_predpisaniya_po_reestru'].value() is not None:
+            #     otslezhivanie1 = True                  
             if form.is_valid(): 
                  form.save()
     
@@ -273,8 +285,31 @@ def selections(request):
 
 
 def home(request):
-	title = 'Добро пожаловать'
+	title = 'Добро пожаловать!'
 	context = {
 		"title": title,
 	}
 	return render(request, "base.html",context)
+
+def list(request):
+    # Handle file upload
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            newdoc = Document(docfile=request.FILES['docfile'])
+            newdoc.save()
+
+            # Redirect to the document list after POST
+            return HttpResponseRedirect(reverse('list'))
+    else:
+        form = DocumentForm()  # A empty, unbound form
+
+    # Load documents for the list page
+    documents = Document.objects.all()
+
+    # Render list page with the documents and the form
+    return render(
+        request,
+        'db_update.html',
+        {'documents': documents, 'form': form}
+    )    	

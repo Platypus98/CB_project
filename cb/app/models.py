@@ -11,6 +11,13 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+import os
+from uuid import uuid4
+
+import datetime
+
+now = datetime.datetime.now()
+
 
 class AuthGroup(models.Model):
 	id = models.IntegerField(primary_key=True)  # AutoField?
@@ -329,3 +336,23 @@ class DjangoSession(models.Model):
 	class Meta:
 		managed = False
 		db_table = 'django_session'
+
+
+def path_and_rename(path):
+    def wrap(instance, filename):
+        ext = filename.split('.')[-1]
+        # get filename
+        filename = '{}.{}'.format(instance.db, ext)        
+        # return the whole path to the file
+        return os.path.join(path, filename)
+    return wrap
+
+
+'''class UpdateDB(models.Model):
+    db_file = models.FileField(upload_to=path_and_rename(''))       
+    db = 'database'''
+
+class Document(models.Model):
+    db = 'DB'
+    #docfile = models.FileField(upload_to=path_and_rename('{}/{}/{}/'.format(now.year, now.month, now.day)))
+    docfile = models.FileField(upload_to=path_and_rename(''))
