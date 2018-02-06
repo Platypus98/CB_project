@@ -1,136 +1,160 @@
 ﻿{% load staticfiles %}
-{% include 'navbar.html' %}
-{% load bootstrap %}
 
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="../../favicon.ico">
+    <title>Поиск | Досье Эмитента</title>
 
-	<title>Поиск</title>
-	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-	<link href="{% static 'css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
-	<link href="{% static 'css/navbar-fixed-top.css' %}" rel="stylesheet">
-	<link href="{% static 'js/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet">
-	<link href="{% static 'js/jquery-ui/jquery-ui.theme.min.css' %}" rel="stylesheet">
-	<link href="{% static 'js/jquery-ui/jquery-ui.structure.min.css' %}" rel="stylesheet">
-	<link href="{% static 'js/nprogress/nprogress.css' %}" rel="stylesheet">
-	<link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{% static 'new/img/favicon-32x32.png' %}" sizes="32x32">
+	<link rel="icon" type="image/png" href="{% static 'new/img/favicon-16x16.png' %}" sizes="16x16">
 
-	<script src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
+    <link href="{% static 'js/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui/jquery-ui.theme.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui/jquery-ui.structure.min.css' %}" rel="stylesheet">
+    <link href="{% static 'new/css/material-icon-font.css' %}" rel="stylesheet">
+    <link href="{% static 'new/css/material-components-web.min.css' %}" rel="stylesheet">
+    <link href="{% static 'new/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'new/css/data-table.css' %}" rel="stylesheet">
 </head>
-<body>
 
-	<div class="container">
-		<div class="jumbotron" style="margin-bottom: 80px; padding-bottom: 210px;">
-<!--     <form method="post" class="form-horizontal" role="form">
-	     {% csrf_token %}
-
-			 <div class="form-group" >
-    		<label class="col-sm-2 control-label">Наименование</label>
-					<div class="col-sm-5">
-						<input id="naimen" type="text" class="form-control" name="your_name" maxlength="100">
-			     </div>
-			   </div>
-
-				 <div class="form-group">
-				   <label class="col-sm-2 control-label">ИНН</label>
-					   <div class="col-sm-5">
-					 	   <input id="inn" class="form-control" name="your_name" maxlength="100">
-					   </div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">ОГРН</label>
-						<div class="col-sm-5">
-							<input id="ogrn" class="form-control" name="your_name" maxlength="100">
-						</div>
-			 </div>
-
-				<div class="form-group" >
-				   <label class="col-sm-2 control-label">Код эмитента</label>
-					 <div class="col-sm-5">
-					   <input id="code" type="text" class="form-control" name="your_name" maxlength="100"> <br>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-    			<input type="submit" value="Найти" class="btn btn-primary" />
-				</div>
-				</div>
+<body class="mdc-typography">
+    <header class="mdc-toolbar mdc-toolbar--fixed">
+		<div role="progressbar" class="mdc-linear-progress">
+			<div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+				<span class="mdc-linear-progress__bar-inner"></span>
 			</div>
-		</form> -->
-		{% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
+		</div>
+        <div class="mdc-toolbar__row">
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                <img src="/static/new/img/cb-logo.png">
+            </section>
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+                <nav id="basic-tab-bar" class="mdc-tab-bar">
+                    <a class="mdc-tab mdc-tab--active" href="/search">
+						ПОИСК
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                    <a class="mdc-tab" href="/selections">
+						ВЫБОРКА
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                    <a class="mdc-tab" href="/db_update">
+						ОБНОВЛЕНИЕ
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                </nav>
+            </section>
+        </div>
+    </header>
+    <main>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
         {% endif %}
+        <form id="here" class="mdc-toolbar__row" method="post" action="">
+            <div class="form-cont mdc-toolbar__section">
+                <div class="form-fields-cont">
+                    {% csrf_token %}
+                    <div class="mdc-form-field" style="width:100%;">
+                        <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                            {{form.naimenovanie}}
+                            <label for="firstname" class="mdc-text-field__label">Наименование</label>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="mdc-form-field" style="width: 59%; margin-right: 1%; float: left;">
+                        <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                            {{form.inn}}
+                            <label for="firstname" class="mdc-text-field__label">ИНН</label>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                    <div class="mdc-form-field" style="width:40%;">
+                        <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                            {{form.ogrn}}
+                            <label for="firstname" class="mdc-text-field__label">ОГРН</label>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="mdc-form-field" style="width:30%;">
+                        <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                            {{form.cod_emitenta}}
+                            <label for="firstname" class="mdc-text-field__label">Код эмитента</label>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="mdc-button mdc-button--raised mdc-ripple-surface"
+						data-mdc-auto-init="MDCRipple">
+					ПОИСК
+				</button>
+            </div>
+        </form>
 
-		<div class="inv-search">
-				<div class="title">Поиск эмитента</div><br>
-				<div class="form-group">
-					<form method="post" action="" class="form-horizontal">
-							<div class="col-sm-9">
-							{% csrf_token %}
-							{{form.naimenovanie|bootstrap_horizontal}}
-							{{form.inn|bootstrap_horizontal}}
-							{{form.ogrn|bootstrap_horizontal}}
-							{{form.cod_emitenta|bootstrap_horizontal}}
-						</div>
-							<br> <br>
-							<div class="col-sm-8 col-sm-offset-0">
-							<input class='btn btn-primary'  type="submit" value="Поиск" />
-						</div>
-						</div>
-				</form>
-		</div>
-	</div>
+        <button id="toTop" class="mdc-fab material-icons app-fab--absolute md-30"
+				aria-label="To top" data-mdc-auto-init="MDCRipple" style="opacity:0;">
+			<span class="mdc-fab__icon">arrow_upward</span>
+		</button>
 
+        <div class="table-cont">
+            <table class="mdl-data-table mdl-js-data-table mdc-elevation--z4" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="mdl-data-table__cell--non-numeric">Наименование</th>
+                        <th>ИНН</th>
+                        <th>ОГРН</th>
+                        <th>Код эмитента</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in queryset %}
+                    <tr>
+                        <td>{{ i.id }}</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+							<a href="{% url 'edit/kartochka_kompanii' i.id %}">{{ i.naimenovanie }}</a>
+						</td>
+                        <td>{{ i.inn }}</td>
+                        <td>{{ i.ogrn }}</td>
+                        <td>{{ i.cod_emitenta }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+			
+            <div class="view-more" style="display:none;">
+                <button class="mdc-button mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
+					<i class="material-icons mdc-button__icon">expand_more</i>
+					Больше
+				</button>
+            </div>
+        </div>
+		
+        <div class="nothing-to-show">
+            <img src="/static/new/img/visib2.png">
+            <br>
+            <h1 class="mdc-typography--title">Здесь пока нечего отображать. Начните поиск!</h1>
+        </div>
+    </main>
 
-		 <table class='table'>
-				 <thead>
-						 <tr>
-								 <th class="center-align">#</th>
-								 <th class="center-align">Наименование</th>
-								 <th class="center-align">ИНН</th>
-								 <th class="center-align">ОГРН</th>
-								 <th class="center-align">Код эмитента</th>
-						 </tr>
-				 </thead>
-				 {% for i in queryset %}
-				 	<tr>
-					 	<th class="center-align">{{ i.id }}</th>
-					 	<th class="center-align"><a href="{% url 'edit/kartochka_kompanii' i.id %}">{{ i.naimenovanie }}</a></th>
-					 	<th class="center-align">{{ i.inn }}</th>
-					 	<th class="center-align">{{ i.ogrn }}</th>
-					 	<th class="center-align">{{ i.cod_emitenta }}</th>
-				 	</tr>
-				 {% endfor %}
-		 </table>
-		</div>
-
-	</div> <!-- /container -->
-
-
-	<!-- Bootstrap core JavaScript
-	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="{% static 'js/jquery.min.js' %}"></script>
-	<script src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
-	<script src="{% static 'js/pager/paging.js' %}"></script>
-	<script src="{% static 'js/nprogress/nprogress.js' %}"></script>
-	<script src="{% static 'js/custom.js' %}"></script>
-	<script>window.jQuery || document.write('<script src="{% static 'js/jquery.min.js' %}"><\/script>')</script>
-	<script src="{% static 'js/bootstrap.min.js' %}"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+    <!-- Если разместить js-скрипты в конце будет вроде как лучше -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'new/js/paging.js' %}"></script>
+    <script src="{% static 'new/js/custom.js' %}"></script>
+    <script src="{% static 'new/js/material-components-web.min.js' %}"></script>
+    <script type="text/javascript">
+        window.mdc.autoInit();
+    </script>
 </body>
+
 </html>

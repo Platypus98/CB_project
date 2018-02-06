@@ -356,3 +356,12 @@ class Document(models.Model):
     db = 'DB'
     #docfile = models.FileField(upload_to=path_and_rename('{}/{}/{}/'.format(now.year, now.month, now.day)))
     docfile = models.FileField(upload_to=path_and_rename(''))
+
+class Update(models.Model):
+	aaa = models.IntegerField()
+	www = models.IntegerField()
+	qqq = models.IntegerField()
+	zzz = models.IntegerField()    
+
+
+    

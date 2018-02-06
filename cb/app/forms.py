@@ -13,6 +13,12 @@ class Data111Form(forms.ModelForm):
             "cod_emitenta": "Код эмитента:",
         }
         
+        widgets = {
+            "inn": forms.TextInput(attrs={'class': 'mdc-text-field__input'}),
+            "naimenovanie": forms.TextInput(attrs={'class': 'mdc-text-field__input', 'onkeyup': 'convertToUppercase(this)'}),
+            "ogrn": forms.TextInput(attrs={'class': 'mdc-text-field__input',}),
+            "cod_emitenta": forms.TextInput(attrs={'class': 'mdc-text-field__input'})
+        }
 class Data111Edit_KartochkaForm(forms.ModelForm):
     class Meta:
         model = Data111
