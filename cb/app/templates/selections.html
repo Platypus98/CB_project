@@ -66,7 +66,7 @@
 				    <h4>Карточка:</h4>	
 
 
-				    <div class="col-sm-3 well  col-sm-offset-0 " style="height: 295px">
+				    <div class="col-sm-3 well  col-sm-offset-0 " style="height: 350px">
 				    {{form.opf|bootstrap}}
 				        <div class="dropdown">
       						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
@@ -88,33 +88,116 @@
 
 								    <br>
 				    {{form.cod_emitenta|bootstrap}}
-				    <br><br><br>
+				    <br>
 				    {{form.ustavnoy_capital|bootstrap}}
+				    <br><br>
 
 				    {{form.kolichestvo_licevyh_schetov_v_reestre|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_kolichestvo_schetov.bolshe_50|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_kolichestvo_schetov.menshe_50|bootstrap }}</li>
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
 				    </div>
 
-				    <div class="col-sm-3 well col-sm-offset-0" style="height: 295px" >
+				    <div class="col-sm-3 well col-sm-offset-0" style="height: 350px" >
 				    {{form.kolichestvo_nominalnyh_derzhateley_v_reestre|bootstrap}}
 				    {{form.cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria|bootstrap}}
 				    {{form.region|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_region.moskva|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_region.moskovskaya|bootstrap }}</li>
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
 				    {{form.adres|bootstrap}}
 				    <br>
 				    </div>
 
-				    <div class="col-sm-3  well col-sm-offset-0" style="height: 295px"  >
+				    <div class="col-sm-3  well col-sm-offset-0" style="height: 350px"  >
 				    {{form.edinolichny_ispolnitelny_organ|bootstrap}}
 				    {{form.contactny_dannye|bootstrap}}
-				    <br><br><br>
+				    <br><br>
 				    {{form.status|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_status.bankrotstvo|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.deistvyushaya|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.nahoditca_v_processe_reorganizacii_v_forme_videlenya|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.nahoditca_v_processe_reorganizacii_v_forme_videlenya_osyshestvlyaemoe_odnovremenno_s_videleniem|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.nahoditca_v_processe_reorganizacii_v_forme_preobrazovanya|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_drygomy_ul|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_nemy_drygih_ul|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_osychestvlyaemoy_odnovremenno_s_videleniem|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.nahoditca_v_processe_reorganizacii_v_forme_razdelenya_osychestvlyaemoy_odnovremenno_s_prisoedineniem|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.nahoditca_v_processe_reorganizacii_v_forme_sliyaniya|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.nahoditca_v_processe_reorganizacii_v_forme_razdelenya|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.nahoditca_v_stadii_likvidacii|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_status.prinyato_reshenie_o_predostoyashem_iskluchenii_nedeystvyushego_ul_iz_egrul|bootstrap }}</li>
+				       
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
+				    <br>
 				    {{form.dvizhenie_denezhnyh_sredstv|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_dvizhenie_denezhnyh_sredstv.da|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_dvizhenie_denezhnyh_sredstv.net|bootstrap }}</li>
+				       
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
 				    </div>
 
-				    <div class="col-sm-3 well col-sm-offset-0" style="height: 295px" >
+				    <div class="col-sm-3 well col-sm-offset-0" style="height: 350px" >
 				    {{form.otchetnost|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_otchetnost.nepustaia|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_otchetnost.pustaia|bootstrap }}</li>
+				       
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
 				    <br>
 				    {{ form.data_posledney_operacii|bootstrap }}
 				    {{form.zadolzhennost_pered_fns|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				    <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_zadolzhennost_pered_fns.nepustaia|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_zadolzhennost_pered_fns.pustaia|bootstrap }}</li>
+				       
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
 				    <br>
 				    {{form.kpp|bootstrap}}
 				    <br><br><br><br>

@@ -389,6 +389,42 @@ class Filter_opf(forms.Form):
     pao = forms.BooleanField(label="ПАО", required=False)
 
 
+class Filter_kolichestvo_licevyh_schetov_v_reestre(forms.Form):
+    bolshe_50 = forms.BooleanField(label='Больше 50', required=False)
+    menshe_50 = forms.BooleanField(label='Меньше 50', required=False)
+
+class Filter_region(forms.Form):
+    moskva = forms.BooleanField(label="МОСКВА", required=False)
+    moskovskaya = forms.BooleanField(label="МОСКОВСКАЯ", required=False)
+
+class Filter_status(forms.Form):
+    bankrotstvo = forms.BooleanField(label="БАНКРОТСТВО", required=False)
+    deistvyushaya = forms.BooleanField(label="ДЕЙСТВУЮЩАЯ", required=False)
+    nahoditca_v_processe_reorganizacii_v_forme_videlenya = forms.BooleanField(label="НАХОДИТСЯ В ПРОЦЕССЕ РЕОРГАНИЗАЦИИ В ФОРМЕ ВЫДЕЛЕНИЯ", required=False)
+    nahoditca_v_processe_reorganizacii_v_forme_videlenya_osyshestvlyaemoe_odnovremenno_s_videleniem = forms.BooleanField(label="НАХОДИТСЯ В ПРОЦЕССЕ РЕОРГАНИЗАЦИИ В ФОРМЕ ВЫДЕЛЕНИЯ, ОСУЩЕСТВЛЯЕМОЙ ОДНОВРЕМЕННО С ВЫДЕЛЕНИЕМ", required=False)
+    nahoditca_v_processe_reorganizacii_v_forme_preobrazovanya = forms.BooleanField(label="НАХОДИТСЯ В ПРОЦЕССЕ РЕОРГАНИЗАЦИИ В ФОРМЕ ПРЕОБРАЗОВАНИЯ", required=False)
+    nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_drygomy_ul = forms.BooleanField(label="НАХОДИТСЯ В ПРОЦЕССЕ РЕОРГАНИЗАЦИИ В ФОРМЕ ПРИСОЕДИНЕНИЯ К ДРУГОМУ ЮЛ", required=False)
+    nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_nemy_drygih_ul = forms.BooleanField(label="НАХОДИТСЯ В ПРОЦЕССЕ РЕОРГАНИЗАЦИИ В ФОРМЕ ПРИСОЕДИНЕНИЯ К НЕМУ ДРУГИХ ЮЛ", required=False)
+    nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_osychestvlyaemoy_odnovremenno_s_videleniem = forms.BooleanField(label="НАХОДИТСЯ В ПРОЦЕССЕ РЕОРГАНИЗАЦИИ В ФОРМЕ ПРИСОЕДИНЕНИЯ, ОСУЩЕСТВЛЯЕМОЙ ОДНОВРЕМЕННО С ВЫДЕЛЕНИЕМ ", required=False)
+    nahoditca_v_processe_reorganizacii_v_forme_razdelenya_osychestvlyaemoy_odnovremenno_s_prisoedineniem = forms.BooleanField(label="НАХОДИТСЯ В ПРОЦЕССЕ РЕОРГАНИЗАЦИИ В ФОРМЕ РАЗДЕЛЕНИЯ, ОСУЩЕСТВЛЯЕМОЙ ОДНОВРЕМЕННО С ПРИСОЕДИНЕНИЕМ", required=False)
+    nahoditca_v_processe_reorganizacii_v_forme_sliyaniya = forms.BooleanField(label="НАХОДИТСЯ В ПРОЦЕССЕ РЕОРГАНИЗАЦИИ В ФОРМЕ СЛИЯНИЯ", required=False)
+    nahoditca_v_processe_reorganizacii_v_forme_razdelenya = forms.BooleanField(label="НАХОДИТСЯ В ПРОЦЕССЕ РЕОРГАНИЗАЦИИИ В ФОРМЕ РАЗДЕЛЕНИЯ", required=False)
+    nahoditca_v_stadii_likvidacii = forms.BooleanField(label="НАХОДИТСЯ В СТАДИИ ЛИКВИДАЦИИ", required=False)
+    prinyato_reshenie_o_predostoyashem_iskluchenii_nedeystvyushego_ul_iz_egrul = forms.BooleanField(label="ПРИНЯТО РЕШЕНИЕ О ПРЕДСТОЯЩЕМ ИСКЛЮЧЕНИИ НЕДЕЙСТВУЮЩЕГО ЮЛ ИЗ ЕГРЮЛ", required=False)
+        
+class Filter_dvizhenie_denezhnyh_sredstv(forms.Form):
+    da = forms.BooleanField(label="ДА", required=False)
+    net = forms.BooleanField(label="НЕТ", required=False)
+
+class Filter_otchetnost(forms.Form):
+    nepustaia = forms.BooleanField(label="Непустая", required=False)
+    pustaia = forms.BooleanField(label="Пустая", required=False)      
+
+class Filter_zadolzhennost_pered_fns(forms.Form):
+    nepustaia = forms.BooleanField(label="Непустая", required=False)
+    pustaia = forms.BooleanField(label="Пустая", required=False)
+
+
 class DocumentForm(forms.Form):
     docfile = forms.FileField(label = '', widget=forms.FileInput(attrs ={'accept' : '.xls,.xlsm,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel, application/vnd.ms-excel.sheet.macroEnabled.12'}))
     
