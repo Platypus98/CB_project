@@ -174,7 +174,8 @@ def selections(request):
         a = []
         b = []
         c = []
-        opf = []
+        filter_list = []
+        k = 0
         queryset = Data111.objects.all()
 
         columns_to_display = ['naimenovanie', 'inn', 'ogrn','kpp','data_registracii','opf','cod_emitenta','ustavnoy_capital', 
@@ -201,10 +202,23 @@ def selections(request):
 
         form = Data111FormSelection(request.POST or None)
         form_filter_opf = Filter_opf(request.POST or None)
+        form_filter_kolichestvo_schetov = Filter_kolichestvo_licevyh_schetov_v_reestre(request.POST or None)
+        form_filter_region = Filter_region(request.POST or None)
+        form_filter_status = Filter_status(request.POST or None)
+        form_filter_dvizhenie_denezhnyh_sredstv = Filter_dvizhenie_denezhnyh_sredstv(request.POST or None)
+        form_filter_otchetnost = Filter_otchetnost(request.POST or None)
+        form_filter_zadolzhennost_pered_fns = Filter_zadolzhennost_pered_fns(request.POST or None)
+
         context = {
         "form": form,
         "queryset": queryset,
         "form_filter_opf": form_filter_opf,
+        "form_filter_kolichestvo_schetov": form_filter_kolichestvo_schetov,
+        "form_filter_region": form_filter_region,
+        "form_filter_status": form_filter_status,
+        "form_filter_dvizhenie_denezhnyh_sredstv": form_filter_dvizhenie_denezhnyh_sredstv,
+        "form_filter_otchetnost": form_filter_otchetnost,
+        "form_filter_zadolzhennost_pered_fns": form_filter_zadolzhennost_pered_fns,
 
         }
 
@@ -227,16 +241,119 @@ def selections(request):
 
 
                 #Фильтры ОПФ
-                #if form['opf'].value():
-                #   for i in ['ao','aozt', 'aoot', 'zao', 'nao', 'oao', 'pao']:
-                #       if form_filter_opf[i].value():
-                #           table_rows = Data111.objects.filter(opf__exact=form_filter_opf[i].label)
-                
-                #table_rows = Data111.objects.filter(opf__exact=form_filter_opf[opf[0]].label)
-                #table_rows = Data111.objects.filter(opf__exact=form_filter_opf[opf[0]].label)
+                if form['opf'].value():
+                  for i in ['ao', 'aozt', 'aoot', 'zao', 'nao', 'oao', 'pao']:
+                    if form_filter_opf[i].value():
+                      filter_list.append(form_filter_opf[i].label)
+                  filter_ = Data111.objects.filter(opf__in=filter_list)
+                  k = 1
+
+                filter_list = []
+                #Фильтры количество лицевых счетов
+                if form['kolichestvo_licevyh_schetov_v_reestre'].value():
+                  if k==1:
+                    if form_filter_kolichestvo_schetov['bolshe_50'].value():
+                      filter_ = filter_.filter(kolichestvo_licevyh_schetov_v_reestre__gte=50)
+                    elif form_filter_kolichestvo_schetov['menshe_50'].value():
+                      filter_ = filter_.filter(kolichestvo_licevyh_schetov_v_reestre__lte=50)
+                  else:
+                    if form_filter_kolichestvo_schetov['bolshe_50'].value():
+                      filter_ = Data111.objects.filter(kolichestvo_licevyh_schetov_v_reestre__gte=50)
+                      k=1
+                    elif form_filter_kolichestvo_schetov['menshe_50'].value():
+                      filter_ = Data111.objects.filter(kolichestvo_licevyh_schetov_v_reestre__lte=2)
+                      k=1
+
+                #Фильтры регион
+                if form['region'].value():
+                  if k==1:
+                    for i in ['moskva', 'moskovskaya']:
+                      if form_filter_region[i].value():
+                        filter_list.append(form_filter_region[i].label)
+                    filter_ = filter_.filter(region__in=filter_list)
+                    filter_list = []
+                  else:
+                    for i in ['moskva', 'moskovskaya']:
+                      if form_filter_region[i].value():
+                        filter_list.append(form_filter_region[i].label)
+                    filter_ = Data111.objects.filter(region__in=filter_list)
+                    filter_list = []
+                    k=1
 
 
-                table_rows = Data111.objects.all().values(*b)
+                #Фильтры статус
+                if form['status'].value():
+                  if k==1:
+                    for i in ['bankrotstvo','deistvyushaya', 'nahoditca_v_processe_reorganizacii_v_forme_videlenya', 'nahoditca_v_processe_reorganizacii_v_forme_videlenya_osyshestvlyaemoe_odnovremenno_s_videleniem', 'nahoditca_v_processe_reorganizacii_v_forme_preobrazovanya', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_drygomy_ul', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_nemy_drygih_ul', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_osychestvlyaemoy_odnovremenno_s_videleniem', 'nahoditca_v_processe_reorganizacii_v_forme_razdelenya_osychestvlyaemoy_odnovremenno_s_prisoedineniem', 'nahoditca_v_processe_reorganizacii_v_forme_sliyaniya', 'nahoditca_v_processe_reorganizacii_v_forme_razdelenya', 'nahoditca_v_stadii_likvidacii', 'prinyato_reshenie_o_predostoyashem_iskluchenii_nedeystvyushego_ul_iz_egrul']:
+                      if form_filter_status[i].value():
+                        filter_list.append(form_filter_status[i].label)
+                    filter_ = filter_.filter(status__in=filter_list)
+                    filter_list = []
+                  else:
+                    for i in ['bankrotstvo','deistvyushaya', 'nahoditca_v_processe_reorganizacii_v_forme_videlenya', 'nahoditca_v_processe_reorganizacii_v_forme_videlenya_osyshestvlyaemoe_odnovremenno_s_videleniem', 'nahoditca_v_processe_reorganizacii_v_forme_preobrazovanya', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_drygomy_ul', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_nemy_drygih_ul', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_osychestvlyaemoy_odnovremenno_s_videleniem', 'nahoditca_v_processe_reorganizacii_v_forme_razdelenya_osychestvlyaemoy_odnovremenno_s_prisoedineniem', 'nahoditca_v_processe_reorganizacii_v_forme_sliyaniya', 'nahoditca_v_processe_reorganizacii_v_forme_razdelenya', 'nahoditca_v_stadii_likvidacii', 'prinyato_reshenie_o_predostoyashem_iskluchenii_nedeystvyushego_ul_iz_egrul']:
+                      if form_filter_status[i].value():
+                        filter_list.append(form_filter_status[i].label)
+                    filter_ = Data111.objects.filter(status__in=filter_list)
+                    filter_list = []
+                    k=1
+                    
+              
+                #Фильтры движение денежных средств
+                if form['dvizhenie_denezhnyh_sredstv'].value():
+                  if k==1:
+                    for i in ['da', 'net']:
+                      if form_filter_dvizhenie_denezhnyh_sredstv[i].value():
+                        filter_list.append(form_filter_dvizhenie_denezhnyh_sredstv[i].label)
+                    filter_ = filter_.filter(dvizhenie_denezhnyh_sredstv__in=filter_list)
+                    filter_list = []
+                  else:
+                    for i in ['da', 'net']:
+                      if form_filter_dvizhenie_denezhnyh_sredstv[i].value():
+                        filter_list.append(form_filter_dvizhenie_denezhnyh_sredstv[i].label)
+                    filter_ = Data111.objects.filter(dvizhenie_denezhnyh_sredstv__in=filter_list)
+                    filter_list = []
+                    k = 1
+
+                #Фильтры отчетность
+                if form['otchetnost'].value():
+                  if k==1:
+                    if form_filter_otchetnost['nepustaia'].value():
+                      filter_ = filter_.filter(otchetnost__isnull=False)
+                    elif form_filter_otchetnost['pustaia'].value():
+                      filter_ = filter_.filter(otchetnost__isnull=True)
+                  else:
+                    if form_filter_otchetnost['nepustaia'].value():
+                      filter_ = Data111.objects.filter(otchetnost__isnull=False)
+                      k = 1
+                    elif form_filter_otchetnost['pustaia'].value():
+                      filter_ = Data111.objects.filter(otchetnost__isnull=True)
+                      k = 1
+
+
+
+                #Фильтры задолженность перед ФНС
+                if form['zadolzhennost_pered_fns'].value():
+                  if k==1:
+                    if form_filter_zadolzhennost_pered_fns['nepustaia'].value():
+                      filter_ = filter_.filter(otchetnost__isnull=False)
+                    elif form_filter_zadolzhennost_pered_fns['pustaia'].value():
+                      filter_ = filter_.filter(otchetnost__isnull=True)
+                  else:
+                    if form_filter_zadolzhennost_pered_fns['nepustaia'].value():
+                      filter_ = Data111.objects.filter(otchetnost__isnull=False)
+                      k = 1
+                    elif form_filter_zadolzhennost_pered_fns['pustaia'].value():
+                      filter_ = Data111.objects.filter(otchetnost__isnull=True)
+                      k = 1
+
+
+
+
+
+                if k==1:     
+                  table_rows = filter_.values(*b)
+                else:
+                  table_rows = Data111.objects.all().values(*b)
                 
                 #a.remove('Export to CSV')  
 
@@ -249,6 +366,12 @@ def selections(request):
                         "table_headers": table_headers,
                         "queryset": queryset,
                 "form_filter_opf": form_filter_opf,
+                "form_filter_kolichestvo_schetov": form_filter_kolichestvo_schetov,
+                "form_filter_region": form_filter_region,
+                "form_filter_status": form_filter_status,
+                "form_filter_dvizhenie_denezhnyh_sredstv": form_filter_dvizhenie_denezhnyh_sredstv,
+                "form_filter_otchetnost": form_filter_otchetnost,
+                "form_filter_zadolzhennost_pered_fns": form_filter_zadolzhennost_pered_fns,
             }
             
 
@@ -273,8 +396,13 @@ def selections(request):
 
             font_style = xlwt.XFStyle()
             font_style.alignment.wrap = 1
+
+            if k == 1:
+              queryset_1 = filter_.all()
+            else:
+              queryset_1 = Data111.objects.all() 
             
-            for obj in queryset:
+            for obj in queryset_1:
                 row_num += 1
                 row = []
                 for i in b:

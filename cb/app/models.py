@@ -111,7 +111,7 @@ class Data111(models.Model):
 	opf = models.CharField(db_column='ОПФ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase.
 	cod_emitenta = models.CharField(db_column='КОД ЭМИТEHТA', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	ustavnoy_capital = models.CharField(db_column='УСТАВНЫЙ КАПИТАЛ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-	kolichestvo_licevyh_schetov_v_reestre = models.CharField(db_column='Количество лицевых счетов в реестре', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	kolichestvo_licevyh_schetov_v_reestre = models.IntegerField(db_column='Количество лицевых счетов в реестре', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	kolichestvo_nominalnyh_derzhateley_v_reestre = models.CharField(db_column='Количество номинальных держателей в реестре', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria = models.CharField(db_column='Сведения об открытии счета номинального держателя центрального депозитария', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	region = models.CharField(db_column='РЕГИОН', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase.
