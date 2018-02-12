@@ -12,7 +12,7 @@ $(document).ready(function() {
     if ($("table").is(":visible")) {
         $(".nothing-to-show").hide();
         $('.mdl-data-table').paging({
-            limit: 50
+            limit: 20
         })
     }
 
