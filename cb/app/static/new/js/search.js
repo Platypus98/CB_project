@@ -46,7 +46,7 @@ function callAlert(ind) {
 	snackbar.show(alert_opt[ind])
 }
 
-function initRadio(rad) {
+function initRadio() {
 	var form = document.getElementById("search_form");
 	return(form.elements.values.value);
 }
