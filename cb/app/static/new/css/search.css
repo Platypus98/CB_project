@@ -85,6 +85,9 @@ body {
 .mdc-snackbar__action-button {
 	color: var(--mdc-theme-primary);
 }
+.mdc-snackbar--align-start {
+	transform: translateY(400%);
+}
 .mdc-snackbar__text[dir=rtl], [dir=rtl] .mdc-snackbar__text {
 	padding-left: 0;
 }
@@ -95,7 +98,7 @@ body {
 .resultsQ-cont span {
     width: 30%;
 	display: inline-block;
-	height: 0.5px;
+	height: 1px;
 	vertical-align: middle;
 }
 .resultsQ-cont .first {	
