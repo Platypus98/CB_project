@@ -56,7 +56,7 @@
 				
 				// адаптируем высоту кнопки под последние две строки
 				if (check) {
-					var all = $("tr")
+					var all = $("tr");
 					var mbh = $(all[i]).height()+$(all[i-1]).height()-60;
 					var mbh_out = mbh/2+"px 0 "+mbh/2+"px";
 					$(".view-more").css("padding",mbh_out)
