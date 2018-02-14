@@ -6,9 +6,6 @@
 	position: fixed;
 	z-index: 1;
 }
-.mdc-toolbar__section {
-	height: auto;
-}
 .logo img{
 	height: 40px;
 	margin-left: 50px;
