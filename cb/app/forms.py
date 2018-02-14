@@ -2,6 +2,10 @@ from django import forms
 
 from .models import *
 
+class limitForm(forms.Form):
+    CHOICES=[('20','20'),('30','30'),('50','50')]
+    values = forms.ChoiceField(widget=forms.RadioSelect(attrs={'class': 'mdc-radio__native-control'}), choices=CHOICES, initial='50')
+
 class Data111Form(forms.ModelForm):
     class Meta:
         model = Data111
@@ -16,7 +20,7 @@ class Data111Form(forms.ModelForm):
         widgets = {
             "inn": forms.TextInput(attrs={'class': 'mdc-text-field__input'}),
             "naimenovanie": forms.TextInput(attrs={'class': 'mdc-text-field__input', 'onkeyup': 'convertToUppercase(this)'}),
-            "ogrn": forms.TextInput(attrs={'class': 'mdc-text-field__input',}),
+            "ogrn": forms.TextInput(attrs={'class': 'mdc-text-field__input'}),
             "cod_emitenta": forms.TextInput(attrs={'class': 'mdc-text-field__input'})
         }
 class Data111Edit_KartochkaForm(forms.ModelForm):

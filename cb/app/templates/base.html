@@ -1,51 +1,172 @@
 {% load staticfiles %}
-{% include 'navbar.html' %}
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
+<html>
+
+<head>
+    <title>Главная | Досье Эмитента</title>
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <title>Досье эмитента</title>
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
-    <link href="{% static 'css/navbar-fixed-top.css' %}" rel="stylesheet">
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
-    <link href="{% static 'js/nprogress/nprogress.css' %}" rel="stylesheet">
+	<link rel="icon" type="image/png" href="{% static 'new/img/favicon-32x32.png' %}" sizes="32x32">
+	<link rel="icon" type="image/png" href="{% static 'new/img/favicon-16x16.png' %}" sizes="16x16">
 
+    <link href="{% static 'js/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui/jquery-ui.theme.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui/jquery-ui.structure.min.css' %}" rel="stylesheet">
+    <link href="{% static 'new/css/fonts.css' %}" rel="stylesheet">
+    <link href="{% static 'new/css/material-components-web.min.css' %}" rel="stylesheet">
+	<link href="{% static 'new/css/all.css' %}" rel="stylesheet">
+	<link href="{% static 'new/css/main.css' %}" rel="stylesheet">
+</head>
 
-    <script src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
+<body class="mdc-typography" onresize="resizing();">
+    <header class="mdc-toolbar mdc-toolbar--fixed">
+		<div role="progressbar" class="mdc-linear-progress" id="progress">
+			<div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+				<span class="mdc-linear-progress__bar-inner"></span>
+			</div>
+		</div>
+		
+        <div class="mdc-toolbar__row">
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                <a href="/index" class="logo"><img src='/static/new/img/CB-logo.png'></a>
+            </section>
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+                <nav id="basic-tab-bar" class="mdc-tab-bar">
+					<a class="mdc-tab mdc-tab--active" href="/index">
+						ГЛАВНАЯ
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                    <a class="mdc-tab" href="/search">
+						ПОИСК
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                    <a class="mdc-tab" href="/selections">
+						ВЫБОРКА
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                    <a class="mdc-tab" href="/db_update">
+						ОБНОВЛЕНИЕ
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                </nav>
+            </section>
+        </div>
+    </header>
+	
+    <main>
+		<p class="hello-text">
+			<span class="welcome"></span>
+			<br>
+			<span class="status">Система <span style="color:#00E676;">активна</span></span>
+			<br>
+			<span class="emitents">Эмитентов: <b>{{count}}</b></span>
+		</p>
+		
+		<p id="clock"></p>
+		
+		<div class="mdc-elevation--z5 example">
+			<ul class="mdc-list mdc-list--two-line mdc-list--avatar-list demo-list demo-list--with-avatars demo-list--icon-placeholders">
+				<li class="mdc-list-item">
+					<span class="mdc-list-item__graphic" role="presentation">
+						<i class="material-icons" aria-hidden="true">edit</i>
+					</span>
+					<span class="mdc-list-item__text">
+						Редактирование эмитента №3189
+						<span class="mdc-list-item__secondary-text">6 Фев 17:44, <b>Игорь Сенгаев</b></span>
+					</span>
+					<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+						info
+					</a>
+				</li>
+				<li class="mdc-list-item">
+					<span class="mdc-list-item__graphic" role="presentation">
+						<i class="material-icons" aria-hidden="true">file_upload</i>
+					</span>
+					<span class="mdc-list-item__text">
+						Обновление базы
+						<span class="mdc-list-item__secondary-text">6 Фев 10:30, <b>Sleep3r</b></span>
+					</span>
+					<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+						info
+					</a>
+				</li>
+				<li class="mdc-list-item">
+					<span class="mdc-list-item__graphic" role="presentation">
+						<i class="material-icons" aria-hidden="true">edit</i>
+					</span>
+					<span class="mdc-list-item__text">
+						Редактирование эмитента №25306
+						<span class="mdc-list-item__secondary-text">6 Фев 9:50, <b>andrianov20</b></span>
+					</span>
+					<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+						info
+					</a>
+				</li>
+			</ul>
+			<div class="mdc-card__actions mdc-card__actions--full-bleed">
+				<a class="mdc-button mdc-card__action mdc-card__action--button demo-card-action" data-mdc-auto-init="MDCRipple">
+					ВСЕ ПОСЛЕДНИЕ ИЗМЕНЕНИЯ
+					<i class="material-icons" aria-hidden="true">arrow_forward</i>
+				</a>
+			</div>
+		</div>
+		
+		<button id="click-login" class="mdc-fab material-icons app-fab--absolute md-30"
+				aria-label="Login" data-mdc-auto-init="MDCRipple" onclick="showLogin();">
+			<span class="mdc-fab__icon">account_circle</span>
+		</button>
+		
+		<aside class="mdc-dialog" role="alertdialog"
+			   aria-labelledby="my-mdc-dialog-label">
+			<div class="mdc-dialog__surface">
+				<header class="mdc-dialog__header">
+					<h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+						Войти в систему
+					</h2>
+				</header>
+				<section class="mdc-dialog__body">
+					<form id="auth" method="post" action="">
+						<div class="mdc-form-field">
+							<div class="mdc-text-field mdc-text-field--outlined">
+								<input type="text" class="mdc-text-field__input">
+								<label class="mdc-text-field__label">Логин</label>
+								<div class="mdc-text-field__outline">
+									<svg><path class="mdc-text-field__outline-path"/></svg>
+								</div>
+								<div class="mdc-text-field__idle-outline"></div>
+							</div>
+						</div>
+						<br>
+						<div class="mdc-form-field">
+							<div class="mdc-text-field mdc-text-field--outlined">
+								<input type="password" class="mdc-text-field__input" style="letter-spacing:.3em;">
+								<label class="mdc-text-field__label">Пароль</label>
+								<div class="mdc-text-field__outline">
+									<svg><path class="mdc-text-field__outline-path"/></svg>
+								</div>
+								<div class="mdc-text-field__idle-outline"></div>
+							</div>
+						</div>
+					</form>
+				</section>
+				<footer class="mdc-dialog__footer">
+					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Отмена</button>
+					<button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Ок</button>
+				</footer>
+			</div>
+			
+			<div class="mdc-dialog__backdrop"></div>
+		</aside>
+    </main>
 
-  </head>
-
-  <body>
-
-    <div class="container">
-
-      <div class="jumbotron">
-        <h2><font color="#459ef7">{{title}}</font></h2>
-        {% block content %}
-        {% endblock %}
-      </div>
-
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Если разместить js-скрипты в конце будет вроде как лучше -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
-    <script src="{% static 'js/pager/paging.js' %}"></script>
-    <script src="{% static 'js/nprogress/nprogress.js' %}"></script>
-    <script src="{% static 'js/custom.js' %}"></script>
-    <script>window.jQuery || document.write('<script src="{% static 'js/jquery.min.js' %}"><\/script>')</script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
-  </body>
+    <script src="{% static 'new/js/material-components-web.min.js' %}"></script>
+	<script src="{% static 'new/js/main.js' %}"></script>
+</body>
+
 </html>

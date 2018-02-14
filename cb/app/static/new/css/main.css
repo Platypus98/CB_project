@@ -1,0 +1,98 @@
+body {
+	margin: 65px auto 0;
+	background: no-repeat 60% center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+main {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.hello-text {
+    left: 61px;
+	top: 120px;
+}
+
+.hello-text span {
+	background: #fff;
+}
+.status {
+	font-size: 22pt;
+	font-weight: 500;
+    line-height: 45px;
+}
+.emitents {
+	font-size: 15pt;
+	font-weight: 500;
+}
+.welcome {
+	font-size: 45pt;
+	font-weight: 700;
+}
+#clock, .hello-text {
+	font-family: Montserrat,sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+	position: absolute;
+	margin:0;
+}
+#clock {
+	right: 60px;
+	top: 120px;
+	font-size: 30pt;
+	font-weight: 500;
+	color: #fff;
+	width: 170px;
+	min-width: 170px;
+}
+.login {
+	border-radius: 8px;
+}
+.app-fab--absolute {
+	bottom: 50px;
+    right: 65px;
+}
+.example {
+	position: absolute;
+	min-width: 440px;
+	bottom: 60px;
+	left: 60px;
+	background-color:#fff;
+	cursor:pointer;
+}
+.mdc-dialog--open .mdc-dialog__backdrop {
+	opacity: .6;
+}
+.mdc-dialog__surface {
+	max-width: 350px;
+    min-width: unset;
+}
+.mdc-text-field, .mdc-form-field {
+	width: 100%;
+}
+.mdc-dialog__body {
+	margin-top:0;
+	padding: 0 24px 0;
+}
+.mdc-text-field--outlined:not(.mdc-text-field--invalid) .mdc-text-field__input:hover ~ .mdc-text-field__outline .mdc-text-field__outline-path {
+    stroke: var(--mdc-theme-primary, #6200ee);
+}
+.mdc-card__actions--full-bleed .mdc-card__action--button {
+    padding: 8px 16px 8px 24px;
+}
+
+.mdc-list {
+	padding: 6px 0 0;
+}
+.mdc-list-item__text {
+	font-size: .95rem;
+	letter-spacing: .02em;
+}
+.mdc-list-item__secondary-text {
+	font-size: .85rem;
+}

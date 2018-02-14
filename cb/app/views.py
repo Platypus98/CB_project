@@ -34,20 +34,37 @@ import os
 # Create your views here.
 
 def search(request):
+        size_error = False
+        data_error = False
+        empty_error = False
         form = Data111Form(request.POST or None)
+        limit = limitForm(request.POST or None)
         queryset = None
         context = {
-        "queryset": queryset,
-        "form": form,
-        }
-        if request.method == 'POST':
-                if form['naimenovanie'].value() == '' and form['inn'].value() == '' and form['ogrn'].value() == '' and form['cod_emitenta'].value() == '':
-                        queryset = None
-                else:
-                        queryset = Data111.objects.all().filter(naimenovanie__icontains = form['naimenovanie'].value(), inn__icontains = form['inn'].value(), ogrn__icontains = form['ogrn'].value(), cod_emitenta__icontains = form['cod_emitenta'].value())
-                context = {
             "queryset": queryset,
             "form": form,
+            "limit": limit,
+            "toomany": size_error,
+            "nores": data_error
+        }
+        if request.method == 'POST':
+            if form['naimenovanie'].value()=='' and form['inn'].value()=='' and form['ogrn'].value()=='' and form['cod_emitenta'].value()=='':
+                empty_error = True
+            else:
+                queryset = Data111.objects.all().filter(naimenovanie__icontains = form['naimenovanie'].value(), inn__icontains = form['inn'].value(), ogrn__icontains = form['ogrn'].value(), cod_emitenta__icontains = form['cod_emitenta'].value())
+            if queryset is not None and len(queryset) >= 5000:
+                size_error = True
+            if size_error or empty_error:
+                queryset = None
+            if not empty_error and not size_error:
+                if len(queryset) == 0:
+                    data_error = True
+            context = {
+                "queryset": queryset,
+                "form": form,
+                "limit": limit,
+                "toomany": size_error,
+                "nores": data_error
             }
         return render(request, 'search.html', context)
 
@@ -419,11 +436,11 @@ def selections(request):
 
 
 def home(request):
-    title = 'Добро пожаловать!'
+    count = Data111.objects.all().count()
     context = {
-        "title": title,
+        "count": count,
     }
-    return render(request, "base.html",context)
+    return render(request, "base.html", context)
 
 
 

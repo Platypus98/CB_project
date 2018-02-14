@@ -15,25 +15,31 @@
     <link href="{% static 'js/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet">
     <link href="{% static 'js/jquery-ui/jquery-ui.theme.min.css' %}" rel="stylesheet">
     <link href="{% static 'js/jquery-ui/jquery-ui.structure.min.css' %}" rel="stylesheet">
-    <link href="{% static 'new/css/material-icon-font.css' %}" rel="stylesheet">
+    <link href="{% static 'new/css/fonts.css' %}" rel="stylesheet">
     <link href="{% static 'new/css/material-components-web.min.css' %}" rel="stylesheet">
-    <link href="{% static 'new/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'new/css/search.css' %}" rel="stylesheet">
+	<link href="{% static 'new/css/all.css' %}" rel="stylesheet">
     <link href="{% static 'new/css/data-table.css' %}" rel="stylesheet">
 </head>
 
-<body class="mdc-typography">
+<body class="mdc-typography" onresize="resizing();">
     <header class="mdc-toolbar mdc-toolbar--fixed">
-		<div role="progressbar" class="mdc-linear-progress">
+		<div role="progressbar" class="mdc-linear-progress" id="progress">
 			<div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
 				<span class="mdc-linear-progress__bar-inner"></span>
 			</div>
 		</div>
+		
         <div class="mdc-toolbar__row">
             <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                <img src="/static/new/img/CB-logo.png">
+                <a href="/index" class="logo"><img src='/static/new/img/CB-logo.png'></a>
             </section>
             <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-                <nav id="basic-tab-bar" class="mdc-tab-bar">
+                <nav class="mdc-tab-bar">
+					<a class="mdc-tab" href="/index">
+						ГЛАВНАЯ
+						<span class="mdc-tab__indicator"></span>
+					</a>
                     <a class="mdc-tab mdc-tab--active" href="/search">
 						ПОИСК
 						<span class="mdc-tab__indicator"></span>
@@ -50,6 +56,7 @@
             </section>
         </div>
     </header>
+	
     <main>
         {% if messages %}
         <ul class="messages">
@@ -58,45 +65,62 @@
             {% endfor %}
         </ul>
         {% endif %}
-        <form id="here" class="mdc-toolbar__row" method="post" action="">
+        <form id="search_form" class="mdc-toolbar__row" method="post" action="">
             <div class="form-cont mdc-toolbar__section">
                 <div class="form-fields-cont">
                     {% csrf_token %}
                     <div class="mdc-form-field" style="width:100%;">
                         <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
                             {{form.naimenovanie}}
-                            <label for="firstname" class="mdc-text-field__label">Наименование</label>
-                            <div class="mdc-text-field__bottom-line"></div>
+                            <label class="mdc-text-field__label">Наименование</label>
+                            <div class="mdc-line-ripple"></div>
                         </div>
                     </div>
                     <br>
                     <div class="mdc-form-field" style="width: 59%; margin-right: 1%; float: left;">
                         <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
                             {{form.inn}}
-                            <label for="firstname" class="mdc-text-field__label">ИНН</label>
-                            <div class="mdc-text-field__bottom-line"></div>
+                            <label class="mdc-text-field__label">ИНН</label>
+                            <div class="mdc-line-ripple"></div>
                         </div>
                     </div>
                     <div class="mdc-form-field" style="width:40%;">
                         <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
                             {{form.ogrn}}
-                            <label for="firstname" class="mdc-text-field__label">ОГРН</label>
-                            <div class="mdc-text-field__bottom-line"></div>
+                            <label class="mdc-text-field__label">ОГРН</label>
+                            <div class="mdc-line-ripple"></div>
                         </div>
                     </div>
                     <br>
                     <div class="mdc-form-field" style="width:30%;">
                         <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
                             {{form.cod_emitenta}}
-                            <label for="firstname" class="mdc-text-field__label">Код эмитента</label>
-                            <div class="mdc-text-field__bottom-line"></div>
+                            <label class="mdc-text-field__label">Код эмитента</label>
+                            <div class="mdc-line-ripple"></div>
                         </div>
                     </div>
-                </div>
-                <button type="submit" class="mdc-button mdc-button--raised mdc-ripple-surface"
-						data-mdc-auto-init="MDCRipple">
-					ПОИСК
-				</button>
+					<div class="limit_choice">
+						<div class="mdc-form-field">
+							Отображать по:
+						</div>
+						{% for radio in limit.values %}
+						<div class="mdc-form-field">
+							<div class="mdc-radio">
+								{{ radio.tag }}
+								<div class="mdc-radio__background">
+									<div class="mdc-radio__outer-circle"></div>
+									<div class="mdc-radio__inner-circle"></div>
+								</div>
+							</div>
+							<label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+						</div>
+						{% endfor %}
+					</div>
+					<button type="submit" class="mdc-button mdc-button--raised mdc-ripple-surface"
+						data-mdc-auto-init="MDCRipple" id="submit_form">
+						ПОИСК
+					</button>
+				</div>
             </div>
         </form>
 
@@ -104,9 +128,16 @@
 				aria-label="To top" data-mdc-auto-init="MDCRipple" style="opacity:0;">
 			<span class="mdc-fab__icon">arrow_upward</span>
 		</button>
+		
+		<div class="resultsQ-cont" style="display:none;">
+			<span class="first"></span>
+			<p class="mdc-typography--body1 resultsQ"></p>
+			<p class="mdc-typography--body1 resultsQl" style="margin:0 15px 0 0;">найден</p>
+			<span class="second"></span>
+		</div>
 
         <div class="table-cont">
-            <table class="mdl-data-table mdl-js-data-table mdc-elevation--z4" style="display:none;">
+            <table class="mdl-data-table mdl-js-data-table mdc-elevation--z5" style="display:none;">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -127,34 +158,50 @@
                         <td>{{ i.ogrn }}</td>
                         <td>{{ i.cod_emitenta }}</td>
                     </tr>
+					{% empty %}
+					<div class="nothing-to-show">
+						<img src="/static/new/img/visib2.png">
+						<br>
+						<h1 class="mdc-typography--title">Здесь пока нечего отображать :(</h1>
+					</div>
                     {% endfor %}
+					
+					<!-- проверяем инпуты на наличие текста, и если он есть, -->
+					<!-- а результатов в выдаче нет - алертим -->
+					{% if toomany %}
+					<script>setTimeout(function() {callAlert(1)}, 1000);</script>
+					{% endif %}
+					{% if nores %}
+					<script>setTimeout(function() {callAlert(0)}, 1000);</script>
+					{% endif %}
                 </tbody>
             </table>
 			
             <div class="view-more" style="display:none;">
-                <button class="mdc-button mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
-					<i class="material-icons mdc-button__icon">expand_more</i>
+                <button id="more-button" class="mdc-button mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
+					<i id="more-icon" class="material-icons mdc-button__icon">expand_more</i>
 					Больше
 				</button>
             </div>
         </div>
 		
-        <div class="nothing-to-show">
-            <img src="/static/new/img/visib2.png">
-            <br>
-            <h1 class="mdc-typography--title">Здесь пока нечего отображать. Начните поиск!</h1>
-        </div>
+		<div class="mdc-snackbar mdc-snackbar--align-start" id="alert"
+			 aria-live="assertive"
+			 aria-atomic="true"
+			 aria-hidden="true">
+			<div class="mdc-snackbar__action-wrapper" dir="rtl">
+				<button type="button" class="mdc-snackbar__action-button"></button>
+			</div>
+			<div class="mdc-snackbar__text" dir="rtl"></div>
+		</div>
     </main>
 
     <!-- Если разместить js-скрипты в конце будет вроде как лучше -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
     <script src="{% static 'new/js/paging.js' %}"></script>
-    <script src="{% static 'new/js/custom.js' %}"></script>
     <script src="{% static 'new/js/material-components-web.min.js' %}"></script>
-    <script type="text/javascript">
-        window.mdc.autoInit();
-    </script>
+	<script src="{% static 'new/js/search.js' %}"></script>
 </body>
 
 </html>

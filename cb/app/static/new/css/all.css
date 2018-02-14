@@ -1,0 +1,47 @@
+:root {
+	--mdc-theme-primary:  #ecb32e;
+}
+.app-fab--absolute {
+	background-color: var(--mdc-theme-primary);
+	position: fixed;
+	z-index: 1;
+}
+.mdc-toolbar__section {
+	height: auto;
+}
+.logo img{
+	height: 40px;
+	margin-left: 50px;
+}
+.logo {
+	height: 40px;
+    text-decoration: none;
+}
+.mdc-toolbar {
+	background-color: var(--mdc-theme-background);
+}
+.mdc-tab__indicator {
+	background-color: var(--mdc-theme-primary);
+	height: 2.5px;
+}
+.mdc-toolbar__row {
+	min-height: unset;
+	margin-top: -4px;
+}
+.mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab:after {
+	top: unset;
+	bottom: 0;
+	height: 2.5px;
+	left: 2px;
+}
+.mdc-tab-bar {
+	height: 65px;
+	margin: 0 50px 0 auto;
+}
+.mdc-tab {
+	font-size: 0.975rem;
+	min-width: 90px;
+}
+.mdc-linear-progress__bar {
+	transition-duration: 0.75s;
+}
