@@ -30,6 +30,9 @@ body {
 .form-cont {
 	margin: 25px auto;
 }
+#search-form {
+	margin-top: 0;
+}
 .table-cont {
 	width: 100%;
 	position:relative;
