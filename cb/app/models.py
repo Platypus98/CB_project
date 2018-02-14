@@ -107,7 +107,7 @@ class Data111(models.Model):
 	inn = models.IntegerField(db_column='ИНН', blank=True, null=True, default=None)  
 	ogrn = models.IntegerField(db_column='ОГРН', blank=True, null=True, default=None) 
 	kpp = models.IntegerField(db_column='КПП', blank=True, null=True)  
-	data_registracii = models.DateField(db_column='ДАТА_РЕГИСТРАЦИИ', blank=True, null=True, default=None, max_length=1000)  
+	data_registracii = models.CharField(db_column='ДАТА_РЕГИСТРАЦИИ', blank=True, null=True, default=None, max_length=1000)  
 	opf = models.CharField(db_column='ОПФ', blank=True, null=True, default=None, max_length=1000)  
 	cod_emitenta = models.CharField(db_column='КОД_ЭМИТEHТA', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	ustavnoy_capital = models.IntegerField(db_column='УСТАВНЫЙ_КАПИТАЛ', blank=True, null=True, default=None)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -203,7 +203,7 @@ class Data111(models.Model):
 	data_pisma_v_fns = models.CharField(db_column='ДАТА_ПИСЬМА_В_ФНС', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	nomer_pisma_v_fns = models.CharField(db_column='НОМЕР_ПИСЬМА_В_ФНС', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	informaciya_o_poluchenii_otveta_ot_fns = models.CharField(db_column='ИНФОРМАЦИЯ_О_ПОЛУЧЕНИИ_ОТВЕТА_ОТ_ФНС', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-	vh_nomer_otveta = models.IntegerField(db_column='ВХ.НОМЕР_ОТВЕТА', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	vh_nomer_otveta = models.CharField(db_column='ВХ.НОМЕР_ОТВЕТА', blank=True, null=True,max_length=1000,)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	soderzhanie_otveta = models.CharField(db_column='СОДЕРЖАНИЕ_ОТВЕТА', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	otvet_fns_ob_adrese = models.CharField(db_column='ОТВЕТ_ФНС_ОБ_АДРЕСЕ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove = models.CharField(db_column='ВЗАИМОДЕЙСТВИЕ_С_ФНС_НА_ЕЖЕКВАРТАЛЬНОЙ_ОСНОВЕ', blank=True, null=True, max_length=1000)
@@ -366,11 +366,7 @@ class Document(models.Model):
     #docfile = models.FileField(upload_to=path_and_rename('{}/{}/{}/'.format(now.year, now.month, now.day)))
     docfile = models.FileField(upload_to=path_and_rename(''))
 
-class Update(models.Model):
-	aaa = models.IntegerField()
-	www = models.IntegerField()
-	qqq = models.IntegerField()
-	zzz = models.IntegerField()    
+
 
 
     
