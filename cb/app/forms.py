@@ -148,7 +148,7 @@ class Data111Edit_Raskrytie(forms.ModelForm):
 class Data111Edit_Administrativka(forms.ModelForm):
     class Meta(object):
         model = Data111
-        fields = ['data_protokola','nomer_protokola','statya_koap','data_postanovleniya','nomer_postanovleniya','resultat','razmer_shtrafa']
+        fields = ['data_protokola','nomer_protokola','statya_koap','data_postanovleniya','nomer_postanovleniya','resultat','razmer_shtrafa','data_zaclucheniya_uristam','nomer_zaclucheniya_uristam']
         labels = {
         'data_protokola': 'Дата протокола',
         'nomer_protokola': 'Номер протокола',
@@ -157,6 +157,8 @@ class Data111Edit_Administrativka(forms.ModelForm):
         'nomer_postanovleniya': 'Номер постановления',
         'resultat': 'Результат',
         'razmer_shtrafa': 'Размер штрафа',
+        'data_zaclucheniya_uristam':'Дата заключения юристам',
+        'nomer_zaclucheniya_uristam':'Номер заключения юристам'
         }
             
         
@@ -274,7 +276,13 @@ class Data111FormSelection(forms.ModelForm):
     svedeniya_ob_adrese_ne_dostoverny = forms.BooleanField(label="СВЕДЕНИЯ ОБ АДРЕСЕ НЕ ДОСТОВЕРНЫ", required=False)
     data_vneseniya_zapisi = forms.BooleanField(label="ДАТА ВНЕСЕНИЯ ЗАПИСИ", required=False)
     vzaimodeystvie_s_gos_organami = forms.BooleanField(label="ВЗАИМОДЕЙСТВИЕ С ГОС. ОРГАНАМИ", required=False)
+
+    data_proverki_gosa = forms.BooleanField(label="ДАТА ПРОВЕРКИ ГОСА", required=False)
+
     export = forms.BooleanField(label='Выгрузка в XML', required=False)
+
+    data_zaclucheniya_uristam = forms.BooleanField(label="ДАТА ЗАКЛЮЧЕНИЯ ЮРИСТАМ", required=False)
+    nomer_zaclucheniya_uristam = forms.BooleanField(label="НОМЕР ЗАКЛЮЧЕНИЯ ЮРИСТАМ", required=False)
 
     class Meta:
         model = Data111
