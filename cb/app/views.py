@@ -3,6 +3,12 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
+from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate
+from django.contrib.auth import logout
+
+
 
 from pandas import *
 import pandas as pd
@@ -437,11 +443,31 @@ def selections(request):
 
 def home(request):
     count = Data111.objects.all().count()
-    context = {
-        "count": count,
-    }
-    return render(request, "base.html", context)
 
+    current_user = request.user
+    ident = current_user.id
+      
+
+    context = {"count": count, 'ident':ident}
+
+    if request.method == 'POST':
+      if ident is None:
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            context['login_hello'] = 'Добро пожаловать, {}'.format(username)
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            context['login_error'] = "Пользователь не найден"
+            return render(request,'base.html', context)
+      else:
+        logout(request)
+        return HttpResponseRedirect(reverse('home'))
+    else:
+        return render(request, "base.html", context)
+    
 
 
 

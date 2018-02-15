@@ -108,12 +108,12 @@
 			</ul>
 			<div class="mdc-card__actions mdc-card__actions--full-bleed">
 				<a class="mdc-button mdc-card__action mdc-card__action--button demo-card-action" data-mdc-auto-init="MDCRipple">
-					ВСЕ ПОСЛЕДНИЕ ИЗМЕНЕНИЯ
+					ВСЕ ПОСЛЕДНИЕ ИЗМЕНЕНИЯ 
 					<i class="material-icons" aria-hidden="true">arrow_forward</i>
 				</a>
 			</div>
 		</div>
-		
+		{% if user.is_anonymous %}
 		<button id="click-login" class="mdc-fab material-icons app-fab--absolute md-30"
 				aria-label="Login" data-mdc-auto-init="MDCRipple" onclick="showLogin();">
 			<span class="mdc-fab__icon">account_circle</span>
@@ -128,10 +128,11 @@
 					</h2>
 				</header>
 				<section class="mdc-dialog__body">
-					<form id="auth" method="post" action="">
+					<form id="auth" method="post" action="/index/">
+						{% csrf_token %}
 						<div class="mdc-form-field">
 							<div class="mdc-text-field mdc-text-field--outlined">
-								<input type="text" class="mdc-text-field__input">
+								<input type="text" name="username" id="username" class="mdc-text-field__input">
 								<label class="mdc-text-field__label">Логин</label>
 								<div class="mdc-text-field__outline">
 									<svg><path class="mdc-text-field__outline-path"/></svg>
@@ -142,7 +143,7 @@
 						<br>
 						<div class="mdc-form-field">
 							<div class="mdc-text-field mdc-text-field--outlined">
-								<input type="password" class="mdc-text-field__input" style="letter-spacing:.3em;">
+								<input type="password" name="password" id="password" class="mdc-text-field__input" style="letter-spacing:.3em;">
 								<label class="mdc-text-field__label">Пароль</label>
 								<div class="mdc-text-field__outline">
 									<svg><path class="mdc-text-field__outline-path"/></svg>
@@ -150,16 +151,26 @@
 								<div class="mdc-text-field__idle-outline"></div>
 							</div>
 						</div>
-					</form>
+					
 				</section>
 				<footer class="mdc-dialog__footer">
 					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Отмена</button>
 					<button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Ок</button>
 				</footer>
+				</form>
 			</div>
 			
 			<div class="mdc-dialog__backdrop"></div>
 		</aside>
+		{% else  %}
+		<form id="auth" method="post" action="/index/">
+						{% csrf_token %}
+		<button id="click-logout" type="submit" name="logout" class="mdc-fab material-icons app-fab--absolute md-48"
+				aria-label="Login" data-mdc-auto-init="MDCRipple" onclick="showLogin();">
+			<span class="mdc-fab__icon">account_circle</span>
+		</button>
+	    </form>
+		{% endif %}
     </main>
 
     <!-- Если разместить js-скрипты в конце будет вроде как лучше -->
