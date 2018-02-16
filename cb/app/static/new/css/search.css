@@ -97,12 +97,6 @@ body {
 .mdc-radio .mdc-radio__background:before {
 	background-color: var(--mdc-theme-primary);
 }
-.mdc-snackbar__action-button {
-	color: var(--mdc-theme-primary);
-}
-.mdc-snackbar__text[dir=rtl], [dir=rtl] .mdc-snackbar__text {
-	padding-left: 0;
-}
 .resultsQ-cont {
 	text-align: center;
 	opacity: 0.5;

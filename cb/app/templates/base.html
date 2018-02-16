@@ -108,13 +108,13 @@
 			</ul>
 			<div class="mdc-card__actions mdc-card__actions--full-bleed">
 				<a class="mdc-button mdc-card__action mdc-card__action--button demo-card-action" data-mdc-auto-init="MDCRipple">
-					ВСЕ ПОСЛЕДНИЕ ИЗМЕНЕНИЯ 
+					ВСЕ ПОСЛЕДНИЕ ИЗМЕНЕНИЯ
 					<i class="material-icons" aria-hidden="true">arrow_forward</i>
 				</a>
 			</div>
 		</div>
 		{% if user.is_anonymous %}
-		<button id="click-login" class="mdc-fab material-icons app-fab--absolute md-30"
+		<button class="mdc-fab material-icons app-fab--absolute md-30"
 				aria-label="Login" data-mdc-auto-init="MDCRipple" onclick="showLogin();">
 			<span class="mdc-fab__icon">account_circle</span>
 		</button>
@@ -127,50 +127,64 @@
 						Войти в систему
 					</h2>
 				</header>
-				<section class="mdc-dialog__body">
-					<form id="auth" method="post" action="/index/">
-						{% csrf_token %}
-						<div class="mdc-form-field">
-							<div class="mdc-text-field mdc-text-field--outlined">
-								<input type="text" name="username" id="username" class="mdc-text-field__input">
-								<label class="mdc-text-field__label">Логин</label>
-								<div class="mdc-text-field__outline">
-									<svg><path class="mdc-text-field__outline-path"/></svg>
+				<form id="auth" method="post" action="/index/">
+					<section class="mdc-dialog__body">
+							{% csrf_token %}
+							<div class="mdc-form-field">
+								<div class="mdc-text-field mdc-text-field--outlined">
+									<input id="username" type="text" name="username" class="mdc-text-field__input">
+									<label class="mdc-text-field__label">Логин</label>
+									<div class="mdc-text-field__outline">
+										<svg><path class="mdc-text-field__outline-path"/></svg>
+									</div>
+									<div class="mdc-text-field__idle-outline"></div>
 								</div>
-								<div class="mdc-text-field__idle-outline"></div>
 							</div>
-						</div>
-						<br>
-						<div class="mdc-form-field">
-							<div class="mdc-text-field mdc-text-field--outlined">
-								<input type="password" name="password" id="password" class="mdc-text-field__input" style="letter-spacing:.3em;">
-								<label class="mdc-text-field__label">Пароль</label>
-								<div class="mdc-text-field__outline">
-									<svg><path class="mdc-text-field__outline-path"/></svg>
+							<br>
+							<div class="mdc-form-field">
+								<div class="mdc-text-field mdc-text-field--outlined">
+									<input id="password" type="password" name="password" class="mdc-text-field__input" style="letter-spacing:.3em;">
+									<label class="mdc-text-field__label">Пароль</label>
+									<div class="mdc-text-field__outline">
+										<svg><path class="mdc-text-field__outline-path"/></svg>
+									</div>
+									<div class="mdc-text-field__idle-outline"></div>
 								</div>
-								<div class="mdc-text-field__idle-outline"></div>
 							</div>
-						</div>
-					
-				</section>
-				<footer class="mdc-dialog__footer">
-					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Отмена</button>
-					<button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Ок</button>
-				</footer>
+					</section>
+					<footer class="mdc-dialog__footer">
+						<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Отмена</button>
+						<button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Ок</button>
+					</footer>
 				</form>
 			</div>
-			
 			<div class="mdc-dialog__backdrop"></div>
 		</aside>
 		{% else  %}
 		<form id="auth" method="post" action="/index/">
-						{% csrf_token %}
-		<button id="click-logout" type="submit" name="logout" class="mdc-fab material-icons app-fab--absolute md-48"
-				aria-label="Login" data-mdc-auto-init="MDCRipple" onclick="showLogin();">
-			<span class="mdc-fab__icon">account_circle</span>
-		</button>
+			{% csrf_token %}
+			<button id="logout" type="submit" name="logout" class="mdc-fab material-icons app-fab--absolute md-30"
+					aria-label="Logout" data-mdc-auto-init="MDCRipple">
+				<span class="mdc-fab__icon">exit_to_app</span>
+			</button>
 	    </form>
 		{% endif %}
+		{% if login_error %}
+			<script>setTimeout(function() {callAlert(0)}, 1000);</script>
+		{% endif %}
+		<!-- <div class="login-alert"> -->
+			<!-- <p class="login-text">C возвращением, </p> -->
+		<!-- <div> -->
+		<div class="mdc-snackbar mdc-snackbar--align-end" id="alert"
+			 aria-live="assertive"
+			 aria-atomic="true"
+			 aria-hidden="true">
+			<div class="mdc-snackbar__action-wrapper" dir="rtl">
+				<button type="button" class="mdc-snackbar__action-button"></button>
+			</div>
+			<div class="mdc-snackbar__text" dir="rtl"></div>
+		</div>
+		
     </main>
 
     <!-- Если разместить js-скрипты в конце будет вроде как лучше -->

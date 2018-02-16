@@ -447,7 +447,6 @@ def home(request):
     current_user = request.user
     ident = current_user.id
       
-
     context = {"count": count, 'ident':ident}
 
     if request.method == 'POST':
@@ -457,19 +456,15 @@ def home(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            context['login_hello'] = 'Добро пожаловать, {}'.format(username)
             return HttpResponseRedirect(reverse('home'))
         else:
-            context['login_error'] = "Пользователь не найден"
+            context['login_error'] = True
             return render(request,'base.html', context)
       else:
         logout(request)
         return HttpResponseRedirect(reverse('home'))
     else:
         return render(request, "base.html", context)
-    
-
-
 
 #ОБНОВА БД---------_________-------__________---------_______
 

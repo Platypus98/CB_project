@@ -20,6 +20,28 @@ $(document).ready(function() {
     }, 1000);
 });
 
+function callAlert(ind) {
+	var snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.getElementById('alert'));
+	var data =  {
+        message: "Неверный логин/пароль",
+        timeout: 2500,
+		actionText: 'Ошибка',
+		actionHandler: function () {
+			console.log('[Wrong login] alert is pressed');
+		}
+    };
+	var data1 =  {
+        message: "Вы вышли из системы",
+        timeout: 2500,
+		actionText: 'Уведомление',
+		actionHandler: function () {
+			console.log('');
+		}
+    };
+	var alert_opt = [data,data1];
+	snackbar.show(alert_opt[ind])
+}
+
 function setPicture(demo,demo_value) {
 	var now = new Date();
 	var times = seasonTime(now);

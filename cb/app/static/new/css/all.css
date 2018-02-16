@@ -42,3 +42,9 @@
 .mdc-linear-progress__bar {
 	transition-duration: 0.75s;
 }
+.mdc-snackbar__action-button {
+	color: var(--mdc-theme-primary);
+}
+.mdc-snackbar__text[dir=rtl], [dir=rtl] .mdc-snackbar__text {
+	padding-left: 0;
+}
