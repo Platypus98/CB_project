@@ -456,7 +456,9 @@ def home(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return HttpResponseRedirect(reverse('home'))
+            context['login_ok'] = True
+            context['user_ok'] = user.first_name
+            return render(request,'base.html', context)
         else:
             context['login_error'] = True
             return render(request,'base.html', context)

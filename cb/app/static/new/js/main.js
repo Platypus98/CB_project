@@ -41,6 +41,16 @@ function callAlert(ind) {
 	var alert_opt = [data,data1];
 	snackbar.show(alert_opt[ind])
 }
+//показываем приветствие после успешного входа в аккаунт
+function loginSuccess() {
+	var alerts =document.getElementsByClassName("login-text");
+	$(".login-alert").css('height','100%');
+	$(".login-alert").animate({opacity: '0.7'});
+	setTimeout(function (){$(alerts[0]).animate({opacity: '1',top: '40%'});},500);
+	setTimeout(function (){$(alerts[1]).animate({opacity: '1'});},1000);
+	setTimeout(function (){$(".login-alert").animate({opacity: '0'},200)},2300);
+	setTimeout(function (){$(".login-alert").css('height','0')},2500);
+}
 
 function setPicture(demo,demo_value) {
 	var now = new Date();

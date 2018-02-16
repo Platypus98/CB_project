@@ -172,9 +172,9 @@
 		{% if login_error %}
 			<script>setTimeout(function() {callAlert(0)}, 1000);</script>
 		{% endif %}
-		<!-- <div class="login-alert"> -->
-			<!-- <p class="login-text">C возвращением, </p> -->
-		<!-- <div> -->
+		{% if login_ok %}
+			<script>setTimeout(function() {loginSuccess()}, 500);</script>
+		{% endif %}
 		<div class="mdc-snackbar mdc-snackbar--align-end" id="alert"
 			 aria-live="assertive"
 			 aria-atomic="true"
@@ -183,6 +183,10 @@
 				<button type="button" class="mdc-snackbar__action-button"></button>
 			</div>
 			<div class="mdc-snackbar__text" dir="rtl"></div>
+		</div>
+		<div class="login-alert mdc-toolbar__row">
+			<p class="login-text" style="font-size: 60pt;">C возвращением, {{ user_ok }}</p>
+			<p class="login-text" style="font-size: 40pt;">авторизация прошла успешно</p>
 		</div>
 		
     </main>
