@@ -231,6 +231,7 @@ def selections(request):
         form_filter_dvizhenie_denezhnyh_sredstv = Filter_dvizhenie_denezhnyh_sredstv(request.POST or None)
         form_filter_otchetnost = Filter_otchetnost(request.POST or None)
         form_filter_zadolzhennost_pered_fns = Filter_zadolzhennost_pered_fns(request.POST or None)
+        form_filter_registrator = Filter_registrator(request.POST or None)
 
         context = {
         "form": form,
@@ -242,6 +243,7 @@ def selections(request):
         "form_filter_dvizhenie_denezhnyh_sredstv": form_filter_dvizhenie_denezhnyh_sredstv,
         "form_filter_otchetnost": form_filter_otchetnost,
         "form_filter_zadolzhennost_pered_fns": form_filter_zadolzhennost_pered_fns,
+        "form_filter_registrator": form_filter_registrator,
 
         }
 
@@ -442,6 +444,8 @@ def selections(request):
                 "form_filter_dvizhenie_denezhnyh_sredstv": form_filter_dvizhenie_denezhnyh_sredstv,
                 "form_filter_otchetnost": form_filter_otchetnost,
                 "form_filter_zadolzhennost_pered_fns": form_filter_zadolzhennost_pered_fns,
+                "form_filter_registrator": form_filter_registrator,
+
             }
             
 
