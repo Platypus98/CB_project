@@ -48,3 +48,6 @@
 .mdc-snackbar__text[dir=rtl], [dir=rtl] .mdc-snackbar__text {
 	padding-left: 0;
 }
+.logo-section {
+	height: auto;
+}
