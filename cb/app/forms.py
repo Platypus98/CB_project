@@ -287,10 +287,12 @@ class Data111FormSelection(forms.ModelForm):
 
     data_zaclucheniya_uristam = forms.BooleanField(label="ДАТА ЗАКЛЮЧЕНИЯ ЮРИСТАМ", required=False)
     nomer_zaclucheniya_uristam = forms.BooleanField(label="НОМЕР ЗАКЛЮЧЕНИЯ ЮРИСТАМ", required=False)
+    proverky_gosa_po_raskritiyu = forms.BooleanField(label="ПРОВЕРКИ ГОСА ПО РАСКРЫТИЮ", required=False)
+    proverky_gosa_po_zaprosu = forms.BooleanField(label="ПРОВЕРКИ ГОСА ПО ЗАПРОСУ", required=False)
 
     class Meta:
         model = Data111
-        fields = ['naimenovanie', 'inn', 'ogrn','kpp','data_registracii','opf','cod_emitenta','ustavnoy_capital', 
+        fields = ['proverky_gosa_po_zaprosu','proverky_gosa_po_raskritiyu','naimenovanie', 'inn', 'ogrn','kpp','data_registracii','opf','cod_emitenta','ustavnoy_capital', 
                   'kolichestvo_licevyh_schetov_v_reestre', 'kolichestvo_nominalnyh_derzhateley_v_reestre', 
                   'cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria', 'region', 
                   'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 
@@ -312,6 +314,8 @@ class Data111FormSelection(forms.ModelForm):
                   'data_pisma_v_fns', 'nomer_pisma_v_fns', 'informaciya_o_poluchenii_otveta_ot_fns', 'vh_nomer_otveta', 
                   'soderzhanie_otveta', 'otvet_fns_ob_adrese', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma','svedeniya_ob_adrese_ne_dostoverny', 'data_vneseniya_zapisi', 'vzaimodeystvie_s_gos_organami']
         labels = {
+            "proverky_gosa_po_zaprosu": "Проверки госа по запросу",
+            "proverky_gosa_po_raskritiyu": "Проверки госа по раскрытию",
             "naimenovanie": "Наименование:",
             "inn": "ИНН:",
             "ogrn": "ОГРН:",
@@ -442,7 +446,33 @@ class Filter_registrator(forms.Form):
     egrul = forms.BooleanField(label="ЕГРЮЛ", required=False)
     chranenie_reestra = forms.BooleanField(label="Хранение реестра", required=False)
 
-    
+class Filter_proverka_gosa_po_raskratiu(forms.Form):
+    maxi = forms.BooleanField(label="МАКСИМАЛЬНЫЙ", required=False)
+    mini = forms.BooleanField(label="МИНИМАЛЬНЫЙ", required=False)
+    avr = forms.BooleanField(label="СРЕДНИЙ", required=False)
+    pusto = forms.BooleanField(label="Пустая", required=False)
+
+class Filter_proverky_gosa_po_zaprosu(forms.Form):
+    akt = forms.BooleanField(label="АКТ", required=False)
+    k_proverke = forms.BooleanField(label="К ПРОВЕРКЕ", required=False)
+    pusto = forms.BooleanField(label="Пустая", required=False)
+        
+
+class Filter_nrd(forms.Form):
+    da = forms.BooleanField(label="ДА", required=False)
+    pusto = forms.BooleanField(label="Пустая", required=False)
+
+
+class Filter_proverky_nrd(forms.Form):
+    da = forms.BooleanField(label="ДА", required=False)
+    net_scheta = forms.BooleanField(label="НЕТ СЧЕТА", required=False)
+    pusto = forms.BooleanField(label="Пустая", required=False)
+
+class Filter_oao_na_22062015(forms.Form):
+    da = forms.BooleanField(label="ДА", required=False)
+    pusto = forms.BooleanField(label="Пустая", required=False)
+
+
 class DocumentForm(forms.Form):
     docfile = forms.FileField(label = '', widget=forms.FileInput(attrs ={'accept' : '.xls,.xlsm,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel, application/vnd.ms-excel.sheet.macroEnabled.12'}))
     

@@ -207,7 +207,7 @@ def selections(request):
                   'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 
                   'data_posledney_operacii', 'otchetnost', 'zadolzhennost_pered_fns', 'registrator', 'naimenovanie_registratora', 'data_pisma_po_reestru', 'nomer_pisma_po_reestru', 
                   'data_zaprosa_po_reestru', 'nomer_zaprosa_po_reestru', 'data_predpisanya_po_reestru', 
-                  'nomer_predpisaniya_po_reestru', 'data_provedeniya_gosa', 'data_zaprosa_po_gosa', 
+                  'nomer_predpisaniya_po_reestru', 'data_provedeniya_gosa', 'data_zaprosa_po_gosa', 'proverky_gosa_po_zaprosu','proverky_gosa_po_raskritiyu',
                   'nomer_zaprosa_po_gosa','proverka_1_vipusk', 'data_predpisaniya_po_1_vypusku','nomer_predpisaniya_po_1_vypusku', 
                   'nrd', 'proverki_nrd', 'oao_na_22_06_2015', 'pao_v_silu_priznakov_st30', 'pao_v_silu_priznakov_bez_st30','pao_v_silu_nazvaniya_st30', 
                   'pao_v_silu_nazvaniya_bez_st30','nao_so_st30', 
@@ -232,6 +232,11 @@ def selections(request):
         form_filter_otchetnost = Filter_otchetnost(request.POST or None)
         form_filter_zadolzhennost_pered_fns = Filter_zadolzhennost_pered_fns(request.POST or None)
         form_filter_registrator = Filter_registrator(request.POST or None)
+        form_filter_proverka_gosa_po_raskratiu = Filter_proverka_gosa_po_raskratiu(request.POST or None)
+        form_filter_proverky_gosa_po_zaprosu = Filter_proverky_gosa_po_zaprosu(request.POST or None)
+        form_filter_nrd = Filter_nrd(request.POST or None)
+        form_filter_proverki_nrd= Filter_proverky_nrd(request.POST or None)
+        form_filter_oao_na_22062015 = Filter_oao_na_22062015(request.POST or None)
 
         context = {
         "form": form,
@@ -244,7 +249,11 @@ def selections(request):
         "form_filter_otchetnost": form_filter_otchetnost,
         "form_filter_zadolzhennost_pered_fns": form_filter_zadolzhennost_pered_fns,
         "form_filter_registrator": form_filter_registrator,
-
+        "form_filter_proverka_gosa_po_raskratiu": form_filter_proverka_gosa_po_raskratiu,
+        "form_filter_proverky_gosa_po_zaprosu": form_filter_proverky_gosa_po_zaprosu,
+        "form_filter_nrd": form_filter_nrd,
+        "form_filter_proverki_nrd": form_filter_proverki_nrd,
+        "form_filter_oao_na_22062015": form_filter_oao_na_22062015,
         }
 
 
@@ -334,8 +343,9 @@ def selections(request):
                         pass
                     else:
                       filter_ = Data111.objects.filter(status__in=filter_list)
-                      filter_list = []
                       k=1
+                    filter_list = []
+                      
 
 
                 #Фильтры движение денежных средств
@@ -357,23 +367,25 @@ def selections(request):
                         pass
                     else:
                       filter_ = Data111.objects.filter(dvizhenie_denezhnyh_sredstv__in=filter_list)
-                      filter_list = []
                       k = 1
+                    filter_list = []
+                    
 
                 #Фильтры отчетность
                 if form['otchetnost'].value():
                   if k==1:
                     if form_filter_otchetnost['nepustaia'].value():
-                      filter_ = filter_.filter(otchetnost__isnull=False)
+                      filter_ = filter_.exclude(otchetnost__exact="")
                     elif form_filter_otchetnost['pustaia'].value():
-                      filter_ = filter_.filter(otchetnost__isnull=True)
+                      filter_ = filter_.filter(otchetnost__exact="")
                   else:
                     if form_filter_otchetnost['nepustaia'].value():
-                      filter_ = Data111.objects.filter(otchetnost__isnull=False)
+                      filter_ = Data111.objects.exclude(otchetnost__exact="")
                       k = 1
                     elif form_filter_otchetnost['pustaia'].value():
-                      filter_ = Data111.objects.filter(otchetnost__isnull=True)
+                      filter_ = Data111.objects.filter(otchetnost__exact="")
                       k = 1
+
 
 
 
@@ -381,15 +393,15 @@ def selections(request):
                 if form['zadolzhennost_pered_fns'].value():
                   if k==1:
                     if form_filter_zadolzhennost_pered_fns['nepustaia'].value():
-                      filter_ = filter_.filter(otchetnost__isnull=False)
+                      filter_ = filter_.exclude(zadolzhennost_pered_fns__exact="")
                     elif form_filter_zadolzhennost_pered_fns['pustaia'].value():
-                      filter_ = filter_.filter(otchetnost__isnull=True)
+                      filter_ = filter_.filter(zadolzhennost_pered_fns__exact="")
                   else:
                     if form_filter_zadolzhennost_pered_fns['nepustaia'].value():
-                      filter_ = Data111.objects.filter(otchetnost__isnull=False)
+                      filter_ = Data111.objects.exclude(zadolzhennost_pered_fns__exact="")
                       k = 1
                     elif form_filter_zadolzhennost_pered_fns['pustaia'].value():
-                      filter_ = Data111.objects.filter(otchetnost__isnull=True)
+                      filter_ = Data111.objects.filter(zadolzhennost_pered_fns__exact="")
                       k = 1
 
 
@@ -404,7 +416,7 @@ def selections(request):
                           pass
                       else:
                           filter_ = filter_.filter(registrator__in=filter_list)
-                          filter_list = []
+                      filter_list = []
                     else:
                         for i in ["da", "net", "egrul", "chranenie_reestra"]:
                             if form_filter_registrator[i].value():
@@ -414,7 +426,137 @@ def selections(request):
                         else:
                             filter_ = Data111.objects.filter(registrator__in=filter_list)
                             k = 1
-                            filter_list = []
+                        filter_list = []
+
+                #Фильтры Проверка ГОСА по раскрытию
+                if form["proverky_gosa_po_raskritiyu"].value():
+                  if k==1:
+                    for i in ["maxi", "mini", "avr", "pusto"]:
+                      if form_filter_proverka_gosa_po_raskratiu[i].value():
+                        filter_list.append(form_filter_proverka_gosa_po_raskratiu[i].label)
+                    if filter_list == []:
+                      pass
+                    else:
+                      if "Пустая" in filter_list:
+                        filter_list.remove("Пустая")
+                        filter_list.append("")
+                      filter_ = filter_.filter(proverky_gosa_po_raskritiyu__in=filter_list)
+                    filter_list = []
+                  else:
+                    for i in ["maxi", "mini", "avr", "pusto"]:
+                      if form_filter_proverka_gosa_po_raskratiu[i].value():
+                        filter_list.append(form_filter_proverka_gosa_po_raskratiu[i].label)
+                    if filter_list == []:
+                      pass
+                    else:
+                      if "Пустая" in filter_list:
+                        filter_list.remove("Пустая")
+                        filter_list.append("")
+                      filter_ = Data111.objects.filter(proverky_gosa_po_raskritiyu__in=filter_list)
+                      k = 1
+                    filter_list = []
+
+
+                #Фильтры Проверка ГОСА по запросу
+                if form["proverky_gosa_po_zaprosu"].value():
+                  if k==1:
+                    for i in ["akt", "k_proverke", "pusto"]:
+                      if form_filter_proverky_gosa_po_zaprosu[i].value():
+                        filter_list.append(form_filter_proverky_gosa_po_zaprosu[i].label)
+                    if filter_list == []:
+                      pass
+                    else:
+                      if "Пустая" in filter_list:
+                        filter_list.remove("Пустая")
+                        filter_list.append("")
+                      filter_ = filter_.filter(proverky_gosa_po_zaprosu__in=filter_list)
+                    filter_list = []
+                  else:
+                    for i in ["akt", "k_proverke", "pusto"]:
+                      if form_filter_proverky_gosa_po_zaprosu[i].value():
+                        filter_list.append(form_filter_proverky_gosa_po_zaprosu[i].label)
+                    if filter_list == []:
+                      pass
+                    else:
+                      if "Пустая" in filter_list:
+                        filter_list.remove("Пустая")
+                        filter_list.append("")
+                      filter_ = Data111.objects.filter(proverky_gosa_po_zaprosu__in=filter_list)
+                      k = 1
+                    filter_list = []
+
+                #Фильтр НРД
+                if form['nrd'].value():
+                  if k ==1:
+                    if form_filter_nrd['da'].value():
+                      filter_ = filter_.filter(nrd__exact="ДА")
+                    elif form_filter_nrd['pusto'].value():
+                      filter_ = filter_.filter(nrd__exact="")
+                  else:
+                    if form_filter_nrd['da'].value():
+                      filter_ = Data111.objects.filter(nrd__exact="ДА")
+                      k = 1
+                    elif form_filter_nrd['pusto'].value():
+                      filter_ = Data111.objects.filter(nrd__exact="")
+                      k = 1
+
+                #Фильтры проверки НРД
+                if form['proverki_nrd'].value():
+                  if k ==1:
+                    for i in ["da", "net_scheta", "pusto"]:
+                      if form_filter_proverki_nrd[i].value():
+                        filter_list.append(form_filter_proverki_nrd[i].label)
+                    if filter_list == []:
+                      pass
+                    else:
+                      if "Пустая" in filter_list:
+                        filter_list.remove("Пустая")
+                        filter_list.append("")
+                      filter_ = filter_.filter(proverki_nrd__in=filter_list)
+                    filter_list = []
+                  else:
+                    for i in ["da", "net_scheta", "pusto"]:
+                      if form_filter_proverki_nrd[i].value():
+                        filter_list.append(form_filter_proverki_nrd[i].label)
+                    if filter_list == []:
+                      pass
+                    else:
+                      if "Пустая" in filter_list:
+                        filter_list.remove("Пустая")
+                        filter_list.append("")
+                      filter_ = Data111.objects.filter(proverki_nrd__in=filter_list)
+                      k = 1
+                    filter_list = []
+
+                #Фильтры ОАО на 22.06.2015
+                if form["oao_na_22_06_2015"].value():
+                  if k == 1:
+                    for i in ["da","pusto"]:
+                      if form_filter_oao_na_22062015[i].value():
+                        filter_list.append(form_filter_oao_na_22062015[i].label)
+                    if filter_list == []:
+                      pass
+                    else:
+                      if "Пустая" in filter_list:
+                        filter_list.remove("Пустая")
+                        filter_list.append("")
+                      filter_ = filter_.filter(oao_na_22_06_2015__in=filter_list)
+                    filter_list = []
+                  else:
+                    for i in ["da","pusto"]:
+                      if form_filter_oao_na_22062015[i].value():
+                        filter_list.append(form_filter_oao_na_22062015[i].label)
+                    if filter_list == []:
+                      pass
+                    else:
+                      if "Пустая" in filter_list:
+                        filter_list.remove("Пустая")
+                        filter_list.append("")
+                      filter_ = Data111.objects.filter(oao_na_22_06_2015__in=filter_list)
+                      k = 1
+                    filter_list = []
+
+
 
 
 
@@ -445,7 +587,11 @@ def selections(request):
                 "form_filter_otchetnost": form_filter_otchetnost,
                 "form_filter_zadolzhennost_pered_fns": form_filter_zadolzhennost_pered_fns,
                 "form_filter_registrator": form_filter_registrator,
-
+                "form_filter_proverka_gosa_po_raskratiu": form_filter_proverka_gosa_po_raskratiu,
+                "form_filter_proverky_gosa_po_zaprosu": form_filter_proverky_gosa_po_zaprosu,
+                "form_filter_nrd": form_filter_nrd,
+                "form_filter_proverki_nrd": form_filter_proverki_nrd,
+                "form_filter_oao_na_22062015": form_filter_oao_na_22062015,
             }
             
 

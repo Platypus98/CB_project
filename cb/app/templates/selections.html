@@ -213,7 +213,7 @@
                    <h4>Корп. контроль:</h4>	
 
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 320px">
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 420px">
 				    {{form.registrator|bootstrap}}
 				    <div class="dropdown">
       						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
@@ -239,16 +239,47 @@
 				    </div>
 
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 320px">
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 420px">
 				    {{form.nomer_zaprosa_po_reestru|bootstrap}}
 				    {{form.data_predpisanya_po_reestru|bootstrap}}
 				    {{form.nomer_predpisaniya_po_reestru|bootstrap}}
+
+				    {{form.proverky_gosa_po_raskritiyu|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_proverka_gosa_po_raskratiu.maxi|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_proverka_gosa_po_raskratiu.mini|bootstrap }}</li>
+						  <li style="margin-left: 50px;">{{ form_filter_proverka_gosa_po_raskratiu.avr|bootstrap }}</li>
+						  <li style="margin-left: 50px;">{{ form_filter_proverka_gosa_po_raskratiu.pusto|bootstrap }}</li>
+
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
+				    {{form.proverky_gosa_po_zaprosu|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_proverky_gosa_po_zaprosu.akt|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_proverky_gosa_po_zaprosu.k_proverke|bootstrap }}</li>
+						  <li style="margin-left: 50px;">{{ form_filter_proverky_gosa_po_zaprosu.pusto|bootstrap }}</li>
+						  
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
 				    {{form.data_provedeniya_gosa|bootstrap}}
 				    <br>
-				    {{form.data_zaprosa_po_gosa|bootstrap}}
+				    
 				    </div>
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 320px">
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 420px">
+				    {{form.data_zaprosa_po_gosa|bootstrap}}
 				    {{form.nomer_zaprosa_po_gosa|bootstrap}}
 				    
 				    {{form.proverka_1_vipusk|bootstrap}}
@@ -256,13 +287,51 @@
 				    {{form.data_predpisaniya_po_1_vypusku|bootstrap}}
 				    {{form.nomer_predpisaniya_po_1_vypusku|bootstrap}}
 				    {{form.nrd|bootstrap}}
+				     <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_nrd.da|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_nrd.pusto|bootstrap }}</li>
+						  
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
 				    
 				    </div>
 
-				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 320px">
+				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 420px">
 				    {{form.nomer_predpisaniya_po_1_vypusku|bootstrap}}
 				    {{form.proverki_nrd|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_proverki_nrd.da|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_proverki_nrd.net_scheta|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_proverki_nrd.pusto|bootstrap }}</li>
+						  
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
 				    {{form.oao_na_22_06_2015|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_oao_na_22062015.da|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_oao_na_22062015.pusto|bootstrap }}</li>
+				       
+						  
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
 				    {{form.data_proverki_gosa|bootstrap}}
 				    <br><br><br><br>
 				    <br><br><br><br>
