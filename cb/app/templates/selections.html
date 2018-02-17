@@ -215,6 +215,20 @@
 
 				    <div class="col-sm-3 well col-sm-offset-0"  style="height: 320px">
 				    {{form.registrator|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu">
+				        <li style="margin-left: 50px;">{{ form_filter_registrator.da|bootstrap }}</li>
+				        <li style="margin-left: 50px;">{{ form_filter_registrator.net|bootstrap }}</li>
+						  <li style="margin-left: 50px;">{{ form_filter_registrator.egrul|bootstrap }}</li>
+						  <li style="margin-left: 50px;">{{ form_filter_registrator.chranenie_reestra|bootstrap }}</li>
+
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
 				    {{form.naimenovanie_registratora|bootstrap}}
 				    {{form.data_pisma_po_reestru|bootstrap}}
 				    <br>

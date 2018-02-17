@@ -263,13 +263,16 @@ def selections(request):
                 c = ['row.'+x for x in b]
 
 
-                #Фильтры ОПФ
+                 #Фильтры ОПФ
                 if form['opf'].value():
                   for i in ['ao', 'aozt', 'aoot', 'zao', 'nao', 'oao', 'pao']:
                     if form_filter_opf[i].value():
                       filter_list.append(form_filter_opf[i].label)
-                  filter_ = Data111.objects.filter(opf__in=filter_list)
-                  k = 1
+                  if filter_list == []:
+                    pass
+                  else:
+                    filter_ = Data111.objects.filter(opf__in=filter_list)
+                    k = 1
 
                 filter_list = []
                 #Фильтры количество лицевых счетов
@@ -293,15 +296,21 @@ def selections(request):
                     for i in ['moskva', 'moskovskaya']:
                       if form_filter_region[i].value():
                         filter_list.append(form_filter_region[i].label)
-                    filter_ = filter_.filter(region__in=filter_list)
+                    if filter_list==[]:
+                        pass
+                    else:
+                      filter_ = filter_.filter(region__in=filter_list)
                     filter_list = []
                   else:
                     for i in ['moskva', 'moskovskaya']:
                       if form_filter_region[i].value():
                         filter_list.append(form_filter_region[i].label)
-                    filter_ = Data111.objects.filter(region__in=filter_list)
+                    if filter_list == []:
+                        pass
+                    else:
+                      filter_ = Data111.objects.filter(region__in=filter_list)
+                      k = 1
                     filter_list = []
-                    k=1
 
 
                 #Фильтры статус
@@ -310,32 +319,44 @@ def selections(request):
                     for i in ['bankrotstvo','deistvyushaya', 'nahoditca_v_processe_reorganizacii_v_forme_videlenya', 'nahoditca_v_processe_reorganizacii_v_forme_videlenya_osyshestvlyaemoe_odnovremenno_s_videleniem', 'nahoditca_v_processe_reorganizacii_v_forme_preobrazovanya', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_drygomy_ul', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_nemy_drygih_ul', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_osychestvlyaemoy_odnovremenno_s_videleniem', 'nahoditca_v_processe_reorganizacii_v_forme_razdelenya_osychestvlyaemoy_odnovremenno_s_prisoedineniem', 'nahoditca_v_processe_reorganizacii_v_forme_sliyaniya', 'nahoditca_v_processe_reorganizacii_v_forme_razdelenya', 'nahoditca_v_stadii_likvidacii', 'prinyato_reshenie_o_predostoyashem_iskluchenii_nedeystvyushego_ul_iz_egrul']:
                       if form_filter_status[i].value():
                         filter_list.append(form_filter_status[i].label)
-                    filter_ = filter_.filter(status__in=filter_list)
+                    if filter_list == []:
+                        pass
+                    else:
+                      filter_ = filter_.filter(status__in=filter_list)
                     filter_list = []
                   else:
                     for i in ['bankrotstvo','deistvyushaya', 'nahoditca_v_processe_reorganizacii_v_forme_videlenya', 'nahoditca_v_processe_reorganizacii_v_forme_videlenya_osyshestvlyaemoe_odnovremenno_s_videleniem', 'nahoditca_v_processe_reorganizacii_v_forme_preobrazovanya', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_drygomy_ul', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_k_nemy_drygih_ul', 'nahoditca_v_processe_reorganizacii_v_forme_prisoedinenya_osychestvlyaemoy_odnovremenno_s_videleniem', 'nahoditca_v_processe_reorganizacii_v_forme_razdelenya_osychestvlyaemoy_odnovremenno_s_prisoedineniem', 'nahoditca_v_processe_reorganizacii_v_forme_sliyaniya', 'nahoditca_v_processe_reorganizacii_v_forme_razdelenya', 'nahoditca_v_stadii_likvidacii', 'prinyato_reshenie_o_predostoyashem_iskluchenii_nedeystvyushego_ul_iz_egrul']:
                       if form_filter_status[i].value():
                         filter_list.append(form_filter_status[i].label)
-                    filter_ = Data111.objects.filter(status__in=filter_list)
-                    filter_list = []
-                    k=1
-                    
-              
+                    if filter_list == []:
+                        pass
+                    else:
+                      filter_ = Data111.objects.filter(status__in=filter_list)
+                      filter_list = []
+                      k=1
+
+
                 #Фильтры движение денежных средств
                 if form['dvizhenie_denezhnyh_sredstv'].value():
                   if k==1:
                     for i in ['da', 'net']:
                       if form_filter_dvizhenie_denezhnyh_sredstv[i].value():
                         filter_list.append(form_filter_dvizhenie_denezhnyh_sredstv[i].label)
-                    filter_ = filter_.filter(dvizhenie_denezhnyh_sredstv__in=filter_list)
+                    if filter_list == []:
+                        pass
+                    else:
+                      filter_ = filter_.filter(dvizhenie_denezhnyh_sredstv__in=filter_list)
                     filter_list = []
                   else:
                     for i in ['da', 'net']:
                       if form_filter_dvizhenie_denezhnyh_sredstv[i].value():
                         filter_list.append(form_filter_dvizhenie_denezhnyh_sredstv[i].label)
-                    filter_ = Data111.objects.filter(dvizhenie_denezhnyh_sredstv__in=filter_list)
-                    filter_list = []
-                    k = 1
+                    if filter_list == []:
+                        pass
+                    else:
+                      filter_ = Data111.objects.filter(dvizhenie_denezhnyh_sredstv__in=filter_list)
+                      filter_list = []
+                      k = 1
 
                 #Фильтры отчетность
                 if form['otchetnost'].value():
@@ -370,10 +391,36 @@ def selections(request):
                       k = 1
 
 
+                #Корп контроль
+                #Фильтры Регистратор
+                if form['registrator'].value():
+                    if k==1:
+                      for i in ["da", "net", "egrul", "chranenie_reestra"]:
+                          if form_filter_registrator[i].value():
+                            filter_list.append(form_filter_registrator[i].label)
+                      if filter_list == []:
+                          pass
+                      else:
+                          filter_ = filter_.filter(registrator__in=filter_list)
+                          filter_list = []
+                    else:
+                        for i in ["da", "net", "egrul", "chranenie_reestra"]:
+                            if form_filter_registrator[i].value():
+                                filter_list.append(form_filter_registrator[i].label)
+                        if filter_list == []:
+                            pass
+                        else:
+                            filter_ = Data111.objects.filter(registrator__in=filter_list)
+                            k = 1
+                            filter_list = []
 
 
 
-                if k==1:     
+
+
+
+
+                if k==1:
                   table_rows = filter_.values(*b)
                 else:
                   table_rows = Data111.objects.all().values(*b)

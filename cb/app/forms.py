@@ -436,7 +436,13 @@ class Filter_zadolzhennost_pered_fns(forms.Form):
     nepustaia = forms.BooleanField(label="Непустая", required=False)
     pustaia = forms.BooleanField(label="Пустая", required=False)
 
+class Filter_registrator(forms.Form):
+    da = forms.BooleanField(label="ДА", required=False)
+    net = forms.BooleanField(label="НЕТ", required=False)
+    egrul = forms.BooleanField(label="ЕГРЮЛ", required=False)
+    chranenie_reestra = forms.BooleanField(label="Хранение реестра", required=False)
 
+    
 class DocumentForm(forms.Form):
     docfile = forms.FileField(label = '', widget=forms.FileInput(attrs ={'accept' : '.xls,.xlsm,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel, application/vnd.ms-excel.sheet.macroEnabled.12'}))
     
