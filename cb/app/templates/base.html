@@ -119,7 +119,7 @@
 			<span class="mdc-fab__icon">account_circle</span>
 		</button>
 		
-		<aside class="mdc-dialog" role="alertdialog"
+		<aside class="mdc-dialog login-dialog" role="alertdialog"
 			   aria-labelledby="my-mdc-dialog-label">
 			<div class="mdc-dialog__surface">
 				<header class="mdc-dialog__header">
@@ -128,54 +128,85 @@
 					</h2>
 				</header>
 				<form id="auth" method="post" action="/index/">
+				{% csrf_token %}
 					<section class="mdc-dialog__body">
-							{% csrf_token %}
-							<div class="mdc-form-field">
-								<div class="mdc-text-field mdc-text-field--outlined">
-									<input id="username" type="text" name="username" class="mdc-text-field__input">
-									<label class="mdc-text-field__label">Логин</label>
-									<div class="mdc-text-field__outline">
-										<svg><path class="mdc-text-field__outline-path"/></svg>
-									</div>
-									<div class="mdc-text-field__idle-outline"></div>
+						<div class="mdc-form-field">
+							<div class="mdc-text-field mdc-text-field--outlined login-field">
+								<input required id="username" type="text" name="username" class="mdc-text-field__input" autocomplete="off">
+								<label class="mdc-text-field__label">Логин</label>
+								<div class="mdc-text-field__outline">
+									<svg><path class="mdc-text-field__outline-path"/></svg>
 								</div>
+								<div class="mdc-text-field__idle-outline"></div>
 							</div>
-							<br>
-							<div class="mdc-form-field">
-								<div class="mdc-text-field mdc-text-field--outlined">
-									<input id="password" type="password" name="password" class="mdc-text-field__input" style="letter-spacing:.3em;">
-									<label class="mdc-text-field__label">Пароль</label>
-									<div class="mdc-text-field__outline">
-										<svg><path class="mdc-text-field__outline-path"/></svg>
-									</div>
-									<div class="mdc-text-field__idle-outline"></div>
+						</div>
+						<br>
+						<div class="mdc-form-field">
+							<div class="mdc-text-field mdc-text-field--outlined login-field">
+								<input required id="password" type="password" name="password" class="mdc-text-field__input" style="letter-spacing:.3em;">
+								<label class="mdc-text-field__label">Пароль</label>
+								<div class="mdc-text-field__outline">
+									<svg><path class="mdc-text-field__outline-path"/></svg>
 								</div>
+								<div class="mdc-text-field__idle-outline"></div>
 							</div>
+						</div>
+						<br>
+						<p class="mdc-text-field-helper-text must-fill">
+            				Поля должны быть заполнены
+          				</p>
 					</section>
+				
 					<footer class="mdc-dialog__footer">
 						<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Отмена</button>
-						<button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Ок</button>
+						<button type="button" class="mdc-button mdc-dialog__footer__button" onclick="validateAuth();">Ок</button>
 					</footer>
 				</form>
 			</div>
 			<div class="mdc-dialog__backdrop"></div>
 		</aside>
 		{% else  %}
-		<form id="auth" method="post" action="/index/">
-			{% csrf_token %}
-			<button id="logout" type="submit" name="logout" class="mdc-fab material-icons app-fab--absolute md-30"
-					aria-label="Logout" data-mdc-auto-init="MDCRipple">
-				<span class="mdc-fab__icon">exit_to_app</span>
-			</button>
-	    </form>
+		<div class="user-info mdc-elevation--z5 mdc-toolbar__row">
+			<p class="us_inf-name">Вы вошли как <span>{{ name }}</span></p>
+			<span class="us_inf-split"></span>
+			<div class="us_inf-buttons">
+				<button type="button" class="mdc-button user-settings" data-mdc-auto-init="MDCRipple">
+          			<i class="material-icons mdc-button__icon md-24">settings</i>
+            		Настройки
+         		</button>
+        		<button type="button" class="mdc-button mdc-button--unelevated exit" data-mdc-auto-init="MDCRipple" onclick="checkLogout();">
+          			<i class="material-icons mdc-button__icon md-24">exit_to_app</i>
+        			Выход
+        		</button>
+			</div>
+		</div>
+	    <aside id="my-mdc-dialog" class="mdc-dialog logout-dialog" role="alertdialog"
+  			   aria-labelledby="my-mdc-dialog-label">		
+  			<div class="mdc-dialog__surface">
+    			<header class="mdc-dialog__header">
+      				<h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+    					Вы действительно хотите выйти из системы?
+  					</h2>
+    			</header>
+    			<form id="logout" method="post" action="/index/">
+				{% csrf_token %}
+    				<footer class="mdc-dialog__footer">
+						<button type="button" class="mdc-button logout-no mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Нет</button>
+      					<button type="button" onclick="setTimeout(function(){$('#logout').submit()},400);"
+      							class="mdc-button logout-yes mdc-dialog__footer__button mdc-dialog__footer__button--accept">Да</button>
+    				</footer>
+				</form>
+  			</div>
+  			<div class="mdc-dialog__backdrop"></div>
+		</aside>
+
 		{% endif %}
+		
 		{% if login_error %}
 			<script>setTimeout(function() {callAlert(0)}, 1000);</script>
 		{% endif %}
-		{% if login_ok %}
-			<script>setTimeout(function() {loginSuccess()}, 500);</script>
-		{% endif %}
-		<div class="mdc-snackbar mdc-snackbar--align-end" id="alert"
+		
+		<div class="mdc-snackbar" id="alert"
 			 aria-live="assertive"
 			 aria-atomic="true"
 			 aria-hidden="true">
@@ -184,9 +215,10 @@
 			</div>
 			<div class="mdc-snackbar__text" dir="rtl"></div>
 		</div>
+		
 		<div class="login-alert mdc-toolbar__row">
-			<p class="login-text" style="font-size: 60pt;">C возвращением, {{ user_ok }}</p>
-			<p class="login-text" style="font-size: 40pt;">авторизация прошла успешно</p>
+			<p class="login-text" style="font-size: 8vh;">C возвращением, {{ user_ok }}</p>
+			<p class="login-text" style="font-size: 4vh;">авторизация прошла успешно</p>
 		</div>
 		
     </main>
@@ -196,6 +228,9 @@
     <script src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
     <script src="{% static 'new/js/material-components-web.min.js' %}"></script>
 	<script src="{% static 'new/js/main.js' %}"></script>
+	{% if login_ok %}
+		<script>loginSuccess()</script>
+	{% endif %}
 </body>
 
 </html>

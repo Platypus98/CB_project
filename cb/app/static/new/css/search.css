@@ -26,6 +26,7 @@ body {
     margin-top: -20px;
     height: 40px;
 	position: absolute;
+	font-size: .925rem;
 }
 .form-cont {
 	margin: 25px auto;
@@ -96,6 +97,9 @@ body {
 }
 .mdc-radio .mdc-radio__background:before {
 	background-color: var(--mdc-theme-primary);
+}
+.mdc-snackbar__text[dir=rtl], [dir=rtl] .mdc-snackbar__text {
+	padding-left: 0;
 }
 .resultsQ-cont {
 	text-align: center;

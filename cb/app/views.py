@@ -446,8 +446,10 @@ def home(request):
 
     current_user = request.user
     ident = current_user.id
-      
     context = {"count": count, 'ident':ident}
+    
+    if ident is not None:    
+        context['name'] = current_user.username
 
     if request.method == 'POST':
       if ident is None:
@@ -458,6 +460,7 @@ def home(request):
             auth.login(request, user)
             context['login_ok'] = True
             context['user_ok'] = user.first_name
+            context['name'] = user.username
             return render(request,'base.html', context)
         else:
             context['login_error'] = True

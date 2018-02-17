@@ -48,8 +48,8 @@ function loginSuccess() {
 	$(".login-alert").animate({opacity: '0.7'});
 	setTimeout(function (){$(alerts[0]).animate({opacity: '1',top: '40%'});},500);
 	setTimeout(function (){$(alerts[1]).animate({opacity: '1'});},1000);
-	setTimeout(function (){$(".login-alert").animate({opacity: '0'},200)},2300);
-	setTimeout(function (){$(".login-alert").css('height','0')},2500);
+	setTimeout(function (){$(".login-alert").animate({opacity: '0'},200)},2800);
+	setTimeout(function (){$(".login-alert").css('height','0')},3000);
 }
 
 function setPicture(demo,demo_value) {
@@ -132,7 +132,7 @@ function checkTime(i) {
 
 // показываем диалоговое окно для входа в аккаунт
 function showLogin() {
-	var loginAlert = mdc.dialog.MDCDialog.attachTo(document.querySelector('.mdc-dialog'));
+	var loginAlert = mdc.dialog.MDCDialog.attachTo(document.querySelector('.login-dialog'));
 	loginAlert.show();
 	setTimeout(function(){initLogin()},100)
 }
@@ -142,6 +142,33 @@ function initLogin() {
 	var tf = $(".mdc-text-field");
 	for (var i=0;i<tf.length;i++) {
 		mdc.textField.MDCTextField.attachTo(tf[i])
+	}
+}
+// похожее диалоговое окно, только для проверки желания разлогиниться
+function checkLogout() {
+	var logoutAlert = mdc.dialog.MDCDialog.attachTo(document.querySelector('.logout-dialog'));
+	logoutAlert.show()
+}
+
+// не даём пользователю отправлять форму входа пустой
+function validateAuth() {
+	var form = document.getElementById("auth");
+	var fields = $(".login-field input");
+	var help_t = $(".must-fill");
+	var invalid = false;
+	for (var x=0;x < fields.length;x++) {
+		if (fields[x].value == "") {
+			$(fields[x]).parent('div').addClass("mdc-text-field--invalid");
+			invalid = true
+		} else {
+			$(fields[x]).parent('div').removeClass("mdc-text-field--invalid");
+		}
+	}
+	if (!invalid) {
+		help_t.animate({opacity: '0'},200);
+		setTimeout(function(){form.submit()},400)
+	} else {
+		help_t.animate({opacity: '1'},200)
 	}
 }
 
