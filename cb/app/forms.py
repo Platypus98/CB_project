@@ -2,6 +2,8 @@ from django import forms
 
 from .models import *
 
+from django.forms.widgets import DateInput
+
 class limitForm(forms.Form):
     CHOICES=[('20','20'),('30','30'),('50','50')]
     values = forms.ChoiceField(widget=forms.RadioSelect(attrs={'class': 'mdc-radio__native-control'}), choices=CHOICES, initial='50')
@@ -439,6 +441,14 @@ class Filter_otchetnost(forms.Form):
 class Filter_zadolzhennost_pered_fns(forms.Form):
     nepustaia = forms.BooleanField(label="Непустая", required=False)
     pustaia = forms.BooleanField(label="Пустая", required=False)
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
+class Filter_data_zaprosa_po_reestru(forms.Form):
+    from_ = forms.BooleanField(label = 'Начальная дата', widget = DateInput())
+    to = forms.BooleanField(label='Конечная дата', widget=DateInput())
 
 class Filter_registrator(forms.Form):
     da = forms.BooleanField(label="ДА", required=False)

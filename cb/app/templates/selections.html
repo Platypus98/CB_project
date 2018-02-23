@@ -235,6 +235,19 @@
 				    {{form.nomer_pisma_po_reestru|bootstrap}}
 				    <br>
 				    {{form.data_zaprosa_po_reestru|bootstrap}}
+				    <div class="dropdown">
+      						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+				        Фильтры
+				        <b class="caret"></b>
+				      </a>
+				      <ul class="dropdown-menu" style="padding-right: 50px;">
+				        <li style="margin-left: 50px;">{{form_filter_data_zaprosa_po_reestru|bootstrap}}</li>
+				         {{date_str_from}}
+
+				        <li class="divider"></li>
+				      </ul>
+				    </div>
+				    
 				    
 				    </div>
 
