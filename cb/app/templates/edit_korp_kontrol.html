@@ -43,224 +43,149 @@
       </nav>
       <div class="title" style="text-align: center; padding-bottom: 20px;">Корп контроль "{{ title }}"</div>
     
-          {{lll}}
 
         <div class="row">
         
 
 
                   <div class="jumbotron" >
-          <div id="pannel" >
               <h2>Контроль за передачей реестра акционеров регистратору</h2>
                 <div class="row">
-                  <form method="post"  action="">
-                     {% csrf_token %}
+                	{% csrf_token %}
+                  <form method="post" id="post-form" action="">
+                     
                     <div class="col-sm-3">
+
                      <div class="form-check form-check-inline">
                      {{form.registrator1|bootstrap}}
                      </div>
-
-                    <input class='btn btn-primary'  type="submit" value="Сохранить" />
+                   
+                   
                     </div>
                     <div class="col-sm-6">
-                      {% if naimenovanie_reg %}
+
+
+                    <div id="div1" style="display: block;">
                       {{form.naimenovanie_registratora|bootstrap}}
-                      {% endif %}
                     </div>
+          
+
+
+          <script type="text/javascript">
+                    document.getElementById("id_registrator1_0").onchange = function() {show()};
+                    document.getElementById("id_registrator1_1").onchange = function() {shownone()};
+                    document.getElementById("id_registrator1_2").onchange = function() {show()};
+                    document.getElementById("id_registrator1_3").onchange = function() {show()};
+
+
+					window.onload;
+					document.addEventListener('DOMContentLoaded', function(){
+
+				    var inp = document.getElementsByName('registrator1');
+				    for (var i = 0; i < inp.length; i++) 
+				    {
+				        if (inp[i].type == "radio" && inp[i].checked) 
+				        {
+
+				    var evt = document.createEvent("HTMLEvents");
+				    evt.initEvent("change", false, true);
+				    inp[i].dispatchEvent(evt);
+				        }
+				    }
+						});
+
+ 			    	function show(){
+							  document.getElementById('div1').style.display = 'inline';
+							  document.getElementById('div2').style.display = 'none';
+							}
+
+					function shownone(){
+							  document.getElementById('div1').style.display = 'none';
+							  document.getElementById('div2').style.display = 'inline';
+ 
+							} 		 
+					</script>                           
+                      
                 </div> 
-
-  {% if noblock %}
-              <h2>Регистратор - НЕТ</h2>
-              <div class="row">
-            {% if index %}            
-                <div class="col-sm-3">
-               
-              {{form.netsami|bootstrap}}
-              <input class='btn btn-primary'  type="submit" value="Сохранить" />
-               </div>
-            {% endif %}
-
-
-           
-           {% if net %}
-            <div class="col-sm-2" style="width: 165px">
-               
-              {{form.netsami|bootstrap}}
-              {{form.data_pisma_po_reestru|bootstrap}}
-              {{form.data_zaprosa_po_reestru|bootstrap}}
-              <input class='btn btn-primary' style = "margin-top: 4px" type="submit" value="Сохранить" />
-
-            </div>
-              <div class="col-sm-3">
-             <br><br><br><br>
-              {{form.nomer_pisma_po_reestru|bootstrap}}
-              <br>
-              
-              {{form.nomer_zaprosa_po_reestru|bootstrap}}
-
-        <script>
-
-      			document.getElementById("id_nomer_zaprosa_po_reestru").onkeyup = function() {myFunction()};
-      			
-            window.onload;
-            document.addEventListener("DOMContentLoaded", myFunction);
-				
-            function myFunction()   {
-                   var hasValue = document.getElementById('id_nomer_zaprosa_po_reestru').value;
-                   if (!!hasValue) {
-                   document.getElementById('otslezhivanie1').style.display = 'inline';
-                   } else {
-                   document.getElementById('otslezhivanie1').style.display = 'none';
-                   };
-
-       			                        }
-		    </script>
-
-              <br>
-             </div>
-             
-
-
-                          <div class="col-sm-6" id="otslezhivanie1" style="display:none;" >
-                           <div id="accordion" style = "margin-top: 5px">
-                        <h2>Отслеживание</h2>
-                          <div class="row">
-
-                          <label for="usr">Дата получения:</label>
-                          <input type="text" class="form-control" id="usr">
-
-                          <label for="usr">Срок исполнения:</label>
-                          <input type="text" class="form-control" id="usr">
-
-                          <label for="usr">Дата окончания срока:</label>
-                          <input type="text" class="form-control" id="usr">
-                          <br>
-
-                          
-                          <div class="input-group">
-                              <span class="input-group-addon">
-                                <label for="usr">Возврат:</label>
-                                <input type="checkbox" aria-label="..." id="usr">
-                              </span>
-                              <input type="text" class="form-control" aria-label="..." placeholder="Дата возврата">
-                          </div> 
-
-                          <label for="usr">Продление срока:</label>
-                          <input type="text" class="form-control" id="usr">
-
-                          
-
-                          </div>
-                     </div>         
-                   </div> 
-
-                    </div>
-                </div>
-    
-           {% endif %}
-
-
-
-
-
-           {% if sami %}
-              <div class="col-sm-2" style="width: 165px">
-               
-              {{form.netsami|bootstrap}}
-              {{form.data_predpisanya_po_reestru|bootstrap}}
-             <input class='btn btn-primary' style = "margin-top: 4px" type="submit" value="Сохранить" />
-
-
-             </div>
-              <div class="col-sm-3">
-             <br><br><br>
-              {{form.nomer_predpisaniya_po_reestru|bootstrap}}
-               <script>
 
             
 
-			document.getElementById("id_nomer_predpisaniya_po_reestru").oninput = function() {myFunction1()};
-
-			window.onload;
-
-            document.addEventListener("DOMContentLoaded", myFunction1);
-
-				function myFunction1()   {
-             var hasValue = document.getElementById('id_nomer_predpisaniya_po_reestru').value;
-             if (!!hasValue) {
-             document.getElementById('otslezhivanie2').style.display = 'inline';
-             } else {
-             document.getElementById('otslezhivanie2').style.display = 'none';
-             };
-
- 			                        }
-
- 			
-
-		      </script>
-
-
-              <br>
-             </div>
-
+<div id="div2" style="display: none;">
+  <br><br><br><br><br><br><br><br><br>
+          
+          <div class="row">     
+               <h3>Запрос о предоставлении информации</h3>
    
+                    
+                {{form1.zapros_o_predostavlenii_informacii|bootstrap}}
+                    
+               <div class="col-sm-3 panel panel-default" id="div3" style="display:none">
+                <br>
+               	
+              
+               </div>
+               
 
-                          <div class="col-sm-6" id="otslezhivanie2" style="display:none;">
-                           <div id="accordion" style = "margin-top: 5px">
-                        <h2>Отслеживание</h2>
-                          <div class="row" >
+               <h3>Предписание об истребовании документов</h3>
+               
+                {{form1.predpisanie_ob_istrebovanii_documentov|bootstrap}}
 
-                          <label for="usr">Дата получения:</label>
-                          <input type="text" class="form-control" id="usr">
+                    
+               <div class="col-sm-3 panel panel-default" id="div4" style="display:none">
+                {{form1.polucheno_1_2_bool|bootstrap}}
+                {{form1.polucheno_1_2|bootstrap}}
 
-                          <label for="usr">Срок исполнения:</label>
-                          <input type="text" class="form-control" id="usr">
+               </div>
+               
+               <h3>Предписание об устранении нарушения законодательства РФ</h3>
+               {{form1.prepsanie_ob_ustranenii_narusheniya_zakonodatelstva_RF|bootstrap}}
+                
+               <div class="col-sm-3 panel panel-default" id="div5" style="display:none">
+                {{form1.polucheno_1_3_bool|bootstrap}}
+                {{form1.polucheno_1_3|bootstrap}}
+             
+               </div>
 
-                          <label for="usr">Дата окончания срока:</label>
-                          <input type="text" class="form-control" id="usr">
-                          <br>
-
-                          
-                          <div class="input-group">
-                              <span class="input-group-addon">
-                                <label for="usr">Возврат:</label>
-                                <input type="checkbox" aria-label="..." id="usr">
-                              </span>
-                              <input type="text" class="form-control" aria-label="..." placeholder="Дата возврата">
-                          </div> 
-
-                          <label for="usr">Продление срока:</label>
-                          <input type="text" class="form-control" id="usr">
-
-                          
-
-                          </div>
-                     </div>         
-                   </div> 
-
-
-                    </div>
-                </div>
-              </div>
+      <script type="text/javascript">
+        
+                window.onload;
+                document.addEventListener("DOMContentLoaded", showMe);
 
 
-            {% endif %}  
+              function showMe (box, imya) {
+        
+              var chboxs = document.getElementsByName(imya);
+              var vis = "none";
+              for(var i=0;i<chboxs.length;i++) { 
+                  if(chboxs[i].checked){
+                   vis = "block";
+                      break;
+                  }
+              }
+              document.getElementById(box).style.display = vis;
+    
+    
+              }
 
 
-  {% endif %}              
 
-      </div>
 
-              </div>
-            </form>
-          </div>
+      </script>
+      	
+
+           
         
 
       </div>
+    </div>
+    <br>
+      <input class='btn btn-primary'  type="submit" value="Сохранить" />
+                    {% csrf_token %}
+                  </form>
+    </div>
 
-        </div>
-      </div>
-  </div>
+       
+  
 
 
   <!-- Bootstrap core JavaScript

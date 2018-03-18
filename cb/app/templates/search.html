@@ -23,40 +23,9 @@
 </head>
 
 <body class="mdc-typography" onresize="resizing();">
-    <header class="mdc-toolbar mdc-toolbar--fixed">
-		<div role="progressbar" class="mdc-linear-progress" id="progress">
-			<div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
-				<span class="mdc-linear-progress__bar-inner"></span>
-			</div>
-		</div>
-		
-        <div class="mdc-toolbar__row">
-            <section class="mdc-toolbar__section mdc-toolbar__section--align-start logo-section">
-                <a href="/index" class="logo"><img src='/static/new/img/CB-logo.png'></a>
-            </section>
-            <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-                <nav class="mdc-tab-bar">
-					<a class="mdc-tab" href="/index">
-						ГЛАВНАЯ
-						<span class="mdc-tab__indicator"></span>
-					</a>
-                    <a class="mdc-tab mdc-tab--active" href="/search">
-						ПОИСК
-						<span class="mdc-tab__indicator"></span>
-					</a>
-                    <a class="mdc-tab" href="/selections">
-						ВЫБОРКА
-						<span class="mdc-tab__indicator"></span>
-					</a>
-                    <a class="mdc-tab" href="/db_update">
-						ОБНОВЛЕНИЕ
-						<span class="mdc-tab__indicator"></span>
-					</a>
-                </nav>
-            </section>
-        </div>
-    </header>
-	
+
+{% include 'navbar_new.html' %}
+
     <main>
         {% if messages %}
         <ul class="messages">
@@ -186,9 +155,7 @@
         </div>
 		
 		<div class="mdc-snackbar mdc-snackbar--align-start" id="alert"
-			 aria-live="assertive"
-			 aria-atomic="true"
-			 aria-hidden="true">
+			 aria-live="assertive" aria-atomic="true" aria-hidden="true">
 			<div class="mdc-snackbar__action-wrapper" dir="rtl">
 				<button type="button" class="mdc-snackbar__action-button"></button>
 			</div>
@@ -201,6 +168,7 @@
     <script src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
     <script src="{% static 'new/js/paging.js' %}"></script>
     <script src="{% static 'new/js/material-components-web.min.js' %}"></script>
+	<script src="{% static 'new/js/general.js' %}"></script>
 	<script src="{% static 'new/js/search.js' %}"></script>
 </body>
 

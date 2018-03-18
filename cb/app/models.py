@@ -111,7 +111,7 @@ class Data111(models.Model):
 	opf = models.CharField(db_column='ОПФ', blank=True, null=True, default=None, max_length=100)  
 	cod_emitenta = models.CharField(db_column='КОД_ЭМИТEHТA', blank=True, null=True, default=None, max_length=100)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	ustavnoy_capital = models.CharField(db_column='УСТАВНЫЙ_КАПИТАЛ', blank=True, null=True, default=None,max_length=100)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-	kolichestvo_licevyh_schetov_v_reestre = models.IntegerField(db_column='Количество_лицевых_счетов_в_реестре', blank=True, null=True, default=None,max_length=100)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	kolichestvo_licevyh_schetov_v_reestre = models.CharField(db_column='Количество_лицевых_счетов_в_реестре', blank=True, null=True, default=None,max_length=100)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	kolichestvo_nominalnyh_derzhateley_v_reestre = models.CharField(db_column='Количество_номинальных_держателей_в_реестре', blank=True, null=True, default=None,max_length=100)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria = models.CharField(db_column='Сведения_об_открытии_счета_номинального_держателя_центрального_депозитария', blank=True, null=True, default=None,max_length=100)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	region = models.CharField(db_column='РЕГИОН', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase.
@@ -123,6 +123,7 @@ class Data111(models.Model):
 	data_posledney_operacii = models.CharField(db_column='ДАТА_ПОСЛЕДНЕЙ_ОПЕРАЦИИ', blank=True, null= True, max_length= 1000)
 	otchetnost = models.CharField(db_column='ОТЧЕТНОСТЬ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase.
 	zadolzhennost_pered_fns = models.CharField(db_column='ЗАДОЛЖЕННОСТЬ_ПЕРЕД_ФНС', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	vid_deyatelnosti = models.CharField(db_column='ВИД_ДЕЯТЕЛЬНОСТИ', blank=True, null=True, default=None, max_length=1000)
 	kartochka_kompanii = models.CharField(db_column='КАРТОЧКА_КОМПАНИИ', blank=True, null=True, default=None, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	
 	registrator1 = models.CharField(db_column='РЕГИСТРАТОР1', blank= False, null=False, max_length=20, default='ДА')  # Field name made lowercase.
@@ -134,8 +135,16 @@ class Data111(models.Model):
 
 
 	naimenovanie_registratora = models.CharField(db_column='НАИМЕНОВАНИЕ_РЕГИСТРАТОРА', blank=True, max_length=1000, null=True)
-	data_pisma_po_reestru = models.CharField(db_column='ДАТА_ПИСЬМА_ПО_РЕЕСТРУ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-	nomer_pisma_po_reestru = models.CharField(db_column='НОМЕР_ПИСЬМА_ПО_РЕЕСТРУ',blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	
+	data_predpisanya_o_predstavlenii_documentov = models.CharField(db_column='ДАТА_ПРЕДПИСАНИЯ_О_ПРЕДСТАВЛЕНИИ_ДОКУМЕНТОВ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	nomer_predpisanya_o_predstavlenii_documentov = models.CharField(db_column='НОМЕР_ПРЕДПИСАНИЯ_О_ПРЕДСТАВЛЕНИИ_ДОКУМЕНТОВ',blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	
+	data_predpisanya_o_predstavlenii_documentov_gosa = models.CharField(db_column='ДАТА_ПРЕДПИСАНИЯ_О_ПРЕДСТАВЛЕНИИ_ДОКУМЕНТОВ_ГОСА', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	nomer_predpisanya_o_predstavlenii_documentov_gosa = models.CharField(db_column='НОМЕР_ПРЕДПИСАНИЯ_О_ПРЕДСТАВЛЕНИИ_ДОКУМЕНТОВ_ГОСА',blank=True, null=True, max_length=1000)
+
+	data_predpisanya_o_predstavlenii_documentov_raskritie = models.CharField(db_column='ДАТА_ПРЕДПИСАНИЯ_О_ПРЕДСТАВЛЕНИИ_ДОКУМЕНТОВ_РАСКРЫТИЕ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+	nomer_predpisanya_o_predstavlenii_documentov_raskritie = models.CharField(db_column='НОМЕР_ПРЕДПИСАНИЯ_О_ПРЕДСТАВЛЕНИИ_ДОКУМЕНТОВ_РАСКРЫТИЕ',blank=True, null=True, max_length=1000)
+
 	data_zaprosa_po_reestru = models.CharField(db_column='ДАТА_ЗАПРОСА_ПО_РЕЕСТРУ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	nomer_zaprosa_po_reestru = models.CharField(db_column='НОМЕР_ЗАПРОСА_ПО_РЕЕСТРУ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 	data_predpisanya_po_reestru = models.CharField(db_column='ДАТА_ПРЕДПИСАНИЯ_ПО_РЕЕСТРУ', blank=True, null=True, max_length=1000)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -217,6 +226,31 @@ class Data111(models.Model):
 		managed = False
 		db_table = 'Data111'
 
+
+class Data_korp_kontrol(models.Model):
+	ispolneno_2_choices = (('Да', 'Да'),('Нет', 'Нет'))
+	id = models.IntegerField(unique=True, blank=True, primary_key=True)
+	ogrn = models.IntegerField(unique=True)
+	#Вводить новые поля тут
+	data_proverki = models.CharField(max_length=1000, null=True, blank=True)
+	polucheno_2 = models.CharField(max_length=1000, null=True, blank=True)
+	srok_dla_inspolnenia_2 = models.CharField(max_length=1000, null=True, blank=True)
+	data_instechenia_sroka_inpolnenia_2 = models.CharField(max_length=1000, null=True, blank=True)
+	dokumenti_predstavleni_2 = models.CharField(max_length=1000, null=True,blank=True)
+	ispolneno_2 = models.CharField(max_length=1000, null=True, blank=True)
+	
+	#1
+	polucheno_1_2_bool = models.BooleanField(default=False)
+	polucheno_1_3_bool = models.BooleanField(default=False)
+
+	polucheno_1_2 = models.CharField(max_length=100, null=True, blank=True)
+	polucheno_1_3 = models.CharField(max_length=100, null=True, blank=True)
+	
+	zapros_o_predostavlenii_informacii = models.BooleanField(default=False)
+	predpisanie_ob_istrebovanii_documentov = models.BooleanField(default=False)
+	prepsanie_ob_ustranenii_narusheniya_zakonodatelstva_RF = models.BooleanField(default=False)
+	#
+			
 
 class Data222(models.Model):
 	id = models.IntegerField(unique=True, blank=True, primary_key=True)
@@ -356,10 +390,6 @@ def path_and_rename(path):
         return os.path.join(path, filename)
     return wrap
 
-
-'''class UpdateDB(models.Model):
-    db_file = models.FileField(upload_to=path_and_rename(''))       
-    db = 'database'''
 
 class Document(models.Model):
     db = 'DB'

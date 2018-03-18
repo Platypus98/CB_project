@@ -1,15 +1,6 @@
 $(document).ready(function() {
-	window.mdc.autoInit();
-	var linearProgress = mdc.linearProgress.MDCLinearProgress.attachTo(document.getElementById("progress"));
-	
 	// переключатель выдачи
-	var limitValue = initRadio();;
-	
-	// загрузочная панелька
-	linearProgress.progress = 1;
-	setTimeout(function(){
-		linearProgress.close()
-    }, 1000);
+	var limitValue = initRadio();
 
 	// отображение таблицы и всего, что с ней связано
     tableInit(limitValue);

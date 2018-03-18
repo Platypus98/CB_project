@@ -16,14 +16,18 @@
 }
 .mdc-toolbar {
 	background-color: var(--mdc-theme-background);
+	z-index: 5;
 }
 .mdc-tab__indicator {
 	background-color: var(--mdc-theme-primary);
 	height: 2.5px;
 }
-.mdc-toolbar__row {
+header .mdc-toolbar__row {
 	min-height: unset;
 	margin-top: -4px;
+}
+#user-tab {
+	align-self: center;
 }
 .mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab:after {
 	top: unset;
@@ -33,7 +37,7 @@
 }
 .mdc-tab-bar {
 	height: 65px;
-	margin: 0 50px 0 auto;
+	margin: 0 0 0 auto;
 }
 .mdc-tab {
 	font-size: 0.975rem;
@@ -50,4 +54,87 @@
 }
 .logo-section {
 	height: auto;
+}
+.mdc-menu {
+	top: 55px;
+    right: 50px;
+	-webkit-transform-origin: top right;
+    transform-origin: top right;
+	padding: 20px;
+}
+.login-alert {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	width: 100%;
+	height: 0;
+	background-color: #000;
+	z-index: 4;
+	justify-content: center;
+	flex-direction: column;
+}
+.login-text {
+	font-family: Montserrat,sans-serif;
+	color: #fff;
+	margin: 0;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+}
+.mdc-dialog--open .mdc-dialog__backdrop {
+	opacity: .6;
+}
+.login-dialog .mdc-dialog__surface {
+	max-width: 350px;
+    min-width: unset;
+}
+.logout-dialog .mdc-dialog__surface {
+	max-width: 510px;
+    min-width: unset;
+}
+.logout-dialog h2 {
+	text-align: center;
+}
+.login-dialog .mdc-text-field,
+.login-dialog .mdc-form-field {
+	width: 100%;
+}
+.login-dialog .mdc-dialog__body {
+	margin-top:0;
+	padding: 0 24px 0;
+}
+.mdc-text-field--outlined:not(.mdc-text-field--invalid) .mdc-text-field__input:hover ~ .mdc-text-field__outline .mdc-text-field__outline-path {
+    stroke: var(--mdc-theme-primary, #6200ee);
+}
+.us_inf-name {
+	font-size: 1.1em;
+    text-align: center;
+    margin: 5px 0 15px;
+    color: #9E9E9E;
+}
+.us_inf-name span {
+	font-weight: 500;
+	color: #000;
+}
+.user-settings:after, .user-settings:before,
+.logout-no:after, .logout-no:before {
+	background-color: var(--mdc-theme-text-icon-on-primary-light)
+}
+.logout-yes:after, .logout-yes:before {
+	background-color: #ffcdd2;
+}
+.user-settings:not(:disabled){
+	color: var(--mdc-theme-text-secondary-on-primary-light);
+}
+.logout-no:not(:disabled){
+	color: var(--mdc-theme-text-hint-on-primary-light);
+}
+.logout-yes:not(:disabled){
+	color: #e53935;
+}
+.exit:not(:disabled) {
+	background-color: #e53935;
+}
+.must-fill {
+	color: #d50000;
 }

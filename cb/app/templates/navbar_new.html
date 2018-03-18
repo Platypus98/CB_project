@@ -1,0 +1,126 @@
+	<header class="mdc-toolbar mdc-toolbar--fixed">
+		<div role="progressbar" class="mdc-linear-progress" id="progress">
+			<div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+				<span class="mdc-linear-progress__bar-inner"></span>
+			</div>
+		</div>
+		
+        <div class="mdc-toolbar__row">
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-start logo-section">
+                <a href="/index" class="logo"><img src='/static/new/img/CB-logo.png'></a>
+            </section>
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-end" style="padding-right:40px;">
+                <nav id="basic-tab-bar" class="mdc-tab-bar">
+					<a class="mdc-tab" href="/index">
+						ГЛАВНАЯ
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                    <a class="mdc-tab" href="/search">
+						ПОИСК
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                    <a class="mdc-tab" href="/selections">
+						ВЫБОРКА
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                    <a class="mdc-tab" href="/db_update">
+						ОБНОВЛЕНИЕ
+						<span class="mdc-tab__indicator"></span>
+					</a>
+                </nav>
+				<i id="user-tab" class="material-icons mdc-icon-toggle md-30 mdc-menu-anchor"
+				   {% if user.is_authenticated %}role="button" onclick="userMenu();">
+					person
+				   {% else %}role="button" onclick="showLogin();">
+					person_outline{% endif %}
+				</i>
+				
+				<div class="mdc-menu" tabindex="-1">
+					<p class="us_inf-name mdc-menu__items">
+						Вы вошли как 
+						<span>{% if user.is_authenticated %}{{ user.username }}{% else %}username{% endif %}</span>
+					</p>
+					<div class="us_inf-buttons">
+						<button type="button" class="mdc-button user-settings">
+							<i class="material-icons mdc-button__icon md-24">settings</i>
+							Настройки
+						</button>
+						<button type="button" class="mdc-button mdc-button--unelevated exit">
+							<i class="material-icons mdc-button__icon md-24">exit_to_app</i>
+							Выход
+						</button>
+					</div>
+				</div>
+            </section>
+        </div>
+    </header>
+	
+	<aside class="mdc-dialog logout-dialog" role="alertdialog"
+  		   aria-labelledby="my-mdc-dialog-label">		
+  		<div class="mdc-dialog__surface">
+    		<header class="mdc-dialog__header">
+      			<h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+    				Вы действительно хотите выйти из системы?
+  				</h2>
+    		</header>
+    		<form id="logout">
+			{% csrf_token %}
+    			<footer class="mdc-dialog__footer">
+					<button type="button" class="mdc-button logout-no mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Нет</button>
+      				<button type="button" onclick="authLogout();"
+      						class="mdc-button logout-yes mdc-dialog__footer__button mdc-dialog__footer__button--accept">Да</button>
+				</footer>
+			</form>
+  		</div>
+  		<div class="mdc-dialog__backdrop"></div>
+	</aside>
+	
+	<aside class="mdc-dialog login-dialog" role="alertdialog"
+		   aria-labelledby="my-mdc-dialog-label">
+		<div class="mdc-dialog__surface">
+			<header class="mdc-dialog__header">
+				<h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+					Войти в систему
+				</h2>
+			</header>
+			<form id="auth">
+			{% csrf_token %}
+				<section class="mdc-dialog__body">
+					<div class="mdc-form-field">
+						<div class="mdc-text-field mdc-text-field--outlined login-field">
+							<input required id="username" type="text" name="username" class="mdc-text-field__input" autocomplete="off">
+							<label class="mdc-text-field__label">Логин</label>
+							<div class="mdc-text-field__outline">
+								<svg><path class="mdc-text-field__outline-path"/></svg>
+							</div>
+							<div class="mdc-text-field__idle-outline"></div>
+						</div>
+					</div>
+					<br>
+					<div class="mdc-form-field">
+						<div class="mdc-text-field mdc-text-field--outlined login-field">
+							<input required id="password" type="password" name="password" class="mdc-text-field__input" style="letter-spacing:.3em;">
+							<label class="mdc-text-field__label">Пароль</label>
+							<div class="mdc-text-field__outline">
+								<svg><path class="mdc-text-field__outline-path"/></svg>
+							</div>
+							<div class="mdc-text-field__idle-outline"></div>
+						</div>
+					</div>
+					<br>
+					<p class="mdc-text-field-helper-text must-fill">&nbsp;</p>
+				</section>
+
+				<footer class="mdc-dialog__footer">
+					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Отмена</button>
+					<button type="button" class="mdc-button mdc-dialog__footer__button" onclick="validateAuth();">Ок</button>
+				</footer>
+			</form>
+		</div>
+		<div class="mdc-dialog__backdrop"></div>
+	</aside>
+	
+	<div class="login-alert mdc-toolbar__row">
+		<p class="login-text" style="font-size: 8vh;">C возвращением, </p>
+		<p class="login-text" style="font-size: 4vh;">авторизация прошла успешно</p>
+	</div>

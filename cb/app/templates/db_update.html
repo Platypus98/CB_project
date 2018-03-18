@@ -1,116 +1,65 @@
 {% load staticfiles %}
-{% include 'navbar.html' %}
-{% load bootstrap %}
-
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
+<html>
+
+<head>
+    <title>Обновление | Досье Эмитента</title>
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <title>Обновление БД</title>
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
-    <link href="{% static 'css/navbar-fixed-top.css' %}" rel="stylesheet">
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
-    <link href="{% static 'js/nprogress/nprogress.css' %}" rel="stylesheet">
-    <link rel="shortcut icon" href="{%  static 'img/favicon.ico' %}">
+	<link rel="icon" type="image/png" href="{% static 'new/img/favicon-32x32.png' %}" sizes="32x32">
+	<link rel="icon" type="image/png" href="{% static 'new/img/favicon-16x16.png' %}" sizes="16x16">
 
+    <link href="{% static 'js/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui/jquery-ui.theme.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui/jquery-ui.structure.min.css' %}" rel="stylesheet">
+    <link href="{% static 'new/css/fonts.css' %}" rel="stylesheet">
+    <link href="{% static 'new/css/material-components-web.min.css' %}" rel="stylesheet">
+	<link href="{% static 'new/css/all.css' %}" rel="stylesheet">
+	<link href="{% static 'new/css/update.css' %}" rel="stylesheet">
+</head>
 
-    <script src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
+<body class="mdc-typography" onresize="resizing();">
+	
+{% include 'navbar_new.html' %}
 
-  </head>
-
-  <body>
-
-    <div class="container">
-
-      <div class="jumbotron">
-     <div class="title">Обновление БД</div><br>
-     <div class="col-sm-6">
-     <h4>Загрузка XLS: </h4>
-<form method="POST" action="{% url 'list' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    <!-- COMPONENT START -->
-    <div class="form-group">
-        <div class="input-group input-file"  name="Fichier1">
-            
-            {{form.docfile|bootstrap}}          
-
-        </div>
-    </div>
-    <!-- COMPONENT END -->
-    <div class="form-group">
-        <button type="submit" style="" class="btn btn-primary pull-left">Обновить</button>
-    </div>
-    
-
-<!--<script src="{% static 'js/update.js' %}"></script>
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script >function bs_input_file() {
-    $(".input-file").before(
-        function() {
-            if ( ! $(this).prev().hasClass('input-ghost') ) {
-                var element = $('{{form.docfile}}'); //ФАЙЛ!!!
-                
-                element.attr("name",$(this).attr("name"));
-                element.change(function(){
-                    element.next(element).find('input').val((element.val()).split('\\').pop());
-                });
-                $(this).find("button.btn-choose").click(function(){
-                    element.click();
-                });
-                $(this).find("button.btn-reset").click(function(){
-                    element.val(null);
-                    $(this).parents(".input-file").find('input').val('');
-                });
-                $(this).find('input').css("cursor","pointer");
-                $(this).find('input').mousedown(function() {
-                    $(this).parents('.input-file').prev().click();
-                    return false;
-                });
-                return element;
-            }
-        }
-    );
-}
-$(function() {
-    bs_input_file();
-});
-</script>
--->
-
-
-</div>
-</form>
-
-
-
-<br><br><br><br><br><br>
-
-      </div>
-
-
-
-
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+	<main>
+		<div id="tiles-cont"></div>
+		<div id="tiles-back"></div>
+		<div class="form-cont">
+			<form action="/db_update/" method="POST" id="upd" enctype="multipart/form-data" class="mdc-elevation--z5">
+				{% csrf_token %}
+				<h1 class="mdc-typography--display3 form-heading">Обновление базы</h1>
+				<div class="info">
+					<div class="db-icon">
+						<img src='/static/new/img/db.png'>
+					</div>
+					<p class="last-version mdc-typography--subheading1"><span class="mdc-typography--title">Последняя версия загружена: </span>{{last_upload}}</p>
+					<p class="instruct mdc-typography--body1">
+						Здесь будут какие-то рекомендации и инструкции по загрузке файлов или описание процесса в стиле:
+						"Пожалуйста, выберите файл Excel, который вы хотите загрузить, нажмите кнопочку - и начнётся процесс его обработки!"
+					</p>
+					{{ form.docfile }}
+					<button type="button" class="mdc-button mdc-button--stroked file-btn" data-mdc-auto-init="MDCRipple">
+						<i class="material-icons mdc-button__icon">folder</i>
+						<span>Выберите новый файл<span>
+					</button>
+					<button type="button" onclick="launchTiles();" class="update-btn mdc-button mdc-button--unelevated" data-mdc-auto-init="MDCRipple">
+						Загрузить
+					</button>
+				</div>
+			</form>
+		</div>
+	</main>
+	
+	<!-- Если разместить js-скрипты в конце будет вроде как лучше -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
-    <script src="{% static 'js/pager/paging.js' %}"></script>
-    <script src="{% static 'js/nprogress/nprogress.js' %}"></script>
-    <script src="{% static 'js/custom.js' %}"></script>
-    <script>window.jQuery || document.write('<script src="{% static 'js/jquery.min.js' %}"><\/script>')</script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
-  </body>
+    <script src="{% static 'new/js/material-components-web.min.js' %}"></script>
+	<script src="{% static 'new/js/general.js' %}"></script>
+	<script src="{% static 'new/js/update.js' %}"></script>
+</body>
+
 </html>

@@ -2,6 +2,8 @@ from django import forms
 
 from .models import *
 
+from django.forms.widgets import DateInput
+
 class limitForm(forms.Form):
     CHOICES=[('20','20'),('30','30'),('50','50')]
     values = forms.ChoiceField(widget=forms.RadioSelect(attrs={'class': 'mdc-radio__native-control'}), choices=CHOICES, initial='50')
@@ -85,13 +87,14 @@ class Data111Edit_Korp_KontrolForm(forms.ModelForm):
 
     class Meta(object):
           model = Data111
-          fields = ['registrator1', "data_pisma_po_reestru", "nomer_pisma_po_reestru","data_zaprosa_po_reestru",
+          fields = ['registrator1', "data_predpisanya_o_predstavlenii_documentov", "nomer_predpisanya_o_predstavlenii_documentov","data_zaprosa_po_reestru",
                      "nomer_zaprosa_po_reestru", "data_predpisanya_po_reestru", "nomer_predpisaniya_po_reestru", 
                      "data_provedeniya_gosa", "data_zaprosa_po_gosa", "nomer_zaprosa_po_gosa", "data_predpisaniya_po_1_vypusku", 
-                     "nomer_predpisaniya_po_1_vypusku", "nrd", "oao_na_22_06_2015","netsami","naimenovanie_registratora","vozvrat"]
+                     "nomer_predpisaniya_po_1_vypusku", "nrd", "oao_na_22_06_2015","netsami","naimenovanie_registratora","vozvrat", "cod_emitenta"]
+
           labels = {    "registrator1": "Реестр передан:",
-                        "data_pisma_po_reestru": "Дата письма по реестру",
-                        "nomer_pisma_po_reestru": "Номер письма по реестру",
+                        "data_predpisanya_o_predstavlenii_documentov": "Дата предписания о представлении документов",
+                        "nomer_predpisanya_o_predstavlenii_documentov": "Номер предписания о представлении документов",
                         "data_zaprosa_po_reestru": "Дата запроса по реестру",
                         "nomer_zaprosa_po_reestru": "Номер запроса по реестру",
                         "data_predpisanya_po_reestru": "Дата предписания по реестру", 
@@ -105,7 +108,8 @@ class Data111Edit_Korp_KontrolForm(forms.ModelForm):
                         "oao_na_22_06_2015": "ОАО на 22.06.2015",
                         "netsami": "",
                         "naimenovanie_registratora":"Наименование регистратора:",
-                        "vozvrat":"Возврат"
+                        "vozvrat":"Возврат",
+                        "cod_emitenta": "Код эмитента"
                    }
 
           widgets = {
@@ -212,8 +216,8 @@ class Data111FormSelection(forms.ModelForm):
     
     registrator = forms.BooleanField(label="РЕГИСТРАТОР", required=False)  
     naimenovanie_registratora = forms.BooleanField(label="НАИМЕНОВАНИЕ РЕГИСТРАТОРА", required=False)
-    data_pisma_po_reestru = forms.BooleanField(label="ДАТА ПИСЬМА ПО РЕЕСТРУ", required=False)  
-    nomer_pisma_po_reestru = forms.BooleanField(label="НОМЕР ПИСЬМА ПО РЕЕСТРУ", required=False)  
+    data_predpisanya_o_predstavlenii_documentov = forms.BooleanField(label="ДАТА ПРЕДПИСАНИЯ О ПРЕДСТАВЛЕНИИ ДОКУМЕНТОВ", required=False)  
+    nomer_predpisanya_o_predstavlenii_documentov = forms.BooleanField(label="НОМЕР ПРЕДПИСАНИЯ О ПРЕДСТАВЛЕНИИ ДОКУМЕНТОВ", required=False)  
     data_zaprosa_po_reestru = forms.BooleanField(label="ДАТА ЗАПРОСА ПО РЕЕСТРУ", required=False)
     nomer_zaprosa_po_reestru = forms.BooleanField(label="НОМЕР ЗАПРОСА ПО РЕЕСТРУ", required=False)
     data_predpisanya_po_reestru = forms.BooleanField(label="ДАТА ПРЕДПИСАНИЯ ПО РЕЕСТРУ", required=False)
@@ -296,7 +300,7 @@ class Data111FormSelection(forms.ModelForm):
                   'kolichestvo_licevyh_schetov_v_reestre', 'kolichestvo_nominalnyh_derzhateley_v_reestre', 
                   'cvedeniya_ob_otritii_scheta_nominalnogo_derzhatelya_centralnogo_depozitoria', 'region', 
                   'adres', 'edinolichny_ispolnitelny_organ', 'contactny_dannye', 'status', 'dvizhenie_denezhnyh_sredstv', 
-                  'data_posledney_operacii', 'otchetnost', 'zadolzhennost_pered_fns', 'registrator', 'naimenovanie_registratora', 'data_pisma_po_reestru', 'nomer_pisma_po_reestru', 
+                  'data_posledney_operacii', 'otchetnost', 'zadolzhennost_pered_fns', 'registrator', 'naimenovanie_registratora', 'data_predpisanya_o_predstavlenii_documentov', 'nomer_predpisanya_o_predstavlenii_documentov', 
                   'data_zaprosa_po_reestru', 'nomer_zaprosa_po_reestru', 'data_predpisanya_po_reestru', 
                   'nomer_predpisaniya_po_reestru', 'data_provedeniya_gosa', 'data_zaprosa_po_gosa', 
                   'nomer_zaprosa_po_gosa','proverka_1_vipusk', 'data_predpisaniya_po_1_vypusku','nomer_predpisaniya_po_1_vypusku', 
@@ -312,7 +316,9 @@ class Data111FormSelection(forms.ModelForm):
                   'nomer_otveta_na_zaprosa_o_rezultatah_provedeniya_torgov_v_obchestve','vivod', 'raskritie', 'data_protokola', 'nomer_protokola', 
                   'statya_koap','data_postanovleniya','nomer_postanovleniya', 'resultat', 'razmer_shtrafa','administrativka','fns', 
                   'data_pisma_v_fns', 'nomer_pisma_v_fns', 'informaciya_o_poluchenii_otveta_ot_fns', 'vh_nomer_otveta', 
-                  'soderzhanie_otveta', 'otvet_fns_ob_adrese', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma','svedeniya_ob_adrese_ne_dostoverny', 'data_vneseniya_zapisi', 'vzaimodeystvie_s_gos_organami']
+                  'soderzhanie_otveta', 'otvet_fns_ob_adrese', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove', 'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_nomer_pisma', 
+                  'vzaimodeystvie_s_fns_na_ezhekvartalnoi_osnove_data_pisma','svedeniya_ob_adrese_ne_dostoverny', 'data_vneseniya_zapisi', 'vzaimodeystvie_s_gos_organami',
+                  'data_zaclucheniya_uristam','nomer_zaclucheniya_uristam']
         labels = {
             "proverky_gosa_po_zaprosu": "Проверки госа по запросу",
             "proverky_gosa_po_raskritiyu": "Проверки госа по раскрытию",
@@ -336,8 +342,8 @@ class Data111FormSelection(forms.ModelForm):
             "otchetnost": "Отчетность:",
             "zadolzhennost_pered_fns": "Задолженность перед ФНС:",
             "registrator": "Регистратор",
-            "data_pisma_po_reestru": "Дата письма по реестру",
-            "nomer_pisma_po_reestru": "Номер письма по реестру",
+            "data_predpisanya_o_predstavlenii_documentov": "Дата предписания о представлении документов",
+            "nomer_predpisanya_o_predstavlenii_documentov": "Номер предписания о представлении документов",
             "data_zaprosa_po_reestru": "Дата запроса по реестру",
             "nomer_zaprosa_po_reestru": "Номер запроса по реестру",
             "data_predpisanya_po_reestru": "Дата предписания по реестру",
@@ -440,6 +446,14 @@ class Filter_zadolzhennost_pered_fns(forms.Form):
     nepustaia = forms.BooleanField(label="Непустая", required=False)
     pustaia = forms.BooleanField(label="Пустая", required=False)
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
+class Filter_data_zaprosa_po_reestru(forms.Form):
+    from_ = forms.BooleanField(label = 'Начальная дата', widget = DateInput())
+    to = forms.BooleanField(label='Конечная дата', widget=DateInput())
+
 class Filter_registrator(forms.Form):
     da = forms.BooleanField(label="ДА", required=False)
     net = forms.BooleanField(label="НЕТ", required=False)
@@ -474,5 +488,46 @@ class Filter_oao_na_22062015(forms.Form):
 
 
 class DocumentForm(forms.Form):
-    docfile = forms.FileField(label = '', widget=forms.FileInput(attrs ={'accept' : '.xls,.xlsm,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel, application/vnd.ms-excel.sheet.macroEnabled.12'}))
+    docfile = forms.FileField(label = '', widget=forms.FileInput(attrs ={'onchange': 'fileNameUpd(this.value);','accept' : '.xls,.xlsm,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel, application/vnd.ms-excel.sheet.macroEnabled.12'}))
     
+
+class Data111_second_korp(forms.ModelForm):
+    ispolneno_2_choices = (('Да', 'Да'),('Нет', 'Нет'))
+
+    ispolneno_2 = forms.ChoiceField(required = False, label = 'Исполнено:', choices = ispolneno_2_choices, widget=forms.RadioSelect)
+
+    #1
+    zapros_o_predostavlenii_informacii = forms.BooleanField(label="", required=False, widget=forms.CheckboxInput(attrs ={"onclick":"showMe('div3','zapros_o_predostavlenii_informacii')"}))
+    predpisanie_ob_istrebovanii_documentov = forms.BooleanField(label="", required=False,widget=forms.CheckboxInput(attrs ={"onclick":"showMe('div4','predpisanie_ob_istrebovanii_documentov')"}))
+    prepsanie_ob_ustranenii_narusheniya_zakonodatelstva_RF = forms.BooleanField(label="", required=False,widget=forms.CheckboxInput(attrs ={"onclick":"showMe('div5','prepsanie_ob_ustranenii_narusheniya_zakonodatelstva_RF')"}))
+    
+
+    polucheno_1_2_bool = forms.BooleanField(label="Получено:", required=False)
+    polucheno_1_3_bool = forms.BooleanField(label="Получено:", required=False)
+
+    polucheno_1_2 = forms.TextInput()
+    polucheno_1_3 = forms.TextInput()
+
+
+    #
+    class Meta:
+        model = Data_korp_kontrol
+        fields = ['ogrn', 'data_proverki', "polucheno_2", "srok_dla_inspolnenia_2", "data_instechenia_sroka_inpolnenia_2", "dokumenti_predstavleni_2", 
+        "ispolneno_2",'zapros_o_predostavlenii_informacii','predpisanie_ob_istrebovanii_documentov','prepsanie_ob_ustranenii_narusheniya_zakonodatelstva_RF',
+         'polucheno_1_2_bool','polucheno_1_3_bool','polucheno_1_2','polucheno_1_3']
+        labels = {
+            "ogrn": "ОГРН",
+            "data_proverki": "Дата проверки",
+            "polucheno_2": "Получено",
+            "srok_dla_inspolnenia_2": "Срок для исполнения",
+            "data_instechenia_sroka_inpolnenia_2": "Дата истечения срока исполнения",
+            "dokumenti_predstavleni_2":"Документы представлены",
+            "ispolneno_2": "Исполнено",
+            'zapros_o_predostavlenii_informacii':'',
+            'polucheno_1_2_bool':'Получено:',
+            'polucheno_1_3_bool':'Получено:',
+            'polucheno_1_2':'',
+            'polucheno_1_3':''
+
+        }
+                    

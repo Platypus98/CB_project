@@ -1,0 +1,51 @@
+
+
+
+		<div class="mdc-elevation--z5 example">
+			<ul class="mdc-list mdc-list--two-line mdc-list--avatar-list demo-list demo-list--with-avatars demo-list--icon-placeholders">
+				<li class="mdc-list-item">
+					<span class="mdc-list-item__graphic" role="presentation">
+						<i class="material-icons" aria-hidden="true">{{story.0.icon}}</i>
+					</span>
+					<span class="mdc-list-item__text">
+						 {{story.0.type}} 
+						<span class="mdc-list-item__secondary-text">{{story.0.date}}, <b>{{story.0.user}}</b></span>
+					</span>
+					<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+						info
+					</a>
+				</li>
+				<li class="mdc-list-item">
+					<span class="mdc-list-item__graphic" role="presentation">
+						<i class="material-icons" aria-hidden="true">{{story.1.icon}}</i>
+					</span>
+					<span class="mdc-list-item__text">
+						{{story.1.type}} 
+						<span class="mdc-list-item__secondary-text">{{story.1.date}}, <b>{{story.1.user}}</b></span>
+					</span>
+					<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+						info
+					</a>
+				</li>
+				<li class="mdc-list-item">
+					<span class="mdc-list-item__graphic" role="presentation">
+						<i class="material-icons" aria-hidden="true">{{story.2.icon}}</i>
+					</span>
+					<span class="mdc-list-item__text">
+						{{story.2.type}} 
+						<span class="mdc-list-item__secondary-text">{{story.2.date}}, <b>{{story.2.user}}</b></span>
+					</span>
+					<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+						info
+					</a>
+				</li>
+			</ul>
+			<div class="mdc-card__actions mdc-card__actions--full-bleed">
+				<a class="mdc-button mdc-card__action mdc-card__action--button demo-card-action" data-mdc-auto-init="MDCRipple">
+					ВСЕ ПОСЛЕДНИЕ ИЗМЕНЕНИЯ
+					<i class="material-icons" aria-hidden="true">arrow_forward</i>
+				</a>
+			</div>
+		</div>
+		
+		

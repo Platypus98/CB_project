@@ -1,3 +1,6 @@
+html, main {
+	height: 100%;
+}
 body {
 	margin: 65px auto 0;
 	background-attachment: fixed;
@@ -9,6 +12,8 @@ body {
 	-o-background-size: cover;
 	background-size: cover;
 	z-index:1;
+	height: calc(100% - 65px);
+	position: relative;
 }
 
 main {
@@ -18,8 +23,8 @@ main {
 	user-select: none;
 }
 .hello-text {
-    left: 61px;
-	top: 120px;
+    left: 51px;
+	top: 55px;
 }
 
 .hello-text span {
@@ -47,75 +52,57 @@ main {
 }
 #clock {
 	right: 60px;
-	top: 120px;
+	top: 55px;
 	font-size: 30pt;
 	font-weight: 500;
 	color: #fff;
 	width: 170px;
 	min-width: 170px;
 }
-.login-alert {
-	opacity: 0;
-	position: absolute;
-	width: 100%;
-	height: 0;
-	background-color: #000;
-	z-index: 2;
-	margin-top: -65px;
-	justify-content: center;
-	flex-direction: column;
-}
-.login-text {
-	font-family: Montserrat,sans-serif;
-	color: #fff;
-	margin: 0;
-	opacity: 0;
-	position: absolute;
-	top: 50%;
-}
-.app-fab--absolute {
-	bottom: 50px;
-    right: 65px;
-}
-.example {
+.history {
 	position: absolute;
 	min-width: 440px;
-	bottom: 60px;
-	left: 60px;
+	bottom: 55px;
+	left: 50px;
 	background-color:#fff;
 	cursor:pointer;
+	max-height: 300px;
+	transition: all 0.5s;
+	z-index: 2;
 }
-.mdc-dialog--open .mdc-dialog__backdrop {
+.hist-inner {
+	overflow-y: auto;
+}
+.hist-top {
+	display: none;
+	color: black;
+	border-bottom: 0.5px solid grey;
+}
+#hist-close {
+	align-self: center;
+	margin-left: 12px;
+}
+.full {
+	width: 800px;
+    left: calc(50% - 400px);
+    height: 80%;
+	bottom: 10%;
+    max-height: unset;
+    z-index: 4;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+.dark {
+	z-index: 3;
 	opacity: .6;
 }
-.login-dialog .mdc-dialog__surface {
-	max-width: 350px;
-    min-width: unset;
-}
-.logout-dialog .mdc-dialog__surface {
-	max-width: 510px;
-    min-width: unset;
-}
-.logout-dialog h2 {
-	text-align: center;
-}
-.mdc-text-field, .mdc-form-field {
-	width: 100%;
-}
-.login-dialog .mdc-dialog__body {
-	margin-top:0;
-	padding: 0 24px 0;
-}
-.mdc-text-field--outlined:not(.mdc-text-field--invalid) .mdc-text-field__input:hover ~ .mdc-text-field__outline .mdc-text-field__outline-path {
-    stroke: var(--mdc-theme-primary, #6200ee);
+.hist-back {
+	transition: opacity 0.5s;
 }
 .mdc-card__actions--full-bleed .mdc-card__action--button {
     padding: 8px 16px 8px 24px;
-}
-.mdc-snackbar__text[dir=rtl], [dir=rtl] .mdc-snackbar__text, .mdc-snackbar__action-button{
-	padding-left: 0;
-	font-size: 1.175rem;
-}
+}	
 .mdc-list {
 	padding: 6px 0 0;
 }
@@ -125,59 +112,4 @@ main {
 }
 .mdc-list-item__secondary-text {
 	font-size: .85rem;
-}
-.user-info {
-	background-color: #fff;
-	position: absolute;
-	top: 220px;
-    right: 60px;
-/* 
-	-webkit-border-radius: 6px; 
-	-moz-border-radius: 6px;
-	border-radius: 6px;
- */
-	padding: 15px;
-	justify-content: center;
-    flex-direction: column;
-    width: auto;
-}
-.us_inf-split {
-	width: 100%;
-	height: 1px;
-	margin: 0 0 15px;
-	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(68,68,68,0.6) 30%, rgba(68,68,68,0.6) 70%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(68,68,68,0.6) 30%,rgba(68,68,68,0.6) 70%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(68,68,68,0.6) 30%,rgba(68,68,68,0.6) 70%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-}
-.us_inf-name {
-	font-size: 1.1em;
-    text-align: center;
-    margin: 5px 0 10px;
-    color: #9E9E9E;
-}
-.us_inf-name span {
-	font-weight: 500;
-	color: #000;
-}
-.user-settings:after, .user-settings:before,
-.logout-no:after, .logout-no:before {
-	background-color: var(--mdc-theme-text-icon-on-primary-light)
-}
-.logout-yes:after, .logout-yes:before {
-	background-color: #ffcdd2;
-}
-.user-settings:not(:disabled){
-	color: var(--mdc-theme-text-secondary-on-primary-light);
-}
-.logout-no:not(:disabled){
-	color: var(--mdc-theme-text-hint-on-primary-light);
-}
-.logout-yes:not(:disabled){
-	color: #e53935;
-}
-.exit:not(:disabled) {
-	background-color: #e53935;
-}
-.must-fill {
-	color: #d50000;
 }

@@ -1,55 +1,49 @@
-$(document).ready(function() {
-	window.mdc.autoInit()
-	
-	var linearProgress = mdc.linearProgress.MDCLinearProgress.attachTo(document.querySelector("#progress"));
-	
+$(document).ready(function() {	
 	// зажигаем часики
 	startTime();
 	// устанавливаем картиночку на фон
 	var time_points = setPicture(false,0);
+	//ограничиваем размер превью виджета истории
+	limitHistory(true);
+	$('.hist-action').click(function() {
+		var el = $('.history');
+		el.css({'height': el.height(), 'width': el.width()});
+		el.find('li:visible').fadeOut();
+		el.children('div:last-child').fadeOut(250);
+		setTimeout(function(){
+			$('.hist-back').toggleClass('dark');
+			el.css({'height': '80%', 'width': '800px'}).toggleClass('full');
+			$('.hist-top').show();
+		}, 500)
+		setTimeout(function(){
+			$('.hist-inner').height(el.height()-$('.hist-top').height()+'px');
+			limitHistory(false)
+		}, 1000);
+	});
+	mdc.iconToggle.MDCIconToggle.attachTo(document.querySelector("#hist-close"));
+	$("#hist-close").focus(function(){$(this).blur()});
 	
 	// запускаем дэмку спустя 3 секунды
 	setTimeout(function(){
 		checkCookie(time_points)
     }, 3000);
-	
-	// загрузочная панелька
-	linearProgress.progress = 1;
-	setTimeout(function(){
-		linearProgress.close()
-    }, 1000);
 });
 
-function callAlert(ind) {
-	var snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.getElementById('alert'));
-	var data =  {
-        message: "Неверный логин/пароль",
-        timeout: 2500,
-		actionText: 'Ошибка',
-		actionHandler: function () {
-			console.log('[Wrong login] alert is pressed');
+function limitHistory(val) {
+	var records = $('.history li');
+	if (val) {
+		for (var n=0;n<records.length;n++) {
+			if (n>2) $(records[n]).hide()
 		}
-    };
-	var data1 =  {
-        message: "Вы вышли из системы",
-        timeout: 2500,
-		actionText: 'Уведомление',
-		actionHandler: function () {
-			console.log('');
+	} else {
+		var ind = 0;
+		function fader() {
+			$(records[ind]).fadeIn();
+			ind++;
+			if (ind != (records.length-1)) setTimeout(fader, 150)
 		}
-    };
-	var alert_opt = [data,data1];
-	snackbar.show(alert_opt[ind])
-}
-//показываем приветствие после успешного входа в аккаунт
-function loginSuccess() {
-	var alerts =document.getElementsByClassName("login-text");
-	$(".login-alert").css('height','100%');
-	$(".login-alert").animate({opacity: '0.7'});
-	setTimeout(function (){$(alerts[0]).animate({opacity: '1',top: '40%'});},500);
-	setTimeout(function (){$(alerts[1]).animate({opacity: '1'});},1000);
-	setTimeout(function (){$(".login-alert").animate({opacity: '0'},200)},2800);
-	setTimeout(function (){$(".login-alert").css('height','0')},3000);
+		fader()
+	}
 }
 
 function setPicture(demo,demo_value) {
@@ -128,48 +122,6 @@ function startTime() {
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // добавить ноль перед числами < 10
     return i;
-}
-
-// показываем диалоговое окно для входа в аккаунт
-function showLogin() {
-	var loginAlert = mdc.dialog.MDCDialog.attachTo(document.querySelector('.login-dialog'));
-	loginAlert.show();
-	setTimeout(function(){initLogin()},100)
-}
-// делаем так, чтобы ripple к полям входа
-// прикреплялся только после нажатия кнопки
-function initLogin() {
-	var tf = $(".mdc-text-field");
-	for (var i=0;i<tf.length;i++) {
-		mdc.textField.MDCTextField.attachTo(tf[i])
-	}
-}
-// похожее диалоговое окно, только для проверки желания разлогиниться
-function checkLogout() {
-	var logoutAlert = mdc.dialog.MDCDialog.attachTo(document.querySelector('.logout-dialog'));
-	logoutAlert.show()
-}
-
-// не даём пользователю отправлять форму входа пустой
-function validateAuth() {
-	var form = document.getElementById("auth");
-	var fields = $(".login-field input");
-	var help_t = $(".must-fill");
-	var invalid = false;
-	for (var x=0;x < fields.length;x++) {
-		if (fields[x].value == "") {
-			$(fields[x]).parent('div').addClass("mdc-text-field--invalid");
-			invalid = true
-		} else {
-			$(fields[x]).parent('div').removeClass("mdc-text-field--invalid");
-		}
-	}
-	if (!invalid) {
-		help_t.animate({opacity: '0'},200);
-		setTimeout(function(){form.submit()},400)
-	} else {
-		help_t.animate({opacity: '1'},200)
-	}
 }
 
 // лого меняется, если навигационная панель слишком узкая
@@ -261,7 +213,7 @@ function seasonTime(now) {
 	result[8] = (new Date(str_default+"5:00")).getTime();
 	result[9] = (new Date(str_default+"23:00")).getTime();
 	result[10] = (new Date(str_default+"10:00")).getTime();
-	result[11] = (new Date(str_default+"16:00")).getTime();
+	result[11] = (new Date(str_default+"17:00")).getTime();
 	
 	return(result)
 }
@@ -283,7 +235,6 @@ function getSunTime(str_default,day,coefs,add) {
 	// alert(out);
 	return(out)
 }
-
 
 // ЗДЕСЬ БОЛЬШАЯ ШТУКА С DEMO ДЛЯ РАЗРАБОВ
 function setCookie(cname,cvalue,exdays) {

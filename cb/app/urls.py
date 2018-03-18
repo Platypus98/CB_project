@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^search/', views.search),
     url(r'^selections/', views.selections),
     url(r'^index/', home, name = 'home'),
-    #url(r'^', views.home),
+    url(r'^auth/', views.auth_it, name = 'auth'),
     url(r'^db_update/$', list, name='list'),
     url(r'^edit/kartochka_kompanii/(?P<id>\w+)/$', views.edit_kartochka, name='edit/kartochka_kompanii'),
     url(r'^edit/korp_kontrol/(?P<id>\w+)/$', views.edit_korp_kontrol, name='edit/korp_kontrol'),

@@ -5,7 +5,7 @@ body {
 	bottom: 25px;
     right: 35px;
 }
-.mdc-text-field--upgraded:not(.mdc-text-field--fullwidth):not(.mdc-text-field--box) {
+#search_form .mdc-text-field--upgraded:not(.mdc-text-field--fullwidth):not(.mdc-text-field--box) {
 	width: 100%;
 	margin-top: 0;
 }

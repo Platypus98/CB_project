@@ -22,40 +22,9 @@
 </head>
 
 <body class="mdc-typography" onresize="resizing();">
-    <header class="mdc-toolbar mdc-toolbar--fixed">
-		<div role="progressbar" class="mdc-linear-progress" id="progress">
-			<div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
-				<span class="mdc-linear-progress__bar-inner"></span>
-			</div>
-		</div>
-		
-        <div class="mdc-toolbar__row">
-            <section class="mdc-toolbar__section mdc-toolbar__section--align-start logo-section">
-                <a href="/index" class="logo"><img src='/static/new/img/CB-logo.png'></a>
-            </section>
-            <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-                <nav id="basic-tab-bar" class="mdc-tab-bar">
-					<a class="mdc-tab mdc-tab--active" href="/index">
-						ГЛАВНАЯ
-						<span class="mdc-tab__indicator"></span>
-					</a>
-                    <a class="mdc-tab" href="/search">
-						ПОИСК
-						<span class="mdc-tab__indicator"></span>
-					</a>
-                    <a class="mdc-tab" href="/selections">
-						ВЫБОРКА
-						<span class="mdc-tab__indicator"></span>
-					</a>
-                    <a class="mdc-tab" href="/db_update">
-						ОБНОВЛЕНИЕ
-						<span class="mdc-tab__indicator"></span>
-					</a>
-                </nav>
-            </section>
-        </div>
-    </header>
-	
+
+{% include 'navbar_new.html' %}
+
     <main>
 		<p class="hello-text">
 			<span class="welcome"></span>
@@ -67,159 +36,197 @@
 		
 		<p id="clock"></p>
 		
-		<div class="mdc-elevation--z5 example">
-			<ul class="mdc-list mdc-list--two-line mdc-list--avatar-list demo-list demo-list--with-avatars demo-list--icon-placeholders">
-				<li class="mdc-list-item">
-					<span class="mdc-list-item__graphic" role="presentation">
-						<i class="material-icons" aria-hidden="true">edit</i>
-					</span>
-					<span class="mdc-list-item__text">
-						Редактирование эмитента №3189
-						<span class="mdc-list-item__secondary-text">6 Фев 17:44, <b>Игорь Сенгаев</b></span>
-					</span>
-					<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
-						info
-					</a>
-				</li>
-				<li class="mdc-list-item">
-					<span class="mdc-list-item__graphic" role="presentation">
-						<i class="material-icons" aria-hidden="true">file_upload</i>
-					</span>
-					<span class="mdc-list-item__text">
-						Обновление базы
-						<span class="mdc-list-item__secondary-text">6 Фев 10:30, <b>Sleep3r</b></span>
-					</span>
-					<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
-						info
-					</a>
-				</li>
-				<li class="mdc-list-item">
-					<span class="mdc-list-item__graphic" role="presentation">
-						<i class="material-icons" aria-hidden="true">edit</i>
-					</span>
-					<span class="mdc-list-item__text">
-						Редактирование эмитента №25306
-						<span class="mdc-list-item__secondary-text">6 Фев 9:50, <b>andrianov20</b></span>
-					</span>
-					<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
-						info
-					</a>
-				</li>
-			</ul>
+		<div class="mdc-elevation--z5 history">
+			<div class="mdc-toolbar hist-top">
+				<div class="mdc-toolbar__row">
+					<section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+						<i id="hist-close" class="material-icons mdc-icon-toggle md-30"
+						   role="button" onclick="">close</i>
+						<span class="mdc-toolbar__title">Все последние изменения</span>
+					</section>
+				</div>
+			</div>
+			<div class="hist-inner">
+				<ul class="mdc-list mdc-list--two-line mdc-list--avatar-list demo-list 
+						   demo-list--with-avatars demo-list--icon-placeholders">
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №3189
+							<span class="mdc-list-item__secondary-text">6 Фев 17:44, <b>Игорь Сенгаев</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">file_upload</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Обновление базы
+							<span class="mdc-list-item__secondary-text">6 Фев 10:30, <b>Sleep3r</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №25306
+							<span class="mdc-list-item__secondary-text">6 Фев 9:50, <b>andrianov20</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+					<li class="mdc-list-item">
+						<span class="mdc-list-item__graphic" role="presentation">
+							<i class="material-icons" aria-hidden="true">edit</i>
+						</span>
+						<span class="mdc-list-item__text">
+							Редактирование эмитента №xxx
+							<span class="mdc-list-item__secondary-text">1 Янв 00:00, <b>Sample user</b></span>
+						</span>
+						<a class="mdc-list-item__meta material-icons" aria-label="View more information" title="More info" onclick="event.preventDefault();">
+							info
+						</a>
+					</li>
+				</ul>
+			</div>
 			<div class="mdc-card__actions mdc-card__actions--full-bleed">
-				<a class="mdc-button mdc-card__action mdc-card__action--button demo-card-action" data-mdc-auto-init="MDCRipple">
+				<a class="mdc-button mdc-card__action mdc-card__action--button hist-action" data-mdc-auto-init="MDCRipple">
 					ВСЕ ПОСЛЕДНИЕ ИЗМЕНЕНИЯ
 					<i class="material-icons" aria-hidden="true">arrow_forward</i>
 				</a>
 			</div>
 		</div>
-		{% if user.is_anonymous %}
-		<button class="mdc-fab material-icons app-fab--absolute md-30"
-				aria-label="Login" data-mdc-auto-init="MDCRipple" onclick="showLogin();">
-			<span class="mdc-fab__icon">account_circle</span>
-		</button>
-		
-		<aside class="mdc-dialog login-dialog" role="alertdialog"
-			   aria-labelledby="my-mdc-dialog-label">
-			<div class="mdc-dialog__surface">
-				<header class="mdc-dialog__header">
-					<h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
-						Войти в систему
-					</h2>
-				</header>
-				<form id="auth" method="post" action="/index/">
-				{% csrf_token %}
-					<section class="mdc-dialog__body">
-						<div class="mdc-form-field">
-							<div class="mdc-text-field mdc-text-field--outlined login-field">
-								<input required id="username" type="text" name="username" class="mdc-text-field__input" autocomplete="off">
-								<label class="mdc-text-field__label">Логин</label>
-								<div class="mdc-text-field__outline">
-									<svg><path class="mdc-text-field__outline-path"/></svg>
-								</div>
-								<div class="mdc-text-field__idle-outline"></div>
-							</div>
-						</div>
-						<br>
-						<div class="mdc-form-field">
-							<div class="mdc-text-field mdc-text-field--outlined login-field">
-								<input required id="password" type="password" name="password" class="mdc-text-field__input" style="letter-spacing:.3em;">
-								<label class="mdc-text-field__label">Пароль</label>
-								<div class="mdc-text-field__outline">
-									<svg><path class="mdc-text-field__outline-path"/></svg>
-								</div>
-								<div class="mdc-text-field__idle-outline"></div>
-							</div>
-						</div>
-						<br>
-						<p class="mdc-text-field-helper-text must-fill">
-            				Поля должны быть заполнены
-          				</p>
-					</section>
-				
-					<footer class="mdc-dialog__footer">
-						<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Отмена</button>
-						<button type="button" class="mdc-button mdc-dialog__footer__button" onclick="validateAuth();">Ок</button>
-					</footer>
-				</form>
-			</div>
-			<div class="mdc-dialog__backdrop"></div>
-		</aside>
-		{% else  %}
-		<div class="user-info mdc-elevation--z5 mdc-toolbar__row">
-			<p class="us_inf-name">Вы вошли как <span>{{ name }}</span></p>
-			<span class="us_inf-split"></span>
-			<div class="us_inf-buttons">
-				<button type="button" class="mdc-button user-settings" data-mdc-auto-init="MDCRipple">
-          			<i class="material-icons mdc-button__icon md-24">settings</i>
-            		Настройки
-         		</button>
-        		<button type="button" class="mdc-button mdc-button--unelevated exit" data-mdc-auto-init="MDCRipple" onclick="checkLogout();">
-          			<i class="material-icons mdc-button__icon md-24">exit_to_app</i>
-        			Выход
-        		</button>
-			</div>
-		</div>
-	    <aside id="my-mdc-dialog" class="mdc-dialog logout-dialog" role="alertdialog"
-  			   aria-labelledby="my-mdc-dialog-label">		
-  			<div class="mdc-dialog__surface">
-    			<header class="mdc-dialog__header">
-      				<h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
-    					Вы действительно хотите выйти из системы?
-  					</h2>
-    			</header>
-    			<form id="logout" method="post" action="/index/">
-				{% csrf_token %}
-    				<footer class="mdc-dialog__footer">
-						<button type="button" class="mdc-button logout-no mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Нет</button>
-      					<button type="button" onclick="setTimeout(function(){$('#logout').submit()},400);"
-      							class="mdc-button logout-yes mdc-dialog__footer__button mdc-dialog__footer__button--accept">Да</button>
-    				</footer>
-				</form>
-  			</div>
-  			<div class="mdc-dialog__backdrop"></div>
-		</aside>
-
-		{% endif %}
-		
-		{% if login_error %}
-			<script>setTimeout(function() {callAlert(0)}, 1000);</script>
-		{% endif %}
-		
-		<div class="mdc-snackbar" id="alert"
-			 aria-live="assertive"
-			 aria-atomic="true"
-			 aria-hidden="true">
-			<div class="mdc-snackbar__action-wrapper" dir="rtl">
-				<button type="button" class="mdc-snackbar__action-button"></button>
-			</div>
-			<div class="mdc-snackbar__text" dir="rtl"></div>
-		</div>
-		
-		<div class="login-alert mdc-toolbar__row">
-			<p class="login-text" style="font-size: 8vh;">C возвращением, {{ user_ok }}</p>
-			<p class="login-text" style="font-size: 4vh;">авторизация прошла успешно</p>
-		</div>
+		<div class="hist-back mdc-dialog__backdrop"></div>
 		
     </main>
 
@@ -227,10 +234,8 @@
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
     <script src="{% static 'new/js/material-components-web.min.js' %}"></script>
+	<script src="{% static 'new/js/general.js' %}"></script>
 	<script src="{% static 'new/js/main.js' %}"></script>
-	{% if login_ok %}
-		<script>loginSuccess()</script>
-	{% endif %}
 </body>
 
 </html>
